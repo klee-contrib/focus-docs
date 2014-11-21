@@ -61,3 +61,5 @@ categories: jekyll update
 * The page is already refreshed with the updated data
 ![LifeCycle_10]({{ site.url }}/assets/life_cycle_10.PNG)
 
+
+You can download the schema of these slides in  [pptx]({{ site.url }}/assets/focus_lifecycle_schema.pptx)
