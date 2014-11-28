@@ -37,8 +37,8 @@ var Router = Fmk.Helpers.Router;
 var application = require('../application');
 var NotImplementedException = Fmk.Helpers.CustomExceptions.NotImplementedException;
 /**
- * Router dealing with the modul contact.
- * @module  'app/router/contact'
+ * Router dealing with the module user.
+ * @module  'app/router/user'
  */
 module.exports = Router.extend({
   /**
@@ -46,18 +46,32 @@ module.exports = Router.extend({
    * @type {Object}
    */
   routes: {
-    'contact/:contactId': 'contactDetail',
+    'user/:userId': 'userDetailRoute'
   },
   /**
    * Route dealing with the contact detail.
    * @return {undefined}
    */
-  contactDetail: function contactDetailRoute(contactId) {
-      throw new NotImplementedException("contactDetailRoute");
+  userDetailRoute: function userDetailRoute(contactId) {
+      throw new NotImplementedException("userDetailRoute");
     }));
   }
 });
 {% endhighlight %}
+
+### Your page needs a model
+
+### Your page needs a view
+
+### Your page needs consult and edit template
+
+### Your page needs a load service
+
+### Your page needs a save service
+
+
+
+
 
 ## Using the generator
 
