@@ -45,11 +45,12 @@ In order to install a plugin, you have to do `ctrl+shift+p` then type `install p
 ## Application configuration
 
 - Get your application from the source control
-- go into the `app/` directory of the **SPA** project
+- Go into the **SPA** project's directory
 - Install node dependencies `npm install --no-optional`
 - Install bower dependencies `bower install --no-optional`
 - Build the project with `brunch b` or `brunch w`.
 - Launch the server and build `brunch w --server`
-- Open the public/ dir to see the result.
+![Brunch]({{ site.url }}/assets/brunch.png)
+- Open the `public/` dir to see the result.
 - Write your code in `app/`.
 

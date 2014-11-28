@@ -4,7 +4,7 @@ title: What kind of view
 date:   2014-11-12 17:59:15
 categories: jekyll update
 ---
-# What kind of page is it?
+## What kind of page is it?
 
 When using the framework it is important to know how to choose the good view, and to know how to do that it is important to think before doing:
 
