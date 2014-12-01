@@ -10,7 +10,7 @@ categories: jekyll update
 * The route is `http://localhost/#contact/1`
 * The associated route is `http://localhost/#contact/:id`
 * The handler `contactDetailRoute` is matched
-![LifeCycle_1]({{ site.url }}/{{site.baseurl}}/{{site.baseurl}}/assets/life_cycle_1.PNG)
+![LifeCycle_1]({{ site.url }}/{{site.baseurl}}/assets/life_cycle_1.PNG)
 
 2.The router creates the the model
 
