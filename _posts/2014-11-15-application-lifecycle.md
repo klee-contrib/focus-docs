@@ -10,56 +10,56 @@ categories: jekyll update
 * The route is `http://localhost/#contact/1`
 * The associated route is `http://localhost/#contact/:id`
 * The handler `contactDetailRoute` is matched
-![LifeCycle_1]({{ site.url }}/{{site.baseurl}}/assets/life_cycle_1.PNG)
+![LifeCycle_1]({{ site.url }}/{{site.baseurl}}/{{site.baseurl}}/assets/life_cycle_1.PNG)
 
 2.The router creates the the model
 
 * The **model** `contactDetail` is created
 * It is instanciated with a `ctcId` value as `new ContactDetail({ctcId: id})`
-![LifeCycle_2]({{ site.url }}/assets/life_cycle_2.PNG)
+![LifeCycle_2]({{ site.url }}/{{site.baseurl}}/assets/life_cycle_2.PNG)
 
 3.The router creates the the view
 
 * The **view** is created and associated with the model
 * `new ContactDetailView({model: contactDetail})`
-![LifeCycle_3]({{ site.url }}/assets/life_cycle_3.PNG)
+![LifeCycle_3]({{ site.url }}/{{site.baseurl}}/assets/life_cycle_3.PNG)
 
 4.The view is injected into one of the application layout
 
 * The **view** is rendered into an application layout
-![LifeCycle_4]({{ site.url }}/assets/life_cycle_4.PNG)
+![LifeCycle_4]({{ site.url }}/{{site.baseurl}}/assets/life_cycle_4.PNG)
 
 5.The view call the service to load the data
 
 * The **view** call the **getModelSvc** to load the data
-![LifeCycle_5]({{ site.url }}/assets/life_cycle_5.PNG)
+![LifeCycle_5]({{ site.url }}/{{site.baseurl}}/assets/life_cycle_5.PNG)
 
 6.The service returns JSON to load in the view
 
 * The **view** gets the json back
-![LifeCycle_6]({{ site.url }}/assets/life_cycle_6.PNG)
+![LifeCycle_6]({{ site.url }}/{{site.baseurl}}/assets/life_cycle_6.PNG)
 
 7.The data is injected into the model as attributes
 
 * The **view** called `model.set(jsonData)`
-![LifeCycle_7]({{ site.url }}/assets/life_cycle_7.PNG)
+![LifeCycle_7]({{ site.url }}/{{site.baseurl}}/assets/life_cycle_7.PNG)
 
 8.The model trigger a **:change** event
 
 * The **model** is rendered into an application layout
-![LifeCycle_8]({{ site.url }}/assets/life_cycle_8.PNG)
+![LifeCycle_8]({{ site.url }}/{{site.baseurl}}/assets/life_cycle_8.PNG)
 
 9.The view handles the event and call the template to be rendered
 
 * The view calls the `render` data
 * The `render` call an handlebars **template**
-![LifeCycle_9]({{ site.url }}/assets/life_cycle_9.PNG)
+![LifeCycle_9]({{ site.url }}/{{site.baseurl}}/assets/life_cycle_9.PNG)
 
 10.The view DOM element is updated and visible in the layout
 
 * The view update its `el` property
 * The page is already refreshed with the updated data
-![LifeCycle_10]({{ site.url }}/assets/life_cycle_10.PNG)
+![LifeCycle_10]({{ site.url }}/{{site.baseurl}}/assets/life_cycle_10.PNG)
 
 
-You can download the schema of these slides in  [pptx]({{ site.url }}/assets/focus_lifecycle_schema.pptx)
+You can download the schema of these slides in  [pptx]({{ site.url }}/{{site.baseurl}}/assets/focus_lifecycle_schema.pptx)

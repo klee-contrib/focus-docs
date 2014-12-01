@@ -9,7 +9,7 @@ categories: jekyll update
 
 - Install [Google Chrome](https://www.google.com/intl/fr/chrome/browser/) 
 - Configure your chrome dev tools  press `F12`
-![DevTools]({{ site.url }}/assets/dev-tools.png)
+![DevTools]({{ site.url }}/{{site.baseurl}}/assets/dev-tools.png)
 - [Postman](https://chrome.google.com/webstore/detail/postman-rest-client/fdmmgilgnpjigdojojpjoooidkmcomcm) extension.
 
 
@@ -50,7 +50,7 @@ In order to install a plugin, you have to do `ctrl+shift+p` then type `install p
 - Install bower dependencies `bower install --no-optional`
 - Build the project with `brunch b` or `brunch w`.
 - Launch the server and build `brunch w --server`
-![Brunch]({{ site.url }}/assets/brunch.png)
+![Brunch]({{ site.url }}/{{site.baseurl}}/assets/brunch.png)
 - Open the `public/` dir to see the result.
 - Write your code in `app/`.
 
