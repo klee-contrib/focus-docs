@@ -28,6 +28,14 @@ The pages we want are (in realization order)
 
 ## The first page we want is the detail of a user 
 
+The process of element creation leading to the display the page will be as follows:
+
+{% highlight html %}
+{% raw %}
+[url] -> [router] -> [model + view] -> [service] -> [templates]
+{% endraw%}
+{% endhilight %}
+
 ### Your page needs a route inside a router
 
 In the `app/routers/{yourRouterNameFile}`, you have to write a new route.
@@ -169,7 +177,7 @@ In the next parts, i will try to explain each part of the view in order to expla
 ### Your page needs consult and edit template
 
 In order to be displayed the view needs two templates which are represented in the properties: `templateConsult` and `templateEdit`.
-These templates should be written in handlebars.
+These templates should be written in handlebars. A more detailed section on the templates is describe in the documentation ([here]({{ site.url }}/{{site.baseurl}}/jekyll/2014/11/12/templates.html)).
 The consultation template:
 
 {% highlight html %}
@@ -208,6 +216,14 @@ The consultation template:
 {% endhighlight %}
 
 ### Your page needs a load service
+
+In order to load the data which will be displayed in the page, we have to call the service layer of the application.
+
+As describe in the [service]({{ site.url }}/{{site.baseurl}}/jekyll/2014/11/12/service.html) section of the documentation, the service does not know about the view or the model. It only takes `JSON` object as entry and always return a [Promise]({{ site.url }}/{{site.baseurl}}/jekyll/2014/11/12/promise.html) exposing `JSON` as exit.
+
+The service method we will call needs to perform an `AJAX` request on a `WebApi` exposing a `REST` webservice.
+
+
 
 ### Your page needs a save service
 
