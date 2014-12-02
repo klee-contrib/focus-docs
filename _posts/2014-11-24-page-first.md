@@ -168,7 +168,40 @@ In the next parts, i will try to explain each part of the view in order to expla
 
 ### Your page needs consult and edit template
 
+In order to be displayed the view needs two templates which are represented in the properties: `templateConsult` and `templateEdit`.
+These templates should be written in handlebars.
+The consultation template:
 
+{% highlight javascript %}
+{{#page "user.detail.title"}}
+  {{#display}}
+    {{display_for "firstName"}}
+    {{display_for "lastName"}}
+    {{display_for "email"}}
+    {{display_for "phone"}}
+    {{display_for "poleCode" listKey='poles'}}
+    {{display_for "locomotionCode" listKey='locomotions'}}
+    {{button_edit}}
+  {{/display}}
+{{/page}}
+{% endhighlight %}
+The consultation template:
+
+{% highlight javascript %}
+{{#page "user.detail.title"}}
+  {{#form}}
+    {{input_for "firstName"}}
+    {{input_for "lastName"}}
+    {{input_for "email"}}
+    {{input_for "phone"}}
+    {{options_selected "poleCode" listKey='poles'}}
+    {{options_selected "locomotionCode" listKey='locomotions'}}
+    {{!-- Action button of the page--}}
+    {{button_cancel}}
+    {{button_save}}
+  {{/form}}
+{{/page}}
+{% endhighlight %}
 
 ### Your page needs a load service
 
