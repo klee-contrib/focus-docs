@@ -59,7 +59,55 @@ module.exports = Router.extend({
 });
 {% endhighlight %}
 
+### Initialize empty directory
+
+If you follows the application coding rules, you have to create two directories in views and models.
+Your page should be in an application module. Here we have a module called `user` dealing with all user pages.
+{% highlight javascript %}
+|app
+__views
+  __user
+__models
+  __user
+{% endhighlight %}
+
+You now need to create a directory with the name of your page. In our case it is __userDetail__.
+Your directory structure should now be:
+
+{% highlight javascript %}
+|app
+__views
+  __user
+    __userDetail
+__models
+  __user
+    __userDetail
+{% endhighlight %}
+
 ### Your page needs a model
+
+The first thing, you will need in order to display your page is to create a model.
+You have to create it in the __models/user/userDetail__ directory.
+Your model has to Extend a `Focus.Models.Model` model.
+{% highlight javascript %}
+//Dependency
+var Model = Fmk.Models.Model;
+
+/**
+ * Model for a message.
+ * @type {function}
+ */
+module.exports = Model.extend({
+  /**
+   * Metadata property of the model.
+   * @type {String}
+   */
+  modelName: "user.user"
+});
+{% endhighlight %}
+
+You have to notice that we define the `modelName` property which is used in order to find what metadatas should be used by the model.
+See [domains]({{ site.url }}/{{site.baseurl}}/jekyll/2014/11/12/domains.html) section.
 
 ### Your page needs a view
 

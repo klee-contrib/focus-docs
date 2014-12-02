@@ -20,7 +20,7 @@ In order to get plain **html** from a template you have to give it data.
 
 Maybe a little example would help:
 The following example is a template which should generate a title. The file template is named **home.hbs** 
-{% highlight javascript %}
+{% highlight html %}
  <h1>{{title}}</h1> 
 {% endhighlight %}
 Then you can call it this way
