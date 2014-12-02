@@ -21,17 +21,17 @@ In order to get plain **html** from a template you have to give it data.
 Maybe a little example would help:
 The following example is a template which should generate a title. The file template is named **home.hbs** 
 {% highlight html %}
- <h1>{{title}}</h1> 
+{% raw %}
+ <h1>{{title}}</h1>
+ {% endraw %} 
 {% endhighlight %}
 Then you can call it this way
-{% highlight html %}
-{% raw %}
+{% highlight javascript %}
   var homeTemplate = require('home');
   var templateData = {title: 'Welcome to the fantastic app'}; 
   homeTemplate(templateData); 
   // render 
   //<h1>Welcome to the fantastic app</h1> ’’’
-{% endraw %}
 {% endhighlight %}
 
 ## Focus use
