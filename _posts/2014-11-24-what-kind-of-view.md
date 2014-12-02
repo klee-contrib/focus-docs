@@ -15,5 +15,4 @@ I have a list to display, should I use a view for each line?
 You should ask yourself many questions before starting a new screen.
 
 Here is a first illustration of the thinking process you should perform before starting a new page:
-
 ![What Kind Of View]({{ site.url }}/{{site.baseurl}}/assets/what_kind_of_view.png)
