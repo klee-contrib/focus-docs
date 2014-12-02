@@ -34,7 +34,7 @@ The process of element creation leading to the display the page will be as follo
 {% raw %}
 [url] -> [router] -> [model + view] -> [service] -> [templates]
 {% endraw%}
-{% endhilight %}
+{% endhighlight %}
 
 ### Your page needs a route inside a router
 
