@@ -20,7 +20,7 @@ In order to get plain **html** from a template you have to give it data.
 
 Maybe a little example would help:
 The following example is a template which should generate a title. The file template is named **home.hbs** 
-{% highlight html %}
+{% highlight handlebars %}
  <h1>{{title}}</h1> 
 {% endhighlight %}
 Then you can call it this way
@@ -33,5 +33,8 @@ Then you can call it this way
 {% endhighlight %}
 
 ## Focus use
+
+In focus all templates are use within the views.
+When an event is triggered to the view such as `model:change`, the view renders its template into its ** DOM Element. **
 
 ![Data Model]({{ site.url }}/{{site.baseurl}}/assets/template.png)
