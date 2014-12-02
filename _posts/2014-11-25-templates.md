@@ -24,12 +24,14 @@ The following example is a template which should generate a title. The file temp
  <h1>{{title}}</h1> 
 {% endhighlight %}
 Then you can call it this way
-{% highlight javascript %}
+{% highlight html %}
+{% raw %}
   var homeTemplate = require('home');
   var templateData = {title: 'Welcome to the fantastic app'}; 
   homeTemplate(templateData); 
   // render 
   //<h1>Welcome to the fantastic app</h1> ’’’
+{% endraw %}
 {% endhighlight %}
 
 ## Focus use

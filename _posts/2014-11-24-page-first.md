@@ -172,7 +172,8 @@ In order to be displayed the view needs two templates which are represented in t
 These templates should be written in handlebars.
 The consultation template:
 
-{% highlight javascript %}
+{% highlight html %}
+{% raw %}
 {{#page "user.detail.title"}}
   {{#display}}
     {{display_for "firstName"}}
@@ -184,12 +185,14 @@ The consultation template:
     {{button_edit}}
   {{/display}}
 {{/page}}
+{% endraw %}
 {% endhighlight %}
 The consultation template:
 
-{% highlight javascript %}
+{% highlight html %}
+{% raw %}
 {{#page "user.detail.title"}}
-  {{#form}}
+ { {#form}}
     {{input_for "firstName"}}
     {{input_for "lastName"}}
     {{input_for "email"}}
@@ -201,6 +204,7 @@ The consultation template:
     {{button_save}}
   {{/form}}
 {{/page}}
+{% endraw %}
 {% endhighlight %}
 
 ### Your page needs a load service
