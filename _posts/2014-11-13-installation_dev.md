@@ -19,9 +19,9 @@ categories: jekyll update
 - Install [node js](http://nodejs.org/)
 - Ask your **technical leader** for configuration files in order to deal with a proxy
 - Open your command prompt and run the following command
-- Install [brunch](http://brunch.io/)```npm install -g brunch```
-- Install [bower](http://bower.io/) ```npm install -g bower```
-- Install [mocha](http://visionmedia.github.io/mocha/)```npm install -g mocha```
+- Install [brunch](http://brunch.io/){% highlight %}npm install -g brunch{% highlight %}
+- Install [bower](http://bower.io/) {% highlight %}npm install -g bower{% highlight %}
+- Install [mocha](http://visionmedia.github.io/mocha/){% highlight %}npm install -g mocha{% highlight %}
 
 - (Optional) Install [Python](http://www.python.org/download/releases/2.7.6/) and add it into the PATH.
 
