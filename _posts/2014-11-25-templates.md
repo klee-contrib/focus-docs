@@ -33,3 +33,5 @@ Then you can call it this way
 {% endhighlight %}
 
 ## Focus use
+
+![Data Model]({{ site.url }}/{{site.baseurl}}/assets/directory_pages.png)
