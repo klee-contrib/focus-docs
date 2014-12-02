@@ -34,4 +34,4 @@ Then you can call it this way
 
 ## Focus use
 
-![Data Model]({{ site.url }}/{{site.baseurl}}/assets/directory_pages.png)
+![Data Model]({{ site.url }}/{{site.baseurl}}/assets/template.png)
