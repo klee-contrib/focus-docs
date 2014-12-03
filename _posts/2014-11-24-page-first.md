@@ -223,12 +223,53 @@ As describe in the [service]({{ site.url }}/{{site.baseurl}}/jekyll/2014/11/12/s
 
 The service method we will call needs to perform an `AJAX` request on a `WebApi` exposing a `REST` webservice.
 
+{% highlight javascript %}
+function _getPromiseUser(json) {
+  return promisify.model(URL_USER_DETAIL, json);
+}
+
+/**
+ * Load a user by its identifier.
+ * @param  {string} userId - The user identifier.
+ * @return {Promise} - The loading promise of the message.
+ */
+function loadUserById(userId) {
+  if (!_.isString(userId)) {
+    throw new ArgumentInvalidException('userId should be a string', userId);
+  }
+  return _getPromiseUser({
+    id: userId
+  }).fetch();
+}
+{% endhighlight %}
+
+There is a helper in focus which is named `Focus.Helpers.promisifyHelper` which is used in order to create wrapper objects around ajax request. These objects takes a collection or a model and a URL in order to be initialized. Then they exposes methods in order to call the webServices from the server.
+
+| type       | method | purpose                            |
+|------------|--------|------------------------------------|
+| model      | fetch  | load the data with a GET           |
+|            | save   | save the data with a POST or a PUT |
+|            | delete | delete the data with a DELETE      |
+| collection | fetch  | get the data with a POST or a GET  |
+|            | save   | save the data with a POST          |
+|            | delete | delete the data with a DELETE      |
 
 
 ### Your page needs a save service
 
-
-
+{% highlight javascript %}
+/**
+ * Save a json user.
+ * @param  {object} jsonUser The json user.
+ * @return {Promise}  The save promise.
+ */
+function saveUser(jsonUser) {
+  if (!_.isObject(jsonUser)) {
+    throw new ArgumentInvalidException('jsonUser should be an object', jsonUser);
+  }
+  return _getPromiseUser(jsonUser).save();
+}
+{% endhighlight %}
 
 
 ## Using the generator
