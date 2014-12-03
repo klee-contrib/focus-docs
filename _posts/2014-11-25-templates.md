@@ -40,3 +40,14 @@ In focus all templates are use within the views.
 When an event is triggered to the view such as `model:change`, the view renders its template into its ** DOM Element. **
 
 ![Data Model]({{ site.url }}/{{site.baseurl}}/assets/template.png)
+
+## Templates helpers
+
+In order to be able to industrialize the behaviour in the templates, we built some handlebars helpers.
+There are to types of them:
+- The **simple helpers** which renders a content: `{{input_for "firstName"}}`. These helpers takes parameters and they are often associated with data.
+- The **block helpers** wich are more like open / closing html tags: `{{#criteria}}<p>Other content</p>{{/criteria}}`.
+
+Helper lists (certainly non exhaustive):
+
+
