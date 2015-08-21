@@ -1,4 +1,4 @@
-# Table des matière
+# Table des matières
 
 * [Introduction](/introduction/README.md)
 * [Bases](/basics/README.md)
