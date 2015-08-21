@@ -1,0 +1,23 @@
+{
+  "name": "focus-docs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KleeGroup/focus-docs.git"
+  },
+  "keywords": [
+    "focusjs",
+    "focusjs-components"
+  ],
+  "author": "Focus <focus@kleegroup.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KleeGroup/focus-docs/issues"
+  },
+  "homepage": "https://github.com/KleeGroup/focus-docs#readme"
+}
