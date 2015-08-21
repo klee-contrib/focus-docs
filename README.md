@@ -7,5 +7,5 @@
 * [Problèmes réccurents](/troubleshooting/README.md)
 * [Glossary](/Glossary.md)
 * [API Focus](/focus/README.md)
-* [API Focus Components](/focusjs-components/README.md)
-* [Catalogue de composants](/focusjs-components/README.md)
+* [API Focus Components](/focus-components/README.md)
+* [Catalogue de composants](/focus-components/README.md)
