@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/KleeGroup/focus-docs/issues"
   },
-  "homepage": "https://github.com/KleeGroup/focus-docs#readme"
+  "homepage": "https://github.com/KleeGroup/focus-docs#readme",
+  "dependencies": {
+    "gitbook-cli": "^0.3.4"
+  }
 }
