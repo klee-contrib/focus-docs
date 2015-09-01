@@ -1,5 +1,6 @@
-{
-	"structure": {
-  	"summary": "./README.md"
-	}
+{	
+	"gitbook": ">=2.0.0",
+	"title": "Focus-Docs",
+	"description": "Documentation du Framework Focus.",
+	"language": "fr"
 }

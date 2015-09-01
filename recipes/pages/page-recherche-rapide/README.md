@@ -1,0 +1,2 @@
+Page de recherche rapide
+========================
