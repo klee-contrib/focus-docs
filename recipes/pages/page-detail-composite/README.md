@@ -183,10 +183,63 @@ render: function renderUserView(){
 
 Les blocs importés sont rassemblés dans le composant focus `<Detail>` qui permet de créer automatiquement la barre de navigation à gauche.
 
-#### En tête
+## Entête : 
 
-TODO
+Afin de réaliser l'entête d'une page de détail, il est possible d'utiliser le mixin CartridgeBehaviour (en l'indiquant comme une mixin, ou en utilisant la fonction `createDetail` pour créer le composant de la page de détail). (cf. Documentation du Mixin CartridgeBehaviour).
 
-#### Router
+__Exemple d'implémentation__
 
-TODO
+```javascript
+	let createDetail = Focus.components.page.createDetail;
+	module.exports = createDetail({
+		// ...
+	}); 
+
+```
+ou 
+
+```javascript
+	let cartridgeBehaviour = Focus.components.page.mixin.cartridgeBehaviour;
+	module.exports = React.createClass({
+		mixins: [cartridgeBehaviour],
+		// ...
+	}); 
+
+```
+
+## Routeur : 
+
+Pour déclarer une nouvelle route, il faut se placer dans le dossier `app\router` et créer un fichier que l'on peut appeler  user-routeur.js, ainsi : 
+```javascript
+const Router = Focus.router;
+const resetScroll = require('./reset-scroll');
+
+const UserRouter = Router.extend({
+    beforeRoute() {
+        Focus.application.changeRoute('detail');
+    },
+    routes: {
+        'user/:id': 'user',
+    },
+    user(id) {
+        const UserDetailView = require('views/user');
+        this._pageContent(UserDetailView, {
+            props: {id: id}
+        });
+    }
+});
+module.exports = new UserRouter();
+```
+Avec cette méthode, il est possible de transmettre aux composants de la page concernée par le routage, des proprietés via l'objet `props`. En effet, dans cet exemple, l'id de l'url est fourni au différents élément de la page : 
+ ```javascript
+	this._pageContent(UserDetailView, {
+		props: {id: id}
+	});
+ ```
+Un fois que ce fichier a été créé il ne faut pas oublier de le déclarer dans le fichier `index.js` du dossier : 
+```javascript
+module.exports ={
+  userRouter: require('./user-routeur'),
+};
+```
+
