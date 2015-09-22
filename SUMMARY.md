@@ -39,4 +39,5 @@
 * [Glossaire](/Glossary.md)
 * [API Focus](/focus/README.md)
 * [API Focus Components](/focus-components/README.md)
+* [Maintenance](/maintenance/README.md)
 * [Catalogue de composants](/focus-components/README.md)
