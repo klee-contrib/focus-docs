@@ -7,6 +7,11 @@ FocusJs et FocusComponents ont des nouvelles releases **mineures** toutes les **
 
 Chaque release mineure est suivie dans les jours qui suivent d'une ou plusieurs releases de **patchs**.
 
+Le suivi des releases peut se faire sur les pages de release des projets :
+  * https://github.com/KleeGroup/focus/releases
+  * https://github.com/KleeGroup/focus-core/releases
+  * https://github.com/KleeGroup/focus-components/releases
+
 ## Politique de gestion des dépendances
 
 Le build de l'application SPA doit être **déterministe** pour une version du `package.json` donné.
@@ -24,8 +29,6 @@ Pour cela, il faut figer les numéros de versions dans le `package.json` :
     "awesomplete": "1.0.0",
     "babel-eslint": "4.0.5",
     "backbone": "1.2.1",
-    "bootstrap": "3.3.5",
-    "bootstrap-material": "0.1.5",
     "daterangepicker": "0.0.3",
     "eslint": "0.24.1"
     /* ...  */
@@ -73,3 +76,7 @@ Cette commande :
   * télécharge la dernière version de FocusJS
   * télécharge la dernière version de FocusComponents
   * met à jour les numéros de version figé dans le `package.json` du projet
+
+La commande est définie dans le `package.json` du starter-kit : 
+
+https://github.com/KleeGroup/focus-starter-kit/blob/master/package.json
