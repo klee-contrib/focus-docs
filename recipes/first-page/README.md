@@ -1,10 +1,11 @@
 # Ecrire ma première page
 
-## Asbtract
+Ce tutoriel décrit l'ensemble des actions à réaliser, étape par étape, pour écrire une première page FOCUS.
 
 Les concepts suivants seront mis en musique
 * [Backbone](http://backbonejs.org/) : [Router](http://cdnjs.com/libraries/backbone.js/tutorials/what-is-a-router)
 * [React](https://facebook.github.io/react/) : [Composant](https://facebook.github.io/react/docs/tutorial.html) 
+
 
 ## Etape 1 : Ouverture du projet dans l'éditeur
 
