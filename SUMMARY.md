@@ -1,6 +1,7 @@
 # Summary
 
 * [Introduction](/introduction/README.md)
+* [Prérequis](/prerequisite/README.md)
 * [Bases](/basics/README.md)
   * [Flux](/basics/flux/README.md)
     * [Store](/basics/flux/store/README.md)
