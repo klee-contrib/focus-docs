@@ -32,7 +32,7 @@ Voir [l'article dédié ](https://notes.part.klee.lan.net/logiciel/webstorm/star
 
 Voir [l'article dédié ](https://notes.part.klee.lan.net/logiciel/atom/start) sur la plateforme .Notes.
 
-## Kit de démarrage
+## Kit de démarrage (focus-starter-kit)
 
 Un kit de démarrage est fourni [sur Github](https://github.com/KleeGroup/focus-starter-kit).
 
@@ -55,24 +55,24 @@ Le kit de démarrage suggère une arborescence type pour la partie client d'une 
 
 ```
 .
-├── app
-|   ├── assets
+├── app                                     Dossier principal de l'application
+|   ├── assets                              Fichiers statiques
 |   |   ├── img
 |   |   ├── fonts
 |   |   └── index.html
-|   ├── config
-|   |   ├── domain
-|   |   ├── entity-definition
-|   |   ├── scopes
-|   |   └── server
-|   ├── i18n
-|   |   ├── en-GB
-|   |   ├── fr-FR
-|   |   ├── generated
+|   ├── config                              Configuration du client
+|   |   ├── domain                          Définition des domaines
+|   |   ├── entity-definition               Définition des entités
+|   |   ├── scopes                          Définition des scopes de recherche
+|   |   └── server                          Configuration des routes serveur
+|   ├── i18n                                Traductions
+|   |   ├── en-GB                           Anglais
+|   |   ├── fr-FR                           Français
+|   |   ├── generated                       Généré par le serveur
 |   |   ├── .eslintrc
 |   |   └── index.js
-|   ├── initializer
-|   |   ├── definition-initializer.js
+|   ├── initializer                         Initialisation de l'application
+|   |   ├── definition-initializer.js       
 |   |   ├── domain-initializer.js
 |   |   ├── index.js
 |   |   ├── layout-initializer.js
@@ -80,15 +80,15 @@ Le kit de démarrage suggère une arborescence type pour la partie client d'une 
 |   |   ├── reference-list-initializer.js
 |   |   ├── translation-initializer.js
 |   |   └── user-initializer.js
-|   ├── router
+|   ├── router                              Configuration du routeur client
 |   |   ├── home-router.js
 |   |   ├── index.js
 |   |   └── search-router.js
-|   ├── services
+|   ├── services                            Services client
 |   |   ├── index.js
 |   |   ├── reference.js
 |   |   └── search.js
-|   ├── views
+|   ├── views                               Vues ReactJS
 |   |   ├── common
 |   |   |   ├── cartridge-search.jsx
 |   |   |   └── summary-search.jsx
@@ -100,19 +100,50 @@ Le kit de démarrage suggère une arborescence type pour la partie client d'une 
 |   ├── application.js
 |   ├── index.js
 |   └── legacy.js
-├── scripts
-|   └── install.js
-├── vendor
+├── scripts                                 Scripts applicatifs
+|   └── install.js                          Script de post installation npm
+├── vendor                                  Librairies inclues dans la build BrunchJs
 |   ├── awesomplete.css
 |   ├── awesomplete.js
 |   ├── i18next.js
 |   ├── lodash.js
 |   └── material-icons.css
-├── .eslintrc
-├── .gitignore
-├── .npmrc
-├── README.md
-├── brunch-config.js
-└── package.json
+├── .eslintrc                               Configuration du linter ESLint
+├── .gitignore                              Configurationd de Git
+├── .npmrc                                  
+├── README.md                               README présenté par Github
+├── brunch-config.js                        Configuration de BrunchJs
+└── package.json                            Manifeste du projet
 ```
-#### App
+
+#### Assets
+
+Le dossier `assets` contient l'ensemble des fichiers qui seront recopiés à la racine du serveur Web. Ils sont recopiés tels quels et sont donc directement accessibles à la racine du site.
+
+#### Config
+
+Ce dossier contient l'ensemble de la configuration de base de l'application.
+
+Les domaines sont définis dans le sous-dossier `domain`. Ils définissent la manière dont les domaines seront exploités dans les champs du `form`.
+
+Le dossier `entity-definition` est principalement généré par le serveur, et permet de définir le modèle de données de l'application.
+
+Les `scopes` de la recherche sont définis dans le dossier `scopes`.
+
+Finalement, l'ensemble des routes du backend sont définies dans le dossier `server`. C'est ici que les services viennent chercher les routes à adresser lorsque le client effectue des requêtes vers le serveur.
+
+#### i18n
+
+Ce dossier contient l'ensemble des données d'internationalisation de l'application. Les traductions y sont regroupées, référencées par des clés de type `parent.child.prop.etc...`.
+
+#### Initializer
+
+Le lancement de l'application se déroule dans ce dossier. L'ensemble des domaines, des définitions y sont chargées. Les traductions sont initialisées, le layout de page est mis en place, les droits utilisateurs sont définis, et les listes de référence sont mises en place.
+
+#### Router
+
+Le routage client est configuré à travers le contenu de ce dossier. Il est possible de découper le routage à travers différents fichiers, chacun traitant une partie du routage.
+
+#### Views
+
+C'est dans ce dossier que l'on retrouve l'ensemble des composants ReactJS spécifiques à l'application.
