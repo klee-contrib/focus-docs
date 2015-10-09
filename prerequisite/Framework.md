@@ -62,9 +62,16 @@ ReactDOM.render(React.createElement(HelloMessage, { name: "Joe Lopez" }), mountN
 
 ### Tutoriaux
 
+React étant une librairie très utilisé, elle est très documentée sur le Web. Il est primordial de lire le site officiel pour comprendre les principes de base qui sont très simples.
+
 - Le site de [React](https://facebook.github.io/react/)
 - Le tuto React officiel [ici](https://facebook.github.io/react/docs/tutorial.html)
 - React pour les gens qui connaissent jQuery: [ici](http://reactfordesigners.com/labs/reactjs-introduction-for-people-who-know-just-enough-jquery-to-get-by/)
 - [Build with React](http://buildwithreact.com/)
 - [Toto eggheas.io](https://egghead.io/series/react-fundamentals)
 - ...
+
+## Google Material Design lite
+
+Focus prend le partie de s'appuyer sur le Material Design, proposé par Google dont la spécification est [ici](https://www.google.com/design/spec/material-design/introduction.html).
+Nous avons donc choisi de nous appuyer sur la librairie CSS réalisé par Google appellée [Material Design Lite](http://www.getmdl.io/). La plupart des composants material sont intégrés directement par Focus mais n'hésitez pas à parcourir la documentation de Google qui est très bien réalisée.
