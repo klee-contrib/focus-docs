@@ -10,10 +10,13 @@ Github c'est:
 - Un outil de revue de code collaboratif
 - Un workflow de développement
 - Une intégration avec beaucoup de systèmes externes (travis, heroku, ...)
+- Un tableau de bord des activités de développements (commits, issues, ...)
 
 Les fonctionnalités de Github sont décrites en détail [ici](https://github.com/features).
 
 Vous pouvez suivre un tutorial de 15 minutes interactif très simple sur git [ici](https://try.github.io/levels/1/challenges/1).
+
+Les projets git de [Kleegroup](https://github.com/KleeGroup)
 
 ## Développement
 
