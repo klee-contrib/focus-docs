@@ -1,6 +1,19 @@
 # Les outils
 
 ## Github
+<img src="http://www.aha.io/assets/integration_logos/github-bb449e0ffbacbcb7f9c703db85b1cf0b.png" width="400" style='float:right' />
+
+L'ensemble du code de Focus est hébergé sur [Github](https://github.com).
+Github c'est:
+- Un gestionnaire de code source basé sur [GIT](https://git-scm.com/)
+- Un gestionnaire de bugs / questions
+- Un outil de revue de code collaboratif
+- Un workflow de développement
+- Une intégration avec beaucoup de systèmes externes (travis, heroku, ...)
+
+Les fonctionnalités de Github sont décrites en détail [ici](https://github.com/features).
+
+Vous pouvez suivre un tutorial de 15 minutes interactif très simple sur git [ici](https://try.github.io/levels/1/challenges/1).
 
 ## Développement
 
