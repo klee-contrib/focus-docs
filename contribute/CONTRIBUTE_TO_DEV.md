@@ -105,15 +105,15 @@ When you consult project's Github page https://github.com/KleeGroup/focus-compon
 
 ![github_create_pr](https://cloud.githubusercontent.com/assets/5349745/10515715/03969b34-7355-11e5-96db-db651a17bcb4.PNG)
 
-Other solution to create a pull request, by clicking on pull request icon : 
+Other solution is to create a pull request, by clicking on pull request icon : 
 
 ![image](https://cloud.githubusercontent.com/assets/5349745/10517633/e3c27b3a-735d-11e5-9677-13edcec43bab.png)
 
 
 > Follow the following Pull request template, depending on the type of content you wish to submit:
 >
-> * You propose a new feature, please read [how to write a pull request to share a new feature](https://github.com/KleeGroup/focus-components/tree/develop/doc/PR_FEATURE_TEMPLATE.md)
-> * You propose a fix, please read [how to write a pull request to share a fix](https://github.com/KleeGroup/focus-components/tree/develop/doc/PR_FIX_TEMPLATE.md)
+> * You propose a new feature, please read [how to write a pull request to share a new feature](https://github.com/KleeGroup/focus-docs/blob/master/contribute/PR_FEATURE_TEMPLATE.md)
+> * You propose a fix, please read [how to write a pull request to share a fix](https://github.com/KleeGroup/focus-docs/blob/master/contribute/PR_FIX_TEMPLATE.md)
 
 ## You are a *FOCUS administrator*
 
