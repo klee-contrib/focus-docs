@@ -34,6 +34,8 @@ Webpack est également configurable via un système de [plugins](http://webpack.
 
 C'est un outil qui fonctionne en mode différentiel et permet de recharger la page du navigateur en temps réel quand vous modifiez un fichier.
 
+Une aide à la configuration de webpack a été réalisée par l'équipe focus: [webpack-focus](https://github.com/KleeGroup/webpack-focus)
+
 ### Brunch
 
 <img src="https://camo.githubusercontent.com/56a4708402855f3c8dc2aff7f4123039a1d12ff0/687474703a2f2f6272756e63682e696f2f696d616765732f7376672f706e672f6272756e63682d6c6f676f2d6e61706b696e2e706e67" width="200" style='float:right' />
@@ -41,6 +43,13 @@ C'est l'outil qu'on utilisait avant Webpack en interne, il fonctionne globalemen
 Il est cependant très rapide pour transformer les sources et dispose d'une configuration très simple pour démarrer rapidement. Il est également associé à un système de squelette très efficace pour mettre en place rapidement un projet.
 
 ### Eslint
+
+<img src="http://eslint.org/img/logo.svg" width="200" style='float:right' />
+
+JavaScript étant un langage dynamique et peu typé, est  sujet à l'erreur de développeur. Sans le bénéfice d'un processus de compilation, le code JavaScript est généralement exécuté afin de trouver la syntaxe ou d'autres erreurs. **ESLint** permettent aux développeurs de découvrir des problèmes avec leur code JavaScript sans l'exécuter.
+
+La principale motivation pour créer **ESLint** a été créée était de permettre aux développeurs de créer leurs propres règles. ESLint est conçu pour avoir toutes les règles de base (comme [jshint](http://jshint.com/) ou [jslint](http://www.jslint.com/)). Les règles par défaut sont écrites comme des règles du plugin serait. Ils peuvent tous suivre le même modèle, à la fois pour les règles elles-mêmes ainsi que des tests. Alors que ESLint sera livré avec des règles intégrées pour le rendre utile dès le début, vous serez en mesure de charger dynamiquement règles à tout moment.
+Focus a regroupé un certains nombre de règles existantes afin de bénéficier de règles de codage communes à l'échelle de l'entreprise: [eslint-config-focus](https://github.com/KleeGroup/eslint-config-focus)
 
 ## travis
 
