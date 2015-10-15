@@ -1,5 +1,7 @@
 # Les outils
 
+## Github
+
 ## Développement
 
 ### Node
@@ -53,8 +55,16 @@ Focus a regroupé un certains nombre de règles existantes afin de bénéficier 
 
 ## travis
 
+
+<img src="https://education.github.com/assets/pack/logo-travis-b597477c96c30366bea1ac6ea934f873.jpg" width="200" style='float:right' />
+[Travis](https://travis-ci.org/KleeGroup) est un outil d'intégration continue extrèmement simple à configurer et efficace. Il fonctionne en mode SASS est est gratuit pour les projets open sources. Il permet d'accéder à un rapport complet d'exécution en cas d'erreur sur les tests.
+
+
+
 ## Communication / Organisation
 
-### Github
-
 ### Slack
+
+<img src="https://slack.global.ssl.fastly.net/66f9/img/landing/header_logo_sprite.png" width="100" style='float:right' />
+
+Afin de réaliser notre veille et de communiquer en interne nous utilisons [slack](https://slack.com/) qui permet de dialoguer et de s'intégrer avec une multitude de systèmes (github, travis, trello, ...)
