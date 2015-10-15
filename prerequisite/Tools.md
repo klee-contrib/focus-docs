@@ -2,6 +2,11 @@
 
 ## Aide au développement
 
+### npm
+<img src="https://www.npmjs.com/static/images/npm-logo.svg" width="200" style='float:right' />
+[npm](https://www.npmjs.com/) qui signifie **node package module** est le gestionnaire de dépendances de [node.js](https://nodejs.org/en/). Il est installé en même temps que ce dernier. C'est aujourd'hui le gestionnaire de dépendances le plus fourni, tout langage confondu. Il suit la logique unix, un package doit être simple et modulaire. Les packages node doivent dans la mesure du possible suivre le [Semantic Versionning](http://semver.org/). Les livrables techniques de **Focus** sont hébergés sur npm. Si vous souhaitez en savoir plus sur [npm](http://www.sitepoint.com/beginners-guide-node-package-manager/).
+
+
 ### Babel
 
 <img src="https://babeljs.io/images/logo.svg" width="200" style='float:right; background-color:#f5da55' />
