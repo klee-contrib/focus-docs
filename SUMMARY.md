@@ -2,6 +2,11 @@
 
 * [Getting started](/getting-started/README.md)
 * [Introduction](/introduction/README.md)
+* [Prérequis](/prerequisite/README.md)
+  * [Les languages](/prerequisite/Languages.md)
+  * [Les librairies](/prerequisite/Framework.md)
+  * [Les outils](/prerequisite/Tools.md)
+  * [Focus sur Github](/prerequisite/Github.md)
 * [Bases](/basics/README.md)
   * [Flux](/basics/flux/README.md)
     * [Store](/basics/flux/store/README.md)
