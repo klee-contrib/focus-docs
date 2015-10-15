@@ -1,5 +1,6 @@
 # Table des matières
 
+* [Getting started](/getting-started/README.md)
 * [Introduction](/introduction/README.md)
 * [Bases](/basics/README.md)
 * [Concepts avancés](/advanced/README.md)

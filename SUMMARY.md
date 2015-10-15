@@ -1,5 +1,6 @@
 # Summary
 
+* [Getting started](/getting-started/README.md)
 * [Introduction](/introduction/README.md)
 * [Prérequis](/prerequisite/README.md)
   * [Les languages](/prerequisite/Languages.md)

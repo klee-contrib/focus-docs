@@ -8,7 +8,7 @@
     "build": "node ./node_modules/gitbook-cli/bin/gitbook.js build",
     "clean": "rimraf _book",
     "serve": "node ./node_modules/gitbook-cli/bin/gitbook.js serve",
-    "publish": "npm run clean && npm run build && cd _book && git init && git commit -m 'update book' &&  git checkout -b gh-pages && git add . &&  git commit -m 'update book' && git push https://github.com/KleeGroup/focus-docs.git gh-pages --force"
+    "publish": "npm run clean && npm run build && cd _book && git init &&  git checkout -b gh-pages && git add . &&  git commit -m 'update book' && git push git@github.com:KleeGroup/focus-docs.git gh-pages --force"
   },
   "repository": {
     "type": "git",
