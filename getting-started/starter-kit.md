@@ -1,10 +1,10 @@
-## Kit de démarrage (focus-starter-kit)
+# Kit de démarrage (focus-starter-kit)
 
 Un kit de démarrage est fourni [sur Github](https://github.com/KleeGroup/focus-starter-kit).
 
 Ce kit contient une base pour démarrer tout projet Focus.
 
-### Installation
+## Installation
 
 ```bash
 git clone git@github.com:KleeGroup/focus-starter-kit.git
@@ -15,7 +15,7 @@ npm install
 npm run watch
 ```
 
-### Utilisation
+## Utilisation
 
 Le kit de démarrage suggère une arborescence type pour la partie client d'une application web. Cette arborescence est détaillée par la suite.
 
@@ -82,11 +82,11 @@ Le kit de démarrage suggère une arborescence type pour la partie client d'une 
 └── package.json                            Manifeste du projet
 ```
 
-#### Assets
+## Assets
 
 Le dossier `assets` contient l'ensemble des fichiers qui seront recopiés à la racine du serveur Web. Ils sont recopiés tels quels et sont donc directement accessibles à la racine du site.
 
-#### Config
+## Config
 
 Ce dossier contient l'ensemble de la configuration de base de l'application.
 
@@ -98,18 +98,18 @@ Les `scopes` de la recherche sont définis dans le dossier `scopes`.
 
 Finalement, l'ensemble des routes du backend sont définies dans le dossier `server`. C'est ici que les services viennent chercher les routes à adresser lorsque le client effectue des requêtes vers le serveur.
 
-#### i18n
+## i18n
 
 Ce dossier contient l'ensemble des données d'internationalisation de l'application. Les traductions y sont regroupées, référencées par des clés de type `parent.child.prop.etc...`.
 
-#### Initializer
+## Initializer
 
 Le lancement de l'application se déroule dans ce dossier. L'ensemble des domaines, des définitions y sont chargées. Les traductions sont initialisées, le layout de page est mis en place, les droits utilisateurs sont définis, et les listes de référence sont mises en place.
 
-#### Router
+## Router
 
 Le routage client est configuré à travers le contenu de ce dossier. Il est possible de découper le routage à travers différents fichiers, chacun traitant une partie du routage.
 
-#### Views
+## Views
 
 C'est dans ce dossier que l'on retrouve l'ensemble des composants ReactJS spécifiques à l'application.
