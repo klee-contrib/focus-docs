@@ -20,7 +20,7 @@ En particulier :
   * le build ne doit **pas** dépendre du **moment** de la dernière exécution de `npm install` sur un projet.
   * le build ne doit **pas** dépendre du **poste** du développeur / build-agent
 
-Pour cela, il faut figer les numéros de versions dans le `package.json` : 
+Pour cela, il faut figer les numéros de versions dans le `package.json` :
 
 ```javascript
 {
@@ -73,10 +73,10 @@ npm run update-focus
 ```
 
 Cette commande :
-  * télécharge la dernière version de FocusJS
-  * télécharge la dernière version de FocusComponents
+  * télécharge la dernière version de `FocusCore`
+  * télécharge la dernière version de `Focus Components`
   * met à jour les numéros de version figé dans le `package.json` du projet
 
-La commande est définie dans le `package.json` du starter-kit : 
+La commande est définie dans le `package.json` du starter-kit :
 
 https://github.com/KleeGroup/focus-starter-kit/blob/master/package.json

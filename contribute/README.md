@@ -24,3 +24,7 @@ Please read this [document](https://github.com/KleeGroup/focus-docs/tree/master/
 You fixed an issue on your FOCUS-COMPONENTS local branch. You want to push it to main branch for the benefit of the community FOCUS ?
 
 Please read this [document](https://github.com/KleeGroup/focus-docs/tree/master/contribute/PR_FIX_TEMPLATE.md)
+
+- [Contribuer au dev](CONTRIBUTE_TO_DEV.md)
+- [Déclarer une issue](DECLARE_ISSUE.md)
+- [Template pour une correction](PR_FIX_TEMPLATE.md)
