@@ -26,9 +26,9 @@ __Title :__ `[Component] very short resume of the issue`
 
 __Body / description :__
 ```markdown
-# Actual behaviour
+# Current behaviour
 
-[Description of the actual behaviour and what is the problem / issue for you]
+[Description of the current behaviour and what is the problem / issue for you]
 
 [Screen shots : if possible, use animated gifs for a better illustration]
 
