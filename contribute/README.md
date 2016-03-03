@@ -13,6 +13,8 @@ You want to contribute to FOCUS-COMPONENTS, propose new features, fix an issue ?
 
 Please read this [document](https://github.com/KleeGroup/focus-docs/tree/master/contribute/CONTRIBUTE_TO_DEV.md)
 
+Configure Focus to run in local mode Please read this [document](https://github.com/KleeGroup/focus-docs/tree/master/contribute/RUN_FOCUS_LOCAL.md)
+
 ## Create a pull request to push a new feature
 
 You have develop new feature on your FOCUS-COMPONENTS local branch. You want to contribute to the project and push it to main branch for the benefit of the community FOCUS ?
@@ -26,5 +28,6 @@ You fixed an issue on your FOCUS-COMPONENTS local branch. You want to push it to
 Please read this [document](https://github.com/KleeGroup/focus-docs/tree/master/contribute/PR_FIX_TEMPLATE.md)
 
 - [Contribuer au dev](CONTRIBUTE_TO_DEV.md)
+- [Configurer Focus en mode local] (/RUN_FOCUS_LOCAL.md)
 - [Déclarer une issue](DECLARE_ISSUE.md)
 - [Template pour une correction](PR_FIX_TEMPLATE.md)
