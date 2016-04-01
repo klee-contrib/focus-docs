@@ -11,6 +11,7 @@
   * [Démarrer un projet à partit du kit de démarrage](/getting-started/starter-kit.md)
 * [Tutoriels](/tutorial/README.md)
   * [Créer une page de détail](/tutorial/detail.md)
+  * [Créer une page de liste](/tutorial/admin-list.md)
 * [Problèmes récurents](/troubleshooting/README.md)
 * [Maintenance](/maintenance/README.md)
 * [Contribute](/contribute/README.md)
