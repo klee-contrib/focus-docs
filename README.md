@@ -1,14 +1,11 @@
 # Table des matières
 
-* [Getting started](/getting-started/README.md)
 * [Introduction](/introduction/README.md)
-* [Bases](/basics/README.md)
-* [Concepts avancés](/advanced/README.md)
-* [Recettes](/recipes/README.md)
-* [Problèmes réccurents](/troubleshooting/README.md)
-* [Glossary](/Glossary.md)
-* [API Focus](/focus/README.md)
-* [API Focus Components](/focus-components/README.md)
+* [Prérequis](/prerequisite/README.md)
+* [Getting started](/getting-started/README.md)
+* [Tutoriels](/tutorial/README.md)
+* [Problèmes récurents](/troubleshooting/README.md)
 * [Maintenance](/maintenance/README.md)
-* [Catalogue de composants](/focus-components/README.md)
 * [Contribute](/contribute/README.md)
+
+![](https://media.giphy.com/media/EycxafzdmLq4o/giphy.gif)
