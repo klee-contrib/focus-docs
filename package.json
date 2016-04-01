@@ -26,5 +26,8 @@
   "homepage": "https://github.com/KleeGroup/focus-docs#readme",
   "dependencies": {
     "gitbook-cli": "^0.3.4"
+  },
+  "devDependencies": {
+    "rimraf": "^2.5.2"
   }
 }
