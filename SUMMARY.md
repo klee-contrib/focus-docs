@@ -18,6 +18,7 @@
 * [Concepts avancés](/advanced/README.md)
   * [Ecrire un composant](/advanced/ecrire-composant/README.md)
 * [Guides](/guides/README.md)
+  * [Créer une page de détail](/guides/detail.md)
 * [Recettes](/recipes/README.md)
     * [Navigation](/recipes/navigation/README.md)  
       * [Ajouter une route](/recipes/navigation/ajouter-route/README.md)
