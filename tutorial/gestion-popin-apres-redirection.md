@@ -6,17 +6,19 @@ L’objectif de ce tutoriel est d’expliquer comment fermer correctement sa Pop
 
 * Sur la page d’accueil de l’application, cliquer sur le bouton « PREVISUALISER » 
  
-
+![](demo-home.PNG)
 
 * La Popin de prévisualition s’affiche, ensuite cliquer le bouton « CONSULTER LA FICHE » afin de se rendre sur la page de détail du film.
  
- 
+ ![](demo-preview.PNG)
 
-* L’utilisateur est redirigé vers la page de detail du film mais il y a une erreur sur la page :
+* L’utilisateur est redirigé vers la page de détail du film mais il y a une erreur sur la page :
  
+ ![](demo-error.PNG)
 
   Ci-dessous une capture d’écran de la console :
 
+ ![](demo-console-error.PNG)
  
 ## Code source 
 
