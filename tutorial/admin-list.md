@@ -357,7 +357,7 @@ const propTypes = {
 
 // On utlise une fonction pure car ce composant n'a aucune logique.
 // Il ne fait qu'appeller une action lorqu'il a une nouvelle valeur.
-function CountryCriteria({onSearch}) {
+function CountryCriteria({onFilterChange}) {
     const _onSearchDebounced = debounce(value => onFilterChange(value), 200);
     return (
         <div data-demo='country-criteria'>
@@ -397,7 +397,7 @@ render() {
     const {detailId} = this.state;
     return (
         <div data-demo='masterdata-countries'>
-          <CountryCriteria onSearch={_dispatchSearchCriteria} />
+          <CountryCriteria onFilterChange={_dispatchSearchCriteria} />
         ...
         </div>
     );
@@ -443,7 +443,7 @@ class MasterdataCountry extends Component {
         const {detailId} = this.state;
         return (
             <div data-demo='masterdata-countries'>
-                <CountryCriteria onSearch={_dispatchSearchCriteria} />
+                <CountryCriteria onFilterChange={_dispatchSearchCriteria} />
                 {/*LIST : This is the list which trigger the search and is connected to the list store */}
                 <CountryList
                     action={loadCountryList}
