@@ -2,6 +2,7 @@
 Dans le cas de l'application Démo, l'utilisateur a la possibilité de prévisualiser les données d'un film ou d'une personne et ensuite cliquer sur le bouton "consulter la fiche" afin de consulter la page de détail. Généralement suite à une mauvaise utilisation du composant Popin, l'utilisateur se prend une erreur du type "FirstChild of undefined".
 
 L’objectif de ce tutoriel est d’expliquer comment fermer correctement sa Popin suite à une redirection afin de ne plus avoir l’erreur de type « firstChild of undefined ».
+
 # Contexte
 
 * Sur la page d’accueil de l’application, cliquer sur le bouton « PREVISUALISER » 
@@ -25,6 +26,8 @@ L’objectif de ce tutoriel est d’expliquer comment fermer correctement sa Pop
 Dans cette section nous allons vous montrer comment le code était ecrit pour gérer la redirection et la fermeture de la popin.
 
 ### Dans la view qui ouvre la popin :
+
+> Rappel : les popins doivent être présente au plus haut niveau du composant et les méthodes permettant de gérer leur état open / close doivent être fournis aux enfants par propriétés callbacks.
 
 ```jsx
      const {movies} = this.props;
@@ -81,9 +84,21 @@ L’erreur « FirstChild of undefined » est déclenchée parce que la Popin n�
 # Solution
 Dans cette partie nous expliquons comment écrire son code afin de ne plus avoir l’erreur de type « firstChild of undefined » à la fermeture d’une Popin suite à une redirection.
 
+### Point sur l'état d'ouverture de la popin
+
+L'état de la popin ouvert / fermé est géré par le composant parent de cette dernière.
+Suivant une propriété booléenne dans le state ici `personCodePreview` on est capable de déterminer si la popin doit être ouverte ou non.
+L'avantage de cette manière de procéder plutôt que d'appeller manuellement la methode `togglePopin` sur la `ref` du composant est que:
+- La popin n'est présente dans le **DOM** du navigateur que quand c'est nécessaire.
+- On a pas à gérer d'action de rechargement de la popin entre les ouvertures / fermetures
+
+Le seul cas où ce n'est pas le plus efficace c'est quand on souhaite garder un état de saisie potentiellement non finalisé dans la popin entre deux ouvertures / fermetures.
+
+
 ### Dans la view qui ouvre la popin :
 
 * Rajouter une fonction qui sera appelée au moment du clic sur le bouton "Consulter la fiche" et à la fermeture de la popin
+c'est la fonction `_closePopin` qui prend en argument un callback, c'est à dire une fonction qui sera appellée après la fermeture de la popin.
 
 ```jsx
     _closePopin(cb){
