@@ -133,7 +133,7 @@ c'est la fonction `_closePopin` qui prend en argument un callback, c'est à dire
     }
 ```
 
-* Au clic sur le bouton permettant de rediriger vers une autre page, appeler la fonction onPopinClose
+* Au clic sur le bouton permettant de rediriger vers une autre page, appeler la fonction `onPopinClose` qui une fois le state permettant de naviger vers la page au bon moment du cycle de vie de l'application. 
 
 ```jsx
   <Button label='view.movie.action.consult.sheet' handleOnClick={this.onPopinClose} />
