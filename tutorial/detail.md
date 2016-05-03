@@ -1,4 +1,4 @@
-# Créer une page de détail
+# Implémenter une page de détail
 
 Dans ce tutoriel, nous allons créer une page de détail d'une entité, avec édition de ses caractéristiques propres.
 Nous allons créer la page de détail d'un film.
@@ -7,7 +7,7 @@ Nous allons créer la page de détail d'un film.
 
 Une page de détail ressemble à ça :
 
-![](./detail.png)
+![](images/detail.png)
 
 Elle est constituée :
 - d'un cartridge
