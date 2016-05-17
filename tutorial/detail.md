@@ -60,9 +60,11 @@ Nous allons créer un premier panneau, pour afficher et éditer les caractérist
 ```js
 /* views/movie/detail/characteristics.jsx */
 import React, {PropTypes} from 'react';
+import {Panel} from 'focus-components/components'
 
 const MovieCharacteristics = React.createClass({
     render() {
+        const {id} = this.props;
         return (
             <Panel title='view.movie.detail.characteristics'>
                 {`Panneau de caractéristiques du movie${id}`}
@@ -134,7 +136,7 @@ export default {
     },
     updateMovie(movie) {
         const movieId = movie.id;
-        return fetch(movieUrl.update({urlData: {id: movieId}, movie}), {isCORS: true});
+        return fetch(movieUrl.update({urlData: {id: movieId}, data : movie}), {isCORS: true});
     }
 }
 ```
@@ -146,7 +148,7 @@ Appelons le load au chargement de la page de détail afin de disposer des donné
 ```js
 /* views/movie/detail/index.jsx */
 // [...]
-import movieActions from '../../../actions/movie';
+import {movieActions} from '../../../action/movie';
 // [...]
 const MovieDetail = React.createClass({
     [...]
@@ -169,14 +171,14 @@ Pour cela, nous allons utiliser le **formPreset** dans le panneau, qui va nous f
 /* views/movie/detail/characteristics.jsx */
 [...]
 import {mixin as formPreset} from 'focus-components/common/form';
-import movieActions from '../../../actions/movie';
+import {movieActions} from '../../../action/movie';
 import movieStore from '../../../stores/movie';
 [...]
 const MovieCharacteristics = React.createClass({
     displayName: 'MovieCharacteristics',
     mixins: [formPreset], // Chargement du preset de form
     definitionPath: 'movie', // définition de notre entité
-    stores: [{store: movieStore, properties: 'movie'}], // permet de s'abonner au store
+    stores: [{store: movieStore, properties: ['movie']}], // permet de s'abonner au store
     action: movieActions, // donne les actions au form
     renderContent() {
         return (
@@ -216,14 +218,14 @@ Le synopsis est un attribut de notre entité, on bénéficie donc déjà de l'in
 /* views/movie/detail/synopsis.jsx */
 import Panel from 'focus-components/components/panel';
 import {mixin as formPreset} from 'focus-components/common/form';
-import movieActions from '../../../actions/movie';
+import {movieActions} from '../../../action/movie';
 import movieStore from '../../../stores/movie';
 
 const MovieSynopsis = React.createClass({
     displayName: 'MovieSynopsis',
     mixins: [formPreset],
     definitionPath: 'movie',
-    stores: [{store: movieStore, properties: 'movie'}],
+    stores: [{store: movieStore, properties: ['movie']}],
     action: movieActions,
     renderContent() {
         return (
@@ -318,14 +320,14 @@ Nous sommes ici face à un cas de correspondance directe entre un noeud du store
 /* views/movie/detail/casting.jsx */
 import Panel from 'focus-components/components/panel';
 import {mixin as formPreset} from 'focus-components/common/form';
-import movieCastingActions from '../../../actions/movieCasting';
+import {castingActions} from '../../../actions/movie';
 import movieStore from '../../../stores/movie';
 
 const MovieCasting = React.createClass({
     displayName: 'MovieCasting',
     mixins: [formPreset],
     definitionPath: 'movieCasting',
-    stores: [{store: movieStore, properties: 'movieCasting'}],
+    stores: [{store: movieStore, properties: ['movieCasting']}],
     action: movieCastingActions,
     renderContent() {
         return (
@@ -371,6 +373,9 @@ import React from 'react';
 import {mixin as formPreset} from 'focus-components/common/form';
 
 import movieStore from '../../../stores/movie';
+
+// Composant custom 
+import Poster from '../components/poster';
 
 const MovieHeaderExpanded = React.createClass({
     displayName: 'MovieHeaderExpanded',
