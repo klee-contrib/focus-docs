@@ -2,22 +2,22 @@
 
 La recherche est un concept au centre des applications métiers, et donc au centre des concepts FOCUS.
 
-Dans ce tutoriel, nous allons détailler pas à pas l'ensemble des étapes et des componsants FOCUS à utiliser, permettant d'accélérer les développements d'une page de recherche.
+Dans ce tutoriel, nous allons détailler pas à pas l'ensemble des étapes et des componsants FOCUS à utiliser, permettant d'accélérer les développements d'une page de recherche avancée.
 
 ## Anatomie d'une page de recherche
 
 La recherche FOCUS reprend les grands principes de recherches issus du e-Commerce :
-* Un champ unique de recherche "à la Google"
-* Une liste de résultats (triable, groupable) sur laquelle il est possible d'agir en masse
-* Des filtres prédéfénis sur forme de facettes
+* Un champ unique de recherche "à la Google" (en haut, toujours visible et accesible en 1 clic)
+* Une liste de résultats (triable, groupable) sur laquelle il est possible d'agir en masse (a droite)
+* Des filtres prédéfénis sur forme de facettes (à gauche)
 
 ![Zonage d'un écran de recherche](images/recherche-avancee-zonage.png)
 
 ## Avant de commencer
 
-Un exemple concret d'implémentation de la recherche avancée a été rédigée par nos petites mimines : https://github.com/KleeGroup/focus-demo-app
-
-Si vous êtes sur le réseau interne, une démo online de la recherche avancée est disponible ici : http://focus-demo.dev.klee.lan.net/
+> Un exemple concret d'implémentation de la recherche avancée a été rédigée par nos petites mimines : https://github.com/KleeGroup/focus-demo-app
+>
+> Si vous êtes sur le réseau interne, une démo online de la recherche avancée est disponible ici : http://focus-demo.dev.klee.lan.net/
 
 ## Que gère le composant FOCUS de recherche avancée ?
 
@@ -66,7 +66,12 @@ Cela signifie par exemple, que pour un écran de recherche avancée concernant 2
 * `http://server/api/person/search`
 * `http://server/api/common/search`
 
-Définissons ensemble l'URL de recherche d'un film. Rendez-vous dans le répertoire `config/server/movies`. Ce fichier contient la configuration de toutes les WS utiles à la SPA, et qui concerne les films. Dans le cas présent, les services suivants : `create` pour la création d'un fim, `load` pour le chargement des données d'un film, `update` pour la mise à jour des données d'un film.
+Définissons ensemble l'URL de recherche d'un film. Rendez-vous dans le répertoire `config/server/movies`. Ce fichier contient la configuration de toutes les WS utiles à la SPA, et qui concerne les films.
+
+Dans le cas présent, les services suivants :
+* `create` pour la création d'un fim,
+* `load` pour le chargement des données d'un film,
+* `update` pour la mise à jour des données d'un film.
 
 Définissez-y une nouvelle entrée `search` de la manière suivante:
 
@@ -197,8 +202,7 @@ Pour un exemple complet, tout est ici : https://github.com/KleeGroup/focus-demo-
 
 Commençons par créer un dossier pour regrouper l'ensemble des vues relatives à la recherche dans le projet, dans le répertoire `views`.
 
-La manière dont vous organisez votre dossier vous incombe. Cependant, nous vous conseillons très fortement cette organisation:
-* Regroupez tous vos écrans de recherche dans le répertoire `views/search`, qui du coup contiendra :
+La manière dont vous organisez votre dossier vous incombe. Cependant, nous vous conseillons très fortement cette organisation. Regroupez tous vos écrans de recherche dans le répertoire `views/search`, qui du coup contiendra :
     * `views/search/advanced` qui contiendra les développements spécifiques à la recherche avancée
     * `views/search/lines` qui contiendra l'implémentation du rendu des lignes pour la recherche (avancée et rapide)
     * `views/search/quick` qui contiendra les développements spécifiques à la [recherche rapide](recherche-rapide.md)
@@ -260,15 +264,147 @@ export const configuration = {
 ```
 
 * La propriété `onLineClick` définit le comportement à adopter lors d'un clic sur une ligne de résultat.
-* La propriété `isSelection` définit le caractère sélectionnable en masse des résultats de la liste (à coupler avec des actions à en masse ^^)
+* La propriété `isSelection` définit le caractère sélectionnable en masse des résultats de la liste (à coupler avec des actions à en masse)
 * La propriété `cartridgeConfiguration` définit la configuration du cartouche pour la vue recherche avancée, et notamment les composants Scope et Input qui permettent de lancer la recherche
-* La propriété `service` définit le service de recherche qui sera lancé lors des différentes actions de recherche sur la vue. Cela correspond bien sur au service que vous avez définit juste avant... (oh yeah !)
+* La propriété `service` définit le service de recherche qui sera lancé lors des différentes actions de recherche sur la vue. Cela correspond bien sur au service que vous avez définit juste avant...
 * La propriété `lineComponentMapper` definit la façon dont les lignes doivent se rendre (en fonction de leur type)
-* La propriété `groupMaxRows` "est censer" définir le nombre d'éléments affichér par groupe. Je dis "censé" car pour le moment cela ne fonctionne pas. Mais une issue est ouverte à ce sujet !
+* La propriété `groupMaxRows` "est censé" définir le nombre d'éléments affichér par groupe. Je dis "censé" car pour le moment cela ne fonctionne pas. Mais une issue est ouverte à ce sujet !
 * La propriété `scopesConfig` est un fichier de mapping qui a pour objectif de mapper les valeurs des scopes renvoyées par le serveur avec les valeurs des scopes définies sur dans votre application JS.
 
 --> parler de la surcharge GroupComponent (attention au scope mapping dans le composant). S'inspirer du composant fourni par défaut par FOCUS.
 
-## 5. Création du Line Mapper
 
-## 6. Définition du comportement au click sur une ligne
+## 5. Définition de la configuration de l'entête
+
+A cette étape, vous aurez forcément envie d'injecter les champs critères de lancement dans votre cartouche, principalement pour tester:
+* l'appel des services de recherche implémentés
+* la mise à jour des données dans les stores de recherche
+* et puis tout simplement qu'il se passe quelque chose !
+
+Focus facilite la mise en place du cartouche contenant ces critères de lancement, sous la forme suivante (en jaune):
+![Critères de lancement dans le cartridge](images/recherche-avancee-cartridge.png)
+
+Pour ce faire, il suffit juste de définir la configuration de ce cartouche comme ceci:
+```javascript
+import CartridgePageSearch from 'focus-components/page/search/search-header/cartridge';
+import SummaryPageSearch from 'focus-components/page/search/search-header/summary';
+import service from '../../../../services/search';
+
+export default function cartridgeConfiguration() {
+    return {
+        summary: {
+            component: SummaryPageSearch,
+            props: { service }
+        },
+        cartridge: {
+            component: CartridgePageSearch,
+            props: { service }
+        },
+        actions: {
+            primary: [],
+            secondary: []
+        }
+    };
+}
+```
+
+Deux composants sont fournit par FOCUS :
+* `focus-components/page/search/search-header/cartridge` : affiche le composant pour le mode déplié du cartouche. Il gère également l'affichage du titre.
+* `focus-components/page/search/search-header/summary` : affiche le composant pour le mode replié du cartouche
+
+L'avantage d'utiliser ces composant, c'est que toute la logique d'écoute du store de recherche avancée, ainsi que que sa mise à sur la partie critère de recherche est déja implémentée. Les composants s'utilisent tels quel.
+
+Le service de recherche est passé en props des 2 composants pour qu'ils consomment ces services lors d'une action de l'utilisateur.
+
+Enfin, comme pour toute configuration d'entête FOCUS, vous avez la possibilité de définir les actions propres à votre écran.
+
+Bien sûr, cette configuration est la configuration standard FOCUS. Vous avez également possibilité de définir vos propres composants / critères de lancement. Mais autant rester dans le standard...
+
+## 6. Création du Line Mapper
+
+Le `lineComponentMapper` est la configuration qui décrit le mapping de rendu d'une ligne de la recherche en fonction en fonction de la recherche. Grâce à ce mapper, la liste de résultats de recherche saura quel rendu adopter en fonction du type de donnée passée.
+
+Vous pouvez le définir dans le répertoire `views/search/lines`, sous le nom `mapper.js`:
+
+```javascript
+import DefaultLine from './line';
+import MovieLine from './movie';
+import PersonLine from './person';
+
+export default function lineComponentMapper(groupKey) {
+    switch (groupKey) {
+        case 'movie': return MovieLine;
+        case 'person': return PersonLine;
+        default: return DefaultLine;
+    }
+}
+```
+
+Décrivez ensuite le composant de rendu de chaque ligne. Par exemple, celui d'un film (`views/search/lines/movie.js`):
+
+```javascript
+//libraries
+import React, {PropTypes} from 'react';
+import {mixin as lineMixin} from 'focus-components/list/selection/line'
+
+export default React.createClass({
+    displayName: 'MovieLine',
+    mixins: [lineMixin],
+    definitionPath: 'movie',
+    propTypes: {
+        data: PropTypes.object.isRequired
+    },
+    renderLineContent() {
+        const {data} = this.props;
+        const {code} = data;
+        return (
+            <div key={code} data-demo='movie-line'>
+                <div className='level1'>{this.textFor('title')}</div>
+                <div className='level2'>{this.textFor('movieType')}</div>
+                <div className='level3'>{this.textFor('productionYear')}</div>
+            </div>
+        );
+    }
+});
+```
+
+Le composant que vous venez d'écrire intègre le mixin `focus-components/list/selection/line`, qui va offrir à la ligne l'ensemble des comportements nécessaires à l'affichage d'actions unitaires, et à la sélection de l'objet dans une liste.
+
+Le mixin définit aussi les props d'entrée du composant ligne. Un composant ligne se voit toujours attribué la props `data` qui correspond aux données de la ligne qui pourront être affichées.
+
+Le mixin débraye le rendu du contenu spécifique à la ligne dans la fonction `renderLineContent`. Vous n'avez pas à implémenter la gestion de la selection, ni le mécanisme d'actions sur la ligne, le composant le fait tout seul.
+
+--> parler de la définition des actions sur la ligne.
+
+Bien sûr, vous affichez un élément d'une liste, et React a besoin d'une clé pour identifier de manière unique l'élément de la ligne. N'oubliez pas définir la clé de la ligne via l'attribut `key`. Vous éviterez quelques warning dans votre console, et de potentiels bugs pour la suite...
+
+
+## 7. Définition du comportement au click sur une ligne
+
+Le comportement au click sur une ligne se définit également dans une fichier de mapping, par exemple dans le fichier `views/search/lines/line-click.js`.
+Bien sûr, le comportement n'est pas le même en fonction du type de la ligne cliquée. Par exemple, si le type est movie, bien souvent il est souhaité redirigier l'utilisateur vers la page de détail movie. Si le type est film, vers la page de détail d'un film. Mais vous pouvez aussi ici définir l'ouverture d'un panneau latéral glissant dans la droite.
+
+L'exemple ci-dessous illustre la définition d'un fichier de mapping des comportements au clic sur une ligne:
+
+```javascript
+import history from 'focus-core/history';
+
+export default function onLineClick(data) {
+    let url = '#';
+    const {code, type} = data;
+    if('movie' === type) {
+        url = `#movies/${code}`;
+    }
+    if('person' === type) {
+        url = `#persons/${code}`;
+    }
+    history.navigate(url, true);
+    window.scrollTo(0, 0);
+}
+```
+
+`history` est importé de `focus-core` pour gérer la navigation.
+
+Bien souvent, dans l'usage d'un écran de recherche, l'utilisateur scrolle pour accéder à l'entité qu'il recherche. Dans la logique d'une SPA (une seule page), il est donc souvent intéressant de remonter l'ascenseur en haut de la page lors d'une navigation. Dans le cas contraire, la nouvelle page affichée est positionnée au niveau du scroll courant. La position du scroll n'est pas modifiée automatiquement par le système, mais à la demande du développement. C'est pourquoi vous voyez apparaitre un `window.scrollTo(0,0)` à la suite de la navigation.
+
+# L'interface de ma recherche présentant les résultats groupés est différent du template
