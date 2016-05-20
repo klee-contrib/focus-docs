@@ -38,7 +38,7 @@ Le composant de recherche avancée gère automatiquement:
 
 ## Qu'est-ce que le composant FOCUS de recherche avancée ne gère pas ?
 
-* L'appel aux WS de recherche
+* L'appel aux WS de recherche côté serveur backend
 * L'affichage des lignes et des actions possibles sur une ligne
 * Les actions en masse sur la liste
 * L'export des résutlats au format EXCEL / PDF / ...
@@ -50,13 +50,11 @@ Le service de recherche définit dans votre SPA vous permettra de faire le lien 
 
 ### Première étape : la configuration des URL
 
-Définition la configuration de l'URL pour l'appel aux WS.
-
-Vous devez normalement avoir définit côté serveur :
+Vous devez normalement avoir défini côté serveur :
 * 1 WS par entité recherché (par scope)
 * 1 WS pour une recherche gobable (sur tous les scopes)
 
-Cela signifie par exemple, que pour un écran de recherche avancée concernant 2 scopes (dans le cas de la démo : Les films et les personnes), vous devez avoir définit côté serveur les 3 webservices suivants :
+Cela signifie par exemple, que pour un écran de recherche avancée concernant 2 scopes (dans le cas de la démo : Les films et les personnes), vous devez écrire côté serveur les 3 webservices suivants :
 * 1 WS pour le scope FILM
 * 1 WS pour le scope PERSONNE
 * 1 WS pour le scope TOUT
@@ -203,9 +201,9 @@ Pour un exemple complet, tout est ici : https://github.com/KleeGroup/focus-demo-
 Commençons par créer un dossier pour regrouper l'ensemble des vues relatives à la recherche dans le projet, dans le répertoire `views`.
 
 La manière dont vous organisez votre dossier vous incombe. Cependant, nous vous conseillons très fortement cette organisation. Regroupez tous vos écrans de recherche dans le répertoire `views/search`, qui du coup contiendra :
-    * `views/search/advanced` qui contiendra les développements spécifiques à la recherche avancée
-    * `views/search/lines` qui contiendra l'implémentation du rendu des lignes pour la recherche (avancée et rapide)
-    * `views/search/quick` qui contiendra les développements spécifiques à la [recherche rapide](recherche-rapide.md)
+* `views/search/advanced` qui contiendra les développements spécifiques à la recherche avancée
+* `views/search/lines` qui contiendra l'implémentation du rendu des lignes pour la recherche (avancée et rapide)
+* `views/search/quick` qui contiendra les développements spécifiques à la [recherche rapide](recherche-rapide.md)
 
 ## 3. Création de la vue
 
@@ -270,9 +268,24 @@ export const configuration = {
 * La propriété `lineComponentMapper` definit la façon dont les lignes doivent se rendre (en fonction de leur type)
 * La propriété `groupMaxRows` "est censé" définir le nombre d'éléments affichér par groupe. Je dis "censé" car pour le moment cela ne fonctionne pas. Mais une issue est ouverte à ce sujet !
 * La propriété `scopesConfig` est un fichier de mapping qui a pour objectif de mapper les valeurs des scopes renvoyées par le serveur avec les valeurs des scopes définies sur dans votre application JS.
+* la propriété `lineOperationList` définit l'ensemble des actions sur un item de la liste.
 
---> parler de la surcharge GroupComponent (attention au scope mapping dans le composant). S'inspirer du composant fourni par défaut par FOCUS.
-
+La propriété `lineOperationList` prend un tableau, qui a à peu près cette tête là :
+```javascript
+[
+    {
+        action(data) {
+            // l'action à exécuter au clic sur le bouton
+        },
+        style: {shape: 'fab'}, // le style du bouton Material Design Lite
+        label: 'Preview', // le libellé du bouton
+        icon: 'remove_red_eye', // l'icône du bouton
+    },
+    { ... },
+    { ... },
+    { ... }
+]
+```
 
 ## 5. Définition de la configuration de l'entête
 
@@ -308,11 +321,11 @@ export default function cartridgeConfiguration() {
 }
 ```
 
-Deux composants sont fournit par FOCUS :
+Deux composants sont fournis par FOCUS :
 * `focus-components/page/search/search-header/cartridge` : affiche le composant pour le mode déplié du cartouche. Il gère également l'affichage du titre.
 * `focus-components/page/search/search-header/summary` : affiche le composant pour le mode replié du cartouche
 
-L'avantage d'utiliser ces composant, c'est que toute la logique d'écoute du store de recherche avancée, ainsi que que sa mise à sur la partie critère de recherche est déja implémentée. Les composants s'utilisent tels quel.
+L'avantage d'utiliser ces composants, c'est que toute la logique d'écoute du store de recherche avancée. Les composants s'utilisent tels quel.
 
 Le service de recherche est passé en props des 2 composants pour qu'ils consomment ces services lors d'une action de l'utilisateur.
 
@@ -322,7 +335,7 @@ Bien sûr, cette configuration est la configuration standard FOCUS. Vous avez é
 
 ## 6. Création du Line Mapper
 
-Le `lineComponentMapper` est la configuration qui décrit le mapping de rendu d'une ligne de la recherche en fonction en fonction de la recherche. Grâce à ce mapper, la liste de résultats de recherche saura quel rendu adopter en fonction du type de donnée passée.
+Le `lineComponentMapper` est la configuration qui décrit le mapping de rendu d'une ligne de résultat, en fonction de son type et ses données. Grâce à ce mapper, la liste de résultats de recherche saura quel rendu adopter en fonction du type de donnée passé.
 
 Vous pouvez le définir dans le répertoire `views/search/lines`, sous le nom `mapper.js`:
 
@@ -368,21 +381,21 @@ export default React.createClass({
 });
 ```
 
-Le composant que vous venez d'écrire intègre le mixin `focus-components/list/selection/line`, qui va offrir à la ligne l'ensemble des comportements nécessaires à l'affichage d'actions unitaires, et à la sélection de l'objet dans une liste.
+Le composant que vous venez d'écrire intègre le mixin `focus-components/list/selection/line`, qui va afficher sur la ligne:
+* les comportements nécessaires à l'affichage d'actions unitaires
+* le mécanisme de sélection de l'objet
 
 Le mixin définit aussi les props d'entrée du composant ligne. Un composant ligne se voit toujours attribué la props `data` qui correspond aux données de la ligne qui pourront être affichées.
 
 Le mixin débraye le rendu du contenu spécifique à la ligne dans la fonction `renderLineContent`. Vous n'avez pas à implémenter la gestion de la selection, ni le mécanisme d'actions sur la ligne, le composant le fait tout seul.
 
---> parler de la définition des actions sur la ligne.
-
-Bien sûr, vous affichez un élément d'une liste, et React a besoin d'une clé pour identifier de manière unique l'élément de la ligne. N'oubliez pas définir la clé de la ligne via l'attribut `key`. Vous éviterez quelques warning dans votre console, et de potentiels bugs pour la suite...
+Bien sûr, vous affichez un élément d'une liste et React a besoin d'une clé pour identifier de manière unique l'élément de la ligne. N'oubliez pas définir la clé de la ligne via l'attribut `key`. Vous éviterez quelques warning dans votre console, et de potentiels bugs pour la suite...
 
 
-## 7. Définition du comportement au click sur une ligne
+## 7. Définition du comportement au clic sur une ligne
 
 Le comportement au click sur une ligne se définit également dans une fichier de mapping, par exemple dans le fichier `views/search/lines/line-click.js`.
-Bien sûr, le comportement n'est pas le même en fonction du type de la ligne cliquée. Par exemple, si le type est movie, bien souvent il est souhaité redirigier l'utilisateur vers la page de détail movie. Si le type est film, vers la page de détail d'un film. Mais vous pouvez aussi ici définir l'ouverture d'un panneau latéral glissant dans la droite.
+Bien sûr, le comportement n'est pas le même en fonction du type de la ligne cliquée. Par exemple, si le type est `person`, bien souvent il est souhaité redirigier l'utilisateur vers la page de détail personne. Si le type est film, vers la page de détail d'un film. Mais vous pouvez aussi ici définir l'ouverture d'un panneau latéral glissant dans la droite.
 
 L'exemple ci-dessous illustre la définition d'un fichier de mapping des comportements au clic sur une ligne:
 
@@ -407,4 +420,37 @@ export default function onLineClick(data) {
 
 Bien souvent, dans l'usage d'un écran de recherche, l'utilisateur scrolle pour accéder à l'entité qu'il recherche. Dans la logique d'une SPA (une seule page), il est donc souvent intéressant de remonter l'ascenseur en haut de la page lors d'une navigation. Dans le cas contraire, la nouvelle page affichée est positionnée au niveau du scroll courant. La position du scroll n'est pas modifiée automatiquement par le système, mais à la demande du développement. C'est pourquoi vous voyez apparaitre un `window.scrollTo(0,0)` à la suite de la navigation.
 
-# L'interface de ma recherche présentant les résultats groupés est différent du template
+# Comment changer l'interface de "grouping" des résultats de recherche ?
+
+Par défaut, la recherche FOCUS fournit l'interface pour grouper les résultats de recherche selon une clé. Cela ressemble à ça :
+
+![Composant groups](images/recherche-avancee-groups.png)
+
+Le composant "Group" définit le rendu pour un group. Il est répété dans les résultats de recherche, autant de fois qu'il y a de group à afficher. Et cela dépend bien sûr de la clé de grouping.
+
+Ce composant est intégré par défaut par FOCUS. Par curiosité, vous pouvez allez consulter le code ici : https://github.com/KleeGroup/focus-components/blob/develop/src/page/search/advanced-search/group.js
+
+Dans le cas où votre interface à développer est différente de celle proposée par défaut par FOCUS, vous avez la possibilité de proposer votre propre composant de Grouping. Pour cela, indiquez le dans le fichier de configuration de votre recherche dans `views/search/advanced/configuration/index.js`. Ajoutez dans la configuration en définissant le composant de rendu dans la props `groupComponent`. Par exemple:
+
+```javascript
+...
+import monComposantGroup from './components/monComposantGroup';
+...
+export const configuration = {
+    ...
+    groupComponent: monComposantGroup,
+    ...
+};
+```
+
+Il y a malgré tout un certain contrat à respecter dans les props définies dans votre composant sur mesure. En effet, c'est tout de même le composant `AdvancedSearch` de FOCUS qui va instancier et rendre votre composant. Et donc lui donner les données contextuelles au groupe de données à afficher. Votre composant doit ainsi définir les props suivantes :
+
+```javascript
+const propTypes = {
+    canShowMore: PropTypes.bool.isRequired, //indique si un bouton showmore doit être rendu pour le group
+    count: PropTypes.number.isRequired, // le nombre de resultats total du group, à afficher
+    groupKey: PropTypes.string.isRequired, // la clé correspondante au group
+    showAllHandler: PropTypes.func.isRequired, // la gestion de l'action à réaliser au clic sur le bouton "Show all"
+    showMoreHandler: PropTypes.func.isRequired // la gestion de l'action à réaliser au clic sur le bouton "Show more"
+};
+```
