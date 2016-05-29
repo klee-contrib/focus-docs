@@ -87,6 +87,20 @@ export default {
 };
 ```
 
+> La fonction `builder` est fournie par la librairie `focus-core`. Elle facilite la déclaration d'URL. Elle prend 2 paramètres:
+> * `url` : url d'appel du service http
+> * `method` : le mode d'appel parmi les valeurs suivantes (principles)
+>    * `GET` utilisé pour récupérer les informations d'une entité. Les paramètres d'appels sont fournis dans l'URL
+>    * `POST` utilisé pour créer une entité. Les paramètres d'appel sont postés dans le corps de la requête. Ils peuvent être complétés par des paramètres d'URL
+>    * `PUT` utilisé pour mettre à jour une entité. Les paramètres à mettre à jour sont postés dans le corps de la requête. Les paramètres contextuels (par exemple l'id de l'entité à mettre à jour) sont passés en paramètre d'URL
+
+L'URL `search` que vous déclarez doit être en mode `POST` car les informations recherchées et saisies par l'utilisateur seront transmises dans le corps de la requête. Les paramètres contextuels de la recherche, sont passés déclarés dans l'URL:
+* `skip` indique le nombre de résultats de recherche déjà connus par l'application, et donc que le serveur ne doit pas renvoyer
+* `sortDesc` indique si le tri des résultats doit être descendant (ou non)
+* `top` indique le nombre de résultats de recherche que le serveur doit renvoyer
+
+C'est grâce à la combinaison des paramtères `skip` et `top` que la pagination des résultats est gérée.
+
 Pour plus d'exemples : https://github.com/KleeGroup/focus-demo-app/tree/develop/app/config/server
 
 ### Seconde étape : la définition du service
