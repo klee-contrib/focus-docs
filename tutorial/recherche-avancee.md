@@ -340,7 +340,7 @@ Deux composants sont fournis par FOCUS :
 * `focus-components/page/search/search-header/cartridge` : affiche le composant pour le mode déplié du cartouche. Il gère également l'affichage du titre.
 * `focus-components/page/search/search-header/summary` : affiche le composant pour le mode replié du cartouche
 
-L'avantage d'utiliser ces composants, c'est que toute la logique d'écoute du store de recherche avancée. Les composants s'utilisent tels quel.
+L'avantage d'utiliser ces composants, c'est que toute la logique d'écoute du store de recherche avancée est déjà implémentée. Les composants s'utilisent tels quel.
 
 Le service de recherche est passé en props des 2 composants pour qu'ils consomment ces services lors d'une action de l'utilisateur.
 
