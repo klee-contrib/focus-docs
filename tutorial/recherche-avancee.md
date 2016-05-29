@@ -215,7 +215,7 @@ Pour un exemple complet, tout est ici : https://github.com/KleeGroup/focus-demo-
 
 Commençons par créer un dossier pour regrouper l'ensemble des vues relatives à la recherche dans le projet, dans le répertoire `views`.
 
-La manière dont vous organisez votre dossier vous incombe. Cependant, nous vous conseillons très fortement cette organisation. Regroupez tous vos écrans de recherche dans le répertoire `views/search`, qui du coup contiendra :
+La manière dont vous organisez votre dossier vous incombe. Cependant, nous vous conseillons très fortement cette organisation. Regroupez tous vos écrans de recherche dans le répertoire `views/search`, qui contiendra :
 * `views/search/advanced` qui contiendra les développements spécifiques à la recherche avancée
 * `views/search/lines` qui contiendra l'implémentation du rendu des lignes pour la recherche (avancée et rapide)
 * `views/search/quick` qui contiendra les développements spécifiques à la [recherche rapide](recherche-rapide.md)
@@ -224,7 +224,7 @@ La manière dont vous organisez votre dossier vous incombe. Cependant, nous vous
 
 Dans le répertoire `views/search/advanced`, créez un in fichier `index.jsx` qui constituera la vue Recherche Avancée.
 
-Le contenu de ce fichier est assez simple puisqu'il consiste à créer un composant React qui intègre:
+Le contenu de ce fichier est assez simple puisqu'il consiste à créer un composant `React` qui intègre:
 * Le composant de recherche avancée standard de FOCUS
 * La configuration de la recherche avancée (tout cela est décrit dans la section suivante)
 
@@ -285,7 +285,7 @@ export const configuration = {
 * La propriété `scopesConfig` est un fichier de mapping qui a pour objectif de mapper les valeurs des scopes renvoyées par le serveur avec les valeurs des scopes définies sur dans votre application JS.
 * la propriété `lineOperationList` définit l'ensemble des actions sur un item de la liste.
 
-La propriété `lineOperationList` prend un tableau, qui a à peu près cette tête là :
+La propriété `lineOperationList` prend un tableau, dont la structure est la suivante :
 ```javascript
 [
     {
