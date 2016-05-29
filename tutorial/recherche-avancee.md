@@ -137,7 +137,8 @@ export default {
     * @return {Promise}
     */
     scoped(config) {
-        const {scope} = criteria;
+        const {data} = config;
+        const {scope} = data;
         return this._search(config, scope);
     },
 
