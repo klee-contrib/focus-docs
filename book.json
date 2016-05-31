@@ -1,0 +1,12 @@
+{
+	"gitbook": ">=2.0.0",
+	"title": "Focus-Docs",
+	"description": "Guide Focus.",
+	"language": "fr",
+	"plugins": ["addcssjs"],
+	"pluginsConfig": {
+		"addcssjs": {
+			"css": ["css/custom.css"]
+		}
+	}
+}
