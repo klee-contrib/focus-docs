@@ -186,7 +186,7 @@ const propTypes = {
 function CountryList({handleLineClick, action, store, columns}) {
     return (
         <SmartList
-            action={{load: action}} // L'action qui charge la liste
+            action={load: action} // L'action qui charge la liste
             columns={columns} // Les colonnes à afficher
             isSelection={false} // Dire à la liste qu'elle n'est pas sélectionnable
             ListComponent={ListComponent} // Le composant d'affichage de liste à utiliser.
