@@ -71,7 +71,7 @@ Dans le cas présent, les services suivants :
 * `load` pour le chargement des données d'un film,
 * `update` pour la mise à jour des données d'un film.
 
-Définissez-y une nouvelle entrée `search` de la manière suivante:
+Définissez-y une nouvelle entrée `search` de la manière suivante :
 
 ```javascript
 import builder from 'focus-core/util/url/builder';
@@ -210,6 +210,143 @@ export default {
 
 Pour un exemple complet, tout est ici : https://github.com/KleeGroup/focus-demo-app/blob/develop/app/services/search.js
 
+### Format des données échangées
+
+En entrée, le service de recherche entrant s'attend à recevoir des données sous ce format:
+```json
+{
+    criteria: "*",
+    facets: {FCT_MOVIE_TYPE: "Court-métrage"} // aucune facette n'est envoyée dans le cas où le scope est 'ALL'
+}
+```
+
+En sortie, le service de recherche sortant va envoyer renvoyer des données sous ce format:
+
+*Pour un scope ALL*
+```json
+{
+  "groups": [
+    {
+      "movie": [
+        {
+          "code": 100037,
+          "title": "Fight for Your Life",
+          "titleSortOnly": "Fight for Your Life",
+          "movieType": "Long-métrage",
+          "productionYear": 1977
+        },
+        {
+          "code": 10004,
+          "title": "Hurler de peur",
+          "titleSortOnly": "Hurler de peur",
+          "poster": "http://fr.web.img4.acsta.net/medias/nmedia/18/73/37/79/19200311.jpg",
+          "movieType": "Long-métrage",
+          "productionYear": 1961
+        },
+        ...
+      ]
+    },
+    {
+      "person": [
+        {
+          "code": 107597,
+          "fullName": "David Purvis",
+          "fullnameSortOnly": "David Purvis",
+          "sex": "M",
+          "activity": "Acteur",
+          "movies": "[847, 108543, 58293, 43023, 202, 7]"
+        },
+        {
+          "code": 1076,
+          "fullName": "Saida Bekkouche",
+          "fullnameSortOnly": "Saida Bekkouche",
+          "sex": "F",
+          "activity": "Actrice",
+          "movies": "[209117, 186028, 684, 145101, 182064, 57432, 35519, 42452, 14455, 189283, 13258, 10232, 310]"
+        },
+        ...
+      ]
+    }
+  ],
+  "facets": [
+    {
+      "FCT_SCOPE": [
+        {
+          "movie": 12741
+        },
+        {
+          "person": 11685
+        }
+      ]
+    }
+  ],
+  "totalCount": 24426
+}
+```
+
+*Pour un scope sélectionné, ici "Movie"*
+```json
+{
+  "list": [
+    {
+      "code": 100037,
+      "title": "Fight for Your Life",
+      "titleSortOnly": "Fight for Your Life",
+      "movieType": "Long-métrage",
+      "productionYear": 1977
+    },
+    {
+      "code": 10004,
+      "title": "Hurler de peur",
+      "titleSortOnly": "Hurler de peur",
+      "poster": "http://fr.web.img4.acsta.net/medias/nmedia/18/73/37/79/19200311.jpg",
+      "movieType": "Long-métrage",
+      "productionYear": 1961
+    },
+    ...
+  ],
+  "facets": [
+    {
+      "FCT_MOVIE_TYPE": [
+        {
+          "Long-métrage": 10493
+        },
+        {
+          "Télefilm": 1368
+      },
+        ...
+      ]
+    },
+    {
+      "FCT_MOVIE_TITLE": [
+        {
+          "#": 132
+        },
+        {
+          "a-f": 3205
+      },
+        ...
+      ]
+    },
+    {
+      "FCT_MOVIE_YEAR": [
+        {
+          "\u003c années 30": 262
+        },
+        {
+          "années 30": 328
+        },
+        {
+          "années 40": 421
+        }
+      ]
+    }
+  ],
+  "totalCount": 12741
+}
+```
+
+> Attention ! Le serveur doit renvoyer une entrée pour chacun des scopes, même s'ils sont vides !
 
 ## 2. Création du repértoire de la vue
 
@@ -254,7 +391,7 @@ Un exemple très concret ? c'est par ici : https://github.com/KleeGroup/focus-de
 
 La configuration contient tout le paramétrage qui est fourni au composant de recherche avancée. Nous vous conseillons de placer fichier dans le répertoire `views/search/advanced/configuration/index.js`.
 
-Voici un exemple de ce fichier:
+Voici la configuration minimale dont vous avez besoin :
 ```javascript
 // seearch services
 import service from '../../../../services/search';
@@ -264,28 +401,43 @@ import cartridgeConfiguration from './cartridge';
 import lineMapper from '../../lines/mapper';
 import onLineClick from '../../lines/line-click';
 import {scopesConfig} from '../../../../config/scopes';
+import actionBuilder from 'focus-core/search/action-builder';
+
+import searchBuiltInStore from 'focus-core/search/built-in-store';
+const advancedSearchStore = searchBuiltInStore.advancedSearchStore;
 
 export const configuration = {
+    action: actionBuilder({
+        service,
+        identifier: advancedSearchStore.identifier,
+        getSearchOptions: () => advancedSearchStore.getValue.call(advancedSearchStore) // Binding the store in the function call
+    }),
     onLineClick,
     isSelection: true,
     cartridgeConfiguration,
-    service,
     lineComponentMapper: lineMapper,
-    groupMaxRows: 5,
+    groupMaxRows: 5, // ne fonctionne pas, n'est pas renvoyé dans la config du service search.
     scopesConfig: scopesConfig
 };
 ```
 
-* La propriété `onLineClick` définit le comportement à adopter lors d'un clic sur une ligne de résultat.
-* La propriété `isSelection` définit le caractère sélectionnable en masse des résultats de la liste (à coupler avec des actions à en masse)
-* La propriété `cartridgeConfiguration` définit la configuration du cartouche pour la vue recherche avancée, et notamment les composants Scope et Input qui permettent de lancer la recherche
-* La propriété `service` définit le service de recherche qui sera lancé lors des différentes actions de recherche sur la vue. Cela correspond bien sur au service que vous avez définit juste avant...
-* La propriété `lineComponentMapper` definit la façon dont les lignes doivent se rendre (en fonction de leur type)
-* La propriété `groupMaxRows` "est censé" définir le nombre d'éléments affichér par groupe. Je dis "censé" car pour le moment cela ne fonctionne pas. Mais une issue est ouverte à ce sujet !
-* La propriété `scopesConfig` est un fichier de mapping qui a pour objectif de mapper les valeurs des scopes renvoyées par le serveur avec les valeurs des scopes définies sur dans votre application JS.
-* la propriété `lineOperationList` définit l'ensemble des actions sur un item de la liste.
-
-La propriété `lineOperationList` prend un tableau, dont la structure est la suivante :
+* La props `action` définit l'action à utiliser. Si le service est défini, la props action peut rester nulle et l'action est automatiquement créée par le composant
+* La props `backToTopComponent` permet de surcharger le composant de retour en haut de la page. Par défaut, [https://github.com/KleeGroup/focus-components/blob/develop/src/components/button-back-to-top/index.js](c'est celui-ci est utilisé).
+* La props `cartridgeConfiguration` définit la configuration du cartouche pour la vue recherche avancée, et notamment les composants Scope et Input qui permettent de lancer la recherche
+* La props `groupComponent` permet de surcharger le composant de rendu d'une liste de résultats groupées.[https://github.com/KleeGroup/focus-components/blob/develop/src/page/search/advanced-search/group.js](Par défault, c'est lui qui est utilisé).
+* La props `groupMaxRows` définit le nombre d'éléments par défaut affichés par groupe.
+* La props `hasBackToTop` indique si le bouton de retour en haut de page (affiché en bas à droite) est affiché.
+* La props `isSelection` définit le caractère sélectionnable en masse des résultats de la liste (à coupler avec des actions à en masse)
+* La props `lineComponentMapper` definit la façon dont les lignes doivent se rendre (en fonction de leur type)
+* La props `lineOperationList` définit l'ensemble des actions sur un item de la liste.
+* La props `onLineClick` définit le comportement à adopter lors d'un clic sur une ligne de résultat.
+* La props `orderableColumnList` définit la liste des entrées par lesquelles le tri peut s'appliquer. Le formation attendu est `[{key:'columnKey', label:'columnLabel'}]`
+* La props `openedFacetList` définit la liste des facettes qui doivent s'afficher ouvertes par défaut
+* La props `scopesConfig` est un fichier de mapping qui a pour objectif de mapper les valeurs des scopes renvoyées par le serveur avec les valeurs des scopes définies sur dans votre application JS.
+* La props `scrollParentSelector` définit le selecteur CSS du conteneur parent sur lequel le scroll va écouter. Par défaut, aucun sélecteur n'est appliqué. Le conteneur est positionné sur la page
+* La props `service` définit le service de recherche qui sera lancé lors des différentes actions de recherche sur la vue. Cela correspond bien sur au service que vous avez définit juste avant...
+* La props `store` permet de surcharger le store par défaut : `advancedSearchStore` définit dans `focus-core/search/built-in-store`. Vous n'avez normalement pas besoin de le surcharger
+* Enfin, la props `lineOperationList` prend un tableau, dont la structure est la suivante :
 ```javascript
 [
     {
@@ -468,4 +620,200 @@ const propTypes = {
     showAllHandler: PropTypes.func.isRequired, // la gestion de l'action à réaliser au clic sur le bouton "Show all"
     showMoreHandler: PropTypes.func.isRequired // la gestion de l'action à réaliser au clic sur le bouton "Show more"
 };
+```
+
+### Données échangées avec le serveur :
+
+*Requête*
+```json
+{
+    criteria: "*",
+    facets: {FCT_MOVIE_TYPE: "Télefilm"},
+    group: "FCT_MOVIE_YEAR"
+}
+```
+
+*Résultats*
+```json
+{
+  "groups": [
+    {
+      "\u003c années 30": []
+    },
+    {
+      "années 30": []
+    },
+    {
+      "années 40": []
+    },
+    {
+      "années 50": [
+        {
+          "code": 11108,
+          "title": "The Ed Sullivan Show",
+          "titleSortOnly": "The Ed Sullivan Show",
+          "movieType": "Télefilm",
+          "productionYear": 1956
+        },
+        {
+          "code": 176257,
+          "title": "Cinderella",
+          "titleSortOnly": "Cinderella",
+          "movieType": "Télefilm",
+          "productionYear": 1957
+        }
+      ]
+    },
+    {
+      "années 60": [
+        {
+          "code": 129063,
+          "title": "La Mégère apprivoisée",
+          "titleSortOnly": "La Mégère apprivoisée",
+          "movieType": "Télefilm",
+          "productionYear": 1964
+        },
+        {
+          "code": 130008,
+          "title": "Laura",
+          "titleSortOnly": "Laura",
+          "movieType": "Télefilm",
+          "productionYear": 1968
+        },
+        ...
+      ]
+    },
+    {
+      "années 70": [
+        {
+          "code": 109596,
+          "title": "Brève rencontre",
+          "titleSortOnly": "Brève rencontre",
+          "movieType": "Télefilm",
+          "productionYear": 1974
+        },
+        {
+          "code": 144826,
+          "title": "A Day Out (TV)",
+          "titleSortOnly": "A Day Out (TV)",
+          "movieType": "Télefilm",
+          "productionYear": 1972
+        },
+        ...
+      ]
+    },
+    {
+      "années 80": [
+        {
+          "code": 10597,
+          "title": "Medea",
+          "titleSortOnly": "Medea",
+          "movieType": "Télefilm",
+          "productionYear": 1988
+        },
+        {
+          "code": 105998,
+          "title": "In This Corner",
+          "titleSortOnly": "In This Corner",
+          "movieType": "Télefilm",
+          "productionYear": 1985
+        },
+        ...
+      ]
+    },
+    {
+      "années 90": [
+        {
+          "code": 108505,
+          "title": "Futuresport",
+          "titleSortOnly": "Futuresport",
+          "poster": "http://fr.web.img2.acsta.net/medias/nmedia/18/71/08/98/19122717.jpg",
+          "movieType": "Télefilm",
+          "productionYear": 1998
+        },
+        {
+          "code": 108555,
+          "title": "Fenêtre sur crime (TV)",
+          "titleSortOnly": "Fenêtre sur crime (TV)",
+          "poster": "http://fr.web.img1.acsta.net/medias/nmedia/18/96/60/43/20478229.jpg",
+          "movieType": "Télefilm",
+          "productionYear": 1991
+        },
+        ...
+      ]
+    },
+    {
+      "années 2000": [
+        {
+          "code": 109065,
+          "title": "L\u0027Anneau sacré",
+          "titleSortOnly": "L\u0027Anneau sacré",
+          "poster": "http://fr.web.img3.acsta.net/medias/nmedia/18/36/12/73/18454725.jpg",
+          "movieType": "Télefilm",
+          "productionYear": 2004
+        },
+        {
+          "code": 109921,
+          "title": "Warm Springs",
+          "titleSortOnly": "Warm Springs",
+          "movieType": "Télefilm",
+          "productionYear": 2005
+        },
+        ...
+      ]
+    },
+    {
+      "\u003e années 2010": [
+        {
+          "code": 177788,
+          "title": "Famille décomposée",
+          "titleSortOnly": "Famille décomposée",
+          "poster": "http://fr.web.img3.acsta.net/medias/nmedia/18/74/30/76/19252837.jpg",
+          "movieType": "Télefilm",
+          "productionYear": 2010
+        },
+        {
+          "code": 177803,
+          "title": "Je, François Villon, Voleur, Assassin, Poète",
+          "titleSortOnly": "Je, François Villon, Voleur, Assassin, Poète",
+          "movieType": "Télefilm",
+          "productionYear": 2010
+        },
+        ...
+      ]
+    }
+  ],
+  "facets": [
+    {
+      "FCT_MOVIE_TYPE": [
+        {
+          "Télefilm": 1368
+        }
+      ]
+    },
+    {
+      "FCT_MOVIE_TITLE": [
+        {
+          "#": 9
+        },
+        {
+          "a-f": 316
+        },
+        ...
+      ]
+    },
+    {
+      "FCT_MOVIE_YEAR": [
+        {
+          "\u003c années 30": 0
+        },
+        {
+          "années 30": 0
+        },
+        ...
+      ]
+    }
+  ],
+  "totalCount": 1368
+}
 ```
