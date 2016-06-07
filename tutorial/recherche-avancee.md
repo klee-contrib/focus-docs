@@ -136,7 +136,9 @@ export default {
     * @return {Promise}
     */
     scoped(config) {
-        const {data: {code}} = this.props;
+        const {data} = config;
+        const {criteria} = data;
+        const {scope} = criteria;
         return this._search(config, scope);
     },
 
@@ -192,7 +194,9 @@ export default {
     * @return {Promise}
     */
     scoped(config) {
-        const {data: {code}} = this.props;
+        const {data} = config;
+        const {criteria} = data;
+        const {scope} = criteria;
         return this._search(config, scope);
     },
     /**
