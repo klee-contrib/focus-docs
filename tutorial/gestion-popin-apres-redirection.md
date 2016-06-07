@@ -5,23 +5,23 @@ L’objectif de ce tutoriel est d’expliquer comment fermer correctement sa Pop
 
 # Contexte
 
-* Sur la page d’accueil de l’application, cliquer sur le bouton « PREVISUALISER » 
- 
-![](demo-home.PNG)
+* Sur la page d’accueil de l’application, cliquer sur le bouton « PREVISUALISER »
+
+![](images/demo-home.PNG)
 
 * La Popin de prévisualition s’affiche, ensuite cliquer le bouton « CONSULTER LA FICHE » afin de se rendre sur la page de détail du film.
- 
- ![](demo-preview.PNG)
+
+ ![](images/demo-preview.PNG)
 
 * L’utilisateur est redirigé vers la page de détail du film mais il y a une erreur sur la page :
- 
- ![](demo-error.PNG)
+
+ ![](images/demo-error.PNG)
 
   Ci-dessous une capture d’écran de la console :
 
- ![](demo-console-error.PNG)
- 
-## Code source 
+ ![](images/demo-console-error.PNG)
+
+## Code source
 
 Dans cette section nous allons vous montrer comment le code était ecrit pour gérer la redirection et la fermeture de la popin.
 
@@ -133,12 +133,8 @@ c'est la fonction `_closePopin` qui prend en argument un callback, c'est à dire
     }
 ```
 
-* Au clic sur le bouton permettant de rediriger vers une autre page, appeler la fonction `onPopinClose` qui une fois le state permettant de naviger vers la page au bon moment du cycle de vie de l'application. 
+* Au clic sur le bouton permettant de rediriger vers une autre page, appeler la fonction `onPopinClose` qui une fois le state permettant de naviger vers la page au bon moment du cycle de vie de l'application.
 
 ```jsx
   <Button label='view.movie.action.consult.sheet' handleOnClick={this.onPopinClose} />
 ```
-
-
-
-

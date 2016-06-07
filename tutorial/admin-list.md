@@ -1,4 +1,4 @@
-# Créer une liste administrable
+# Implémenter une liste administrable
 
 Durée estimée (1h)
 
@@ -16,11 +16,11 @@ Normalement vous devriez avoir une page qui ressemble à ça à la fin:
 
 - Le mode liste
 
-![](admin-country.png)
+![](images/admin-country.png)
 
 - Le mode édition d'une ligne
 
-![](admin-country-edit.png)
+![](images/admin-country-edit.png)
 
 ## Concepts et composants qui seront manipulés
 
@@ -184,6 +184,7 @@ const propTypes = {
 // Composant wrapper qui permet de récupérer des informations du parent.
 // Ce composant est une fonction pure et ne possède pas de cycle de vie.
 function CountryList({handleLineClick, action, store, columns}) {
+    const loadListAction = {load: action};
     return (
         <SmartList
             action={load: action} // L'action qui charge la liste
