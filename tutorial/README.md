@@ -6,6 +6,7 @@
 
 ## Tips
 
+- [Comment surcharger un composant du formulaire par défaut ?](surcharger-form-input.md)
 - [Comment gérer proprement la popin avec un routage d'URL](gestion-popin-apres-redirection.md)
 - [Les cas toordus autour du FORM mixin](cas-tordus-form-mixin.md)
 - [Utiliser des variables dans la traduction](traductions.md)
