@@ -15,7 +15,7 @@ La recherche FOCUS reprend les grands principes de recherches issus du e-Commerc
 
 ## Avant de commencer
 
-> Un exemple concret d'implémentation de la recherche avancée a été rédigée par nos petites mimines : https://github.com/KleeGroup/focus-demo-app
+> Un exemple concret d'implémentation de la recherche avancée : https://github.com/KleeGroup/focus-demo-app
 >
 > Si vous êtes sur le réseau interne, une démo online de la recherche avancée est disponible ici : http://focus-demo.dev.klee.lan.net/
 
@@ -38,7 +38,6 @@ Le composant de recherche avancée gère automatiquement:
 
 ## Qu'est-ce que le composant FOCUS de recherche avancée ne gère pas ?
 
-* L'appel aux WS de recherche côté serveur backend
 * L'affichage des lignes et des actions possibles sur une ligne
 * Les actions en masse sur la liste
 * L'export des résutlats au format EXCEL / PDF / ...
@@ -94,7 +93,7 @@ export default {
 >    * `POST` utilisé pour créer une entité. Les paramètres d'appel sont postés dans le corps de la requête. Ils peuvent être complétés par des paramètres d'URL
 >    * `PUT` utilisé pour mettre à jour une entité. Les paramètres à mettre à jour sont postés dans le corps de la requête. Les paramètres contextuels (par exemple l'id de l'entité à mettre à jour) sont passés en paramètre d'URL
 
-L'URL `search` que vous déclarez doit être en mode `POST` car les informations recherchées et saisies par l'utilisateur seront transmises dans le corps de la requête. Les paramètres contextuels de la recherche, sont passés déclarés dans l'URL:
+L'URL `search` que vous déclarez doit être en mode `POST` car les informations recherchées et saisies par l'utilisateur seront transmises dans le corps de la requête. Les paramètres contextuels de la recherche, sont déclarés dans l'URL:
 * `skip` indique le nombre de résultats de recherche déjà connus par l'application, et donc que le serveur ne doit pas renvoyer
 * `sortDesc` indique si le tri des résultats doit être descendant (ou non)
 * `top` indique le nombre de résultats de recherche que le serveur doit renvoyer
@@ -137,8 +136,7 @@ export default {
     * @return {Promise}
     */
     scoped(config) {
-        const {data} = config;
-        const {scope} = data;
+        const {data: {code}} = this.props;
         return this._search(config, scope);
     },
 
@@ -194,7 +192,7 @@ export default {
     * @return {Promise}
     */
     scoped(config) {
-        const {scope} = criteria;
+        const {data: {code}} = this.props;
         return this._search(config, scope);
     },
     /**
@@ -234,8 +232,7 @@ En sortie, le service de recherche sortant va envoyer renvoyer des données sous
           "titleSortOnly": "Fight for Your Life",
           "movieType": "Long-métrage",
           "productionYear": 1977
-        },
-        {
+        }, {
           "code": 10004,
           "title": "Hurler de peur",
           "titleSortOnly": "Hurler de peur",
@@ -245,8 +242,7 @@ En sortie, le service de recherche sortant va envoyer renvoyer des données sous
         },
         ...
       ]
-    },
-    {
+    }, {
       "person": [
         {
           "code": 107597,
@@ -255,8 +251,7 @@ En sortie, le service de recherche sortant va envoyer renvoyer des données sous
           "sex": "M",
           "activity": "Acteur",
           "movies": "[847, 108543, 58293, 43023, 202, 7]"
-        },
-        {
+        }, {
           "code": 1076,
           "fullName": "Saida Bekkouche",
           "fullnameSortOnly": "Saida Bekkouche",
@@ -271,12 +266,8 @@ En sortie, le service de recherche sortant va envoyer renvoyer des données sous
   "facets": [
     {
       "FCT_SCOPE": [
-        {
-          "movie": 12741
-        },
-        {
-          "person": 11685
-        }
+        { "movie": 12741 },
+        { "person": 11685 }
       ]
     }
   ],
@@ -294,8 +285,7 @@ En sortie, le service de recherche sortant va envoyer renvoyer des données sous
       "titleSortOnly": "Fight for Your Life",
       "movieType": "Long-métrage",
       "productionYear": 1977
-    },
-    {
+    }, {
       "code": 10004,
       "title": "Hurler de peur",
       "titleSortOnly": "Hurler de peur",
@@ -308,37 +298,21 @@ En sortie, le service de recherche sortant va envoyer renvoyer des données sous
   "facets": [
     {
       "FCT_MOVIE_TYPE": [
-        {
-          "Long-métrage": 10493
-        },
-        {
-          "Télefilm": 1368
-      },
+        { "Long-métrage": 10493 },
+        { "Télefilm": 1368 },
         ...
       ]
-    },
-    {
+    }, {
       "FCT_MOVIE_TITLE": [
-        {
-          "#": 132
-        },
-        {
-          "a-f": 3205
-      },
+        { "#": 132 },
+        { "a-f": 3205 },
         ...
       ]
-    },
-    {
+    }, {
       "FCT_MOVIE_YEAR": [
-        {
-          "\u003c années 30": 262
-        },
-        {
-          "années 30": 328
-        },
-        {
-          "années 40": 421
-        }
+        { "\u003c années 30": 262 },
+        { "années 30": 328 },
+        { "années 40": 421 }
       ]
     }
   ],
@@ -437,7 +411,7 @@ export const configuration = {
 * La props `scrollParentSelector` définit le selecteur CSS du conteneur parent sur lequel le scroll va écouter. Par défaut, aucun sélecteur n'est appliqué. Le conteneur est positionné sur la page
 * La props `service` définit le service de recherche qui sera lancé lors des différentes actions de recherche sur la vue. Cela correspond bien sur au service que vous avez définit juste avant...
 * La props `store` permet de surcharger le store par défaut : `advancedSearchStore` définit dans `focus-core/search/built-in-store`. Vous n'avez normalement pas besoin de le surcharger
-* Enfin, la props `lineOperationList` prend un tableau, dont la structure est la suivante :
+* Enfin, la props `lineOperationList` décrit l'ensemble des actions unitaires qui s'afficheront au survol de la liste. Cette props prend un tableau, dont la structure est la suivante :
 ```javascript
 [
     {
@@ -525,11 +499,11 @@ Décrivez ensuite le composant de rendu de chaque ligne. Par exemple, celui d'un
 ```javascript
 //libraries
 import React, {PropTypes} from 'react';
-import {mixin as lineMixin} from 'focus-components/list/selection/line'
+import {mixin as linePreset} from 'focus-components/list/selection/line'
 
 export default React.createClass({
     displayName: 'MovieLine',
-    mixins: [lineMixin],
+    mixins: [linePreset],
     definitionPath: 'movie',
     propTypes: {
         data: PropTypes.object.isRequired
@@ -637,17 +611,10 @@ const propTypes = {
 ```json
 {
   "groups": [
-    {
-      "\u003c années 30": []
-    },
-    {
-      "années 30": []
-    },
-    {
-      "années 40": []
-    },
-    {
-      "années 50": [
+    { "années 30": [] },
+    { "années 30": [] },
+    { "années 40": [] },
+    { "années 50": [
         {
           "code": 11108,
           "title": "The Ed Sullivan Show",
@@ -664,8 +631,7 @@ const propTypes = {
         }
       ]
     },
-    {
-      "années 60": [
+    { "années 60": [
         {
           "code": 129063,
           "title": "La Mégère apprivoisée",
@@ -683,16 +649,14 @@ const propTypes = {
         ...
       ]
     },
-    {
-      "années 70": [
+    { "années 70": [
         {
           "code": 109596,
           "title": "Brève rencontre",
           "titleSortOnly": "Brève rencontre",
           "movieType": "Télefilm",
           "productionYear": 1974
-        },
-        {
+        }, {
           "code": 144826,
           "title": "A Day Out (TV)",
           "titleSortOnly": "A Day Out (TV)",
@@ -702,8 +666,7 @@ const propTypes = {
         ...
       ]
     },
-    {
-      "années 80": [
+    { "années 80": [
         {
           "code": 10597,
           "title": "Medea",
@@ -720,8 +683,7 @@ const propTypes = {
         },
         ...
       ]
-    },
-    {
+    }, {
       "années 90": [
         {
           "code": 108505,
@@ -741,8 +703,7 @@ const propTypes = {
         },
         ...
       ]
-    },
-    {
+    }, {
       "années 2000": [
         {
           "code": 109065,
@@ -761,8 +722,7 @@ const propTypes = {
         },
         ...
       ]
-    },
-    {
+    }, {
       "\u003e années 2010": [
         {
           "code": 177788,
@@ -786,30 +746,20 @@ const propTypes = {
   "facets": [
     {
       "FCT_MOVIE_TYPE": [
-        {
-          "Télefilm": 1368
-        }
+        { "Télefilm": 1368 }
       ]
     },
     {
       "FCT_MOVIE_TITLE": [
-        {
-          "#": 9
-        },
-        {
-          "a-f": 316
-        },
+        { "#": 9 },
+        { "a-f": 316 },
         ...
       ]
     },
     {
       "FCT_MOVIE_YEAR": [
-        {
-          "\u003c années 30": 0
-        },
-        {
-          "années 30": 0
-        },
+        { "\u003c années 30": 0 },
+        { "années 30": 0 },
         ...
       ]
     }
