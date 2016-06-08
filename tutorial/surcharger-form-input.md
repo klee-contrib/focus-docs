@@ -1,4 +1,4 @@
-# Comment surcharger un composant par défaut du formulaire ?
+# Comment surcharger un champ par défaut du formulaire ?
 
 Le formulaire propose un rendu par défaut des composants de saisie (input, select, radio, ...).
 Vous avez besoin de surchager un composant par défaut ? Comment faire ?
@@ -9,10 +9,10 @@ Ce tuto vous explique tout.
 
 Le `fieldFor` que vous posez dans votre formulaire porte toute l'intelligence de rendu. La mécanique de rendu est ici : https://github.com/KleeGroup/focus-components/blob/develop/src/common/field/mixin/built-in-components.js
 
-## Et alors ? quelle est la solution ?
+## Prenons un exemple concret
 
 Prenons par exemple ce formulaire:
-![formulaire](images/surcharger-form-1.png)
+![formulaire](images/surcharge-form-1.png)
 
 Le code correspondant à cette vue est le suivant :
 ```javascript
@@ -46,33 +46,43 @@ export default React.createClass({
             <Panel actions={this._renderActions} title="Fiche de l'utilisateur">
                 {this.fieldFor('firstName')}
                 {this.fieldFor('lastName')}
-                {this.fieldFor('actif')}
+                {this.fieldFor('isActif')}
             </Panel>
         );
     }
 });
 ```
 
-Je veux surcharger le rendu du booléan pour remplacer les radios en toggle :
-![formulaire](images/surcharger-form-2.png)
+Je veux surcharger le composant `input` pour le remplacer pour remplacer par un `toggle` :
+![formulaire](images/surcharge-form-2.png)
 
-Pour se rendre, et ainsi rendre son composant de saisie, les données suivantes sont combinées et passées en props du fieldFor `fieldFor` par le Form FOCUS:
-    * des domaines que vous avez définis, par exemple :
+
+## Et alors ? Comment je fais ?
+
+Pour afficher le `field`, et ainsi rendre son composant de saisie, les données suivantes sont combinées et passées en props du `fieldFor` par le Form FOCUS :
+
+* des domaines que vous avez définis
+* des entités que vous avez définies
+
+Dans notre exemple, pour les domaines :  
 ```javascript
 const domain = {
     DO_TEXT: {
-        style: 'do_text',
-        type: 'text'
+        type: 'text',
+        validator: [{
+            type: 'string',
+            options: {
+                maxLength: 50
+            }
+        }]
     },
     DO_OUI_NON: {
-        SelectComponent: FocusComponents.common.select.radio.component,
-        refContainer: {yesNoList: [{code: true, label: 'select.yes'}, {code: false, label: 'select.no'}]},
-        listName: 'yesNoList',
-        formatter: i18n.t
+        type: 'text'
     }
 };
 ```
-    * des entités que vous avez définies :
+
+Dans notre exemple, pour les entités :
 ```javascript
 const entities = {
     contact: {
@@ -87,8 +97,64 @@ const entities = {
             domain: 'DO_TEXT',
             required: true
         },
-        isCool: {
+        isActif: {
             domain: 'DO_OUI_NON'
         }
     }
 ```
+
+Pour modifier le composant qui sera rendu par le form pour le champ `isActif`, il y a donc 2 solutions :
+* en modifiant la définition du domaine `DO_OUI_NON`. Mais attention, cela modifiera le composant rendu pour tous les champs qui portent le domaine `DO_OUI_NON`
+* en modifiant la définition de l'entité et du champ `isActif`. Cela modifiera le rendu uniquement pour ce champ
+
+### Par exemple :
+
+Le domaine `DO_OUI_NON` :
+
+```javascript
+    DO_OUI_NON: {
+        type: 'text'
+    }
+```
+devient
+
+```javascript
+    import Toggle from 'focus-components/components/input/toggle';
+
+    DO_OUI_NON: {
+        InputComponent: Toggle
+    }
+```
+
+## Qu'est-il possible de surcharger ?
+
+Si vous souhaitez customiser les valeurs de votre domaine, comme ceci :
+
+![formulaire](images/surcharge-form-3.png)
+
+Vous pouvez aussi écrire ceci :
+
+```javascript
+    import SelectRadio from 'focus-components/components/input/select-radio';
+
+    DO_OUI_NON_RIEN : {
+        SelectComponent: SelectRadio,
+        refContainer: {yesNoNothingList: [{code: true, label: 'select.yes'}, {code: false, label: 'select.no'}, {code: null, label: 'select.dontknow'}]},
+        listName: 'yesNoNothingList',
+        formatter: i18n.t
+    }
+```
+
+## Qu'est-il possible de surcharger ?
+
+Les différentes propriétés réglables sont les suivantes:
+- `DisplayComponent` surcharge le composant de display.
+- `FieldComponent` surcharger le composant de field par défaut (utilisation rare)
+- `formatter` définit une fonction de formatage qui sera appliqué au rendu de la valeur
+- `InputComponent` surcharge l'input
+- `InputLabelComponent` surcharge le composant Field mais uniquement dans le cas d'une checkbox ou d'un composannt input embarqué dans le label.
+- `isRequired` définit si une propriété est requise ou non
+- `SelectComponent` surcharge le select
+- `TextComponent` surcharge du composant de rendu textuel
+- `unformatter` définit la fonction pour reconstruire la donnée à partir de la valeur saisie dans l'input
+- `validator` définit la fonction de validation de la données saisie. Cette fonction doit renvoyer `true` si valide et le message d'erreur si non valide.

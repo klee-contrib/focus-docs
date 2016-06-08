@@ -13,7 +13,7 @@
   * [TUTO : Implémenter une page de détail FOCUS](/tutorial/detail.md)
   * [TUTO : Implémnenter une liste avec un détail au click](/tutorial/admin-list.md)
   * [TUTO : Implémenter la recherche FOCUS](/tutorial/recherche-avancee.md)
-  * [TIPS : Comment surcharger un composant du formulaire par défaut ?](/tutorial/surcharger-form-input.md)
+  * [TIPS : Comment surcharger un champ du formulaire par défaut ?](/tutorial/surcharger-form-input.md)
   * [TIPS : Comment gérer proprement la popin avec un routage d'URL](/tutorial/gestion-popin-apres-redirection.md)
   * [TIPS : Les cas toordus autour du FORM mixin](/tutorial/cas-tordus-form-mixin.md)
   * [TIPS : Utiliser des variables dans la traduction](/tutorial/traductions.md)
