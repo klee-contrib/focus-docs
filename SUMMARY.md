@@ -18,6 +18,7 @@
     * [Comment gérer proprement la popin avec un routage d'URL](/tutorial/gestion-popin-apres-redirection.md)
     * [Les cas tordus autour du FORM mixin](/tutorial/cas-tordus-form-mixin.md)
     * [Utiliser des variables dans la traduction](/tutorial/traductions.md)
+* [Extensions](/extensions/README.md)
 * [Problèmes récurents](/troubleshooting/README.md)
 * [Maintenance](/maintenance/README.md)
 * [Contribute](/contribute/README.md)
