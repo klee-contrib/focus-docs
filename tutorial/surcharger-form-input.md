@@ -9,7 +9,7 @@ Ce tuto vous explique tout.
 
 Le code composant `field` est ici : https://github.com/KleeGroup/focus-components/blob/develop/src/common/field/index.js
 
-Vous n'avez cependant jamais besoin de l'utiliser en temps que tel. A la place, vous utilisez les fonctions mises à disposition par le FORM, et notamment la fonction `fieldFor`. Elle porte toute l'intelligence de rendu dont la mécanique est détaillée ici : https://github.com/KleeGroup/focus-components/blob/develop/src/common/field/mixin/built-in-components.js
+Vous n'avez cependant jamais besoin de l'utiliser en temps que tel. A la place, vous utilisez les fonctions mises à disposition par le `FormMixin`, et notamment la fonction `fieldFor`. Elle porte toute l'intelligence de rendu dont la mécanique est détaillée ici : https://github.com/KleeGroup/focus-components/blob/develop/src/common/field/mixin/built-in-components.js
 
 ## Prenons un exemple concret
 
@@ -63,8 +63,8 @@ Je veux surcharger le composant `input` pour le remplacer pour remplacer par un 
 
 Pour afficher le `field`, et ainsi rendre son composant de saisie, les données suivantes sont combinées et passées en props du `fieldFor` par le Form FOCUS :
 
-* des domaines que vous avez définis
-* des entités que vous avez définies
+* les domaines que vous avez définis
+* les entités que vous avez définies
 
 Dans notre exemple, pour les domaines :  
 ```javascript
@@ -128,7 +128,7 @@ devient
     }
 ```
 
-## Qu'est-il possible de surcharger ?
+## Un peu plus loin dans la surcharge...
 
 Si vous souhaitez customiser les valeurs de votre domaine, comme ceci :
 
@@ -154,14 +154,14 @@ Les différentes propriétés réglables sont les suivantes:
 - `FieldComponent` surcharger le composant de field par défaut (utilisation rare)
 - `formatter` définit une fonction de formatage qui sera appliqué au rendu de la valeur
 - `InputComponent` surcharge l'input
-- `InputLabelComponent` surcharge le composant Field mais uniquement dans le cas d'une checkbox ou d'un composannt input embarqué dans le label.
+- `InputLabelComponent` surcharge le composant Field mais uniquement dans le cas d'une checkbox ou d'un composant input embarqué dans le label
 - `isRequired` définit si une propriété est requise ou non
 - `SelectComponent` surcharge le select
 - `TextComponent` surcharge du composant de rendu textuel
 - `unformatter` définit la fonction pour reconstruire la donnée à partir de la valeur saisie dans l'input
 - `validator` définit la fonction de validation de la données saisie. Cette fonction doit renvoyer `true` si valide et le message d'erreur si non valide.
 
-## Depuis le `fieldFor` lui même
+## Depuis le `fieldFor` lui-même
 
 Sachez qu'il est également possible de surcharger toutes ces props en les déclarant directement sur le `fieldFor`.
 
