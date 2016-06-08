@@ -7,7 +7,9 @@ Ce tuto vous explique tout.
 
 ## Qui gère le rendu par défaut ?
 
-Le `fieldFor` que vous posez dans votre formulaire porte toute l'intelligence de rendu. La mécanique de rendu est ici : https://github.com/KleeGroup/focus-components/blob/develop/src/common/field/mixin/built-in-components.js
+Le code composant `field` est ici : https://github.com/KleeGroup/focus-components/blob/develop/src/common/field/index.js
+
+Vous n'avez cependant jamais besoin de l'utiliser en temps que tel. A la place, vous utilisez les fonctions mises à disposition par le FORM, et notamment la fonction `fieldFor`. Elle porte toute l'intelligence de rendu dont la mécanique est détaillée ici : https://github.com/KleeGroup/focus-components/blob/develop/src/common/field/mixin/built-in-components.js
 
 ## Prenons un exemple concret
 
@@ -158,3 +160,12 @@ Les différentes propriétés réglables sont les suivantes:
 - `TextComponent` surcharge du composant de rendu textuel
 - `unformatter` définit la fonction pour reconstruire la donnée à partir de la valeur saisie dans l'input
 - `validator` définit la fonction de validation de la données saisie. Cette fonction doit renvoyer `true` si valide et le message d'erreur si non valide.
+
+## Depuis le `fieldFor` lui même
+
+Sachez qu'il est également possible de surcharger toutes ces props en les déclarant directement sur le `fieldFor`.
+
+Par exemple :
+```javascript
+    {this.fieldFor('isActif', {InputComponent: Toggle})
+```
