@@ -326,7 +326,63 @@ En sortie, le service de recherche sortant va envoyer renvoyer des données sous
 
 > Attention ! Le serveur doit renvoyer une entrée pour chacun des scopes, même s'ils sont vides !
 
-## 2. Création du repértoire de la vue
+## 2. Déclaration de la liste de référence des scopes
+
+Vous devez ensuite déclarer le chargement de la liste de référence des scopes de recherche, dans l'initializer de l'application.
+Ainsi, la liste des scopes sera gérée telle une liste de référence, chargée et mise en cache.
+
+Elle se déclare dans `/app/initializer/scripts/reference-list-initializer.js`.
+Un exemple sur la démo [ici](https://github.com/KleeGroup/focus-demo-app/blob/develop/app/initializer/scripts/reference-list-initializer.js).
+
+```javascript
+import {config} from 'focus-core/reference';
+import masterdataServices from '../../services/masterdata';
+
+// load here all your reference lists
+export default () => {
+    console.info('|--- REFERENCES');
+    config.set({scopes: masterdataServices.loadScopes});
+}
+```
+
+Vous avez la possibilité d'ajouter des informations supplémentaires aux données récupérées du serveur. C'est ici par exemple que vous allez ajouter l'icône correspondante à votre scope (et non côté serveur).
+
+Pour cela, ajouter un `then()` à la promesse retournée par le service, comme ci-dessous :
+
+```javascript
+import {config} from 'focus-core/reference';
+import masterdataServices from '../../services/masterdata';
+
+// load here all your reference lists
+export default () => {
+    console.info('|--- REFERENCES');
+    config.set({scopes: masterdataServices.loadScopes.then(scopes => {
+            //here define application icons
+            scopes.map(_applyAdditionalScopeProperties);
+            return scopes;
+        })
+    });
+}
+
+function _applyAdditionalScopeProperties(scope) {
+    switch (scope.code) {
+        case 'ALL':
+            scope.icon = 'all_inclusive';
+            break;
+        case 'movie':
+            scope.icon = 'movie'
+            break;
+        case 'person':
+            scope.icon = 'person';
+            break;
+        default:
+            scope.icon = 'mood_bad'
+            break;
+    }
+}
+```
+
+## 3. Création du répertoire de la vue
 
 Commençons par créer un dossier pour regrouper l'ensemble des vues relatives à la recherche dans le projet, dans le répertoire `views`.
 
@@ -335,7 +391,7 @@ La manière dont vous organisez votre dossier vous incombe. Cependant, nous vous
 * `views/search/lines` qui contiendra l'implémentation du rendu des lignes pour la recherche (avancée et rapide)
 * `views/search/quick` qui contiendra les développements spécifiques à la [recherche rapide](recherche-rapide.md)
 
-## 3. Création de la vue
+## 4. Création de la vue
 
 Dans le répertoire `views/search/advanced`, créez un in fichier `index.jsx` qui constituera la vue Recherche Avancée.
 
@@ -365,7 +421,7 @@ Il est déclaré via l'annotation `{...configuration}` qui a pour effet d'éclat
 
 Un exemple très concret ? c'est par ici : https://github.com/KleeGroup/focus-demo-app/tree/develop/app/views/search/advanced
 
-## 4. Création de la configuration
+## 5. Création de la configuration
 
 La configuration contient tout le paramétrage qui est fourni au composant de recherche avancée. Nous vous conseillons de placer fichier dans le répertoire `views/search/advanced/configuration/index.js`.
 
@@ -432,7 +488,7 @@ export const configuration = {
 ]
 ```
 
-## 5. Définition de la configuration de l'entête
+## 6. Définition de la configuration de l'entête
 
 A cette étape, vous aurez forcément envie d'injecter les champs critères de lancement dans votre cartouche, principalement pour tester:
 * l'appel des services de recherche implémentés
@@ -478,7 +534,7 @@ Enfin, comme pour toute configuration d'entête FOCUS, vous avez la possibilité
 
 Bien sûr, cette configuration est la configuration standard FOCUS. Vous avez également possibilité de définir vos propres composants / critères de lancement. Mais autant rester dans le standard...
 
-## 6. Création du Line Mapper
+## 7. Création du Line Mapper
 
 Le `lineComponentMapper` est la configuration qui décrit le mapping de rendu d'une ligne de résultat, en fonction de son type et ses données. Grâce à ce mapper, la liste de résultats de recherche saura quel rendu adopter en fonction du type de donnée passé.
 
@@ -537,7 +593,7 @@ Le mixin débraye le rendu du contenu spécifique à la ligne dans la fonction `
 Bien sûr, vous affichez un élément d'une liste et React a besoin d'une clé pour identifier de manière unique l'élément de la ligne. N'oubliez pas définir la clé de la ligne via l'attribut `key`. Vous éviterez quelques warning dans votre console, et de potentiels bugs pour la suite...
 
 
-## 7. Définition du comportement au clic sur une ligne
+## 8. Définition du comportement au clic sur une ligne
 
 Le comportement au click sur une ligne se définit également dans une fichier de mapping, par exemple dans le fichier `views/search/lines/line-click.js`.
 Bien sûr, le comportement n'est pas le même en fonction du type de la ligne cliquée. Par exemple, si le type est `person`, bien souvent il est souhaité redirigier l'utilisateur vers la page de détail personne. Si le type est film, vers la page de détail d'un film. Mais vous pouvez aussi ici définir l'ouverture d'un panneau latéral glissant dans la droite.
@@ -600,7 +656,7 @@ const propTypes = {
 };
 ```
 
-### Données échangées avec le serveur :
+### Quelles données sont échangées avec le serveur ?
 
 *Requête*
 ```json
