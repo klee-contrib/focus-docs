@@ -5,6 +5,9 @@ En voici quelques-un.
 
 Vous avez besoin d'un nouveau tutoriel pour mieux prendre en main un sujet ? Faites-le nous savoir en décrivant votre besoin [au sein d'une issue](https://github.com/KleeGroup/focus-docs/issues).
 
+### Graphisme
+- [Comment intégrer des icônes SVG dans l'application ?](font-svg.md)
+
 #### Formulaire
 - [Comment surcharger un champ du formulaire par défaut ?](surcharger-form-input.md)
 - [Les cas tordus autour du FORM mixin](cas-tordus-form-mixin.md)
