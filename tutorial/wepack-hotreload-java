@@ -32,7 +32,7 @@ côté js :
         };
         serverLauncher(webpackConfig, customConfig);
     
-    webpack.config.js 
+    [webpack.config.js]
     EXEMPLE :
         const path = require('path');
         const configBuilder = require('webpack-focus').configBuilder;
@@ -45,7 +45,8 @@ côté js :
             }
         }
         module.exports = configBuilder(customConfig);
-        package.json
+        
+        [package.json]
         EXEMPLE
             ...
               "scripts": {
