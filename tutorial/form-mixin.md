@@ -30,7 +30,7 @@ Pour en savoir plus sur son utilisation, vous pouvez consulter ce tutoriel "[Com
 
 Pour visualiser tout le code, c'est ici : [focus-components/src/common/form/index.js](https://github.com/KleeGroup/focus-components/blob/develop/src/common/form/index.js)
 
-### `store-behavior`
+### `store-behaviour`
 
 Il facilite la connexion aux stores de données définis dans votre app.
 
