@@ -12,7 +12,7 @@ Vous avez besoin d'un nouveau tutoriel pour mieux prendre en main un sujet ? Fai
 - [A quoi servent tous les mixins du formulaire ? Comment m'en servir ?](form-mixin.md)
 - [Comment utiliser les helpers de field sans le form mixin ?](built-in-component-mixin.md)
 - [Comment utiliser une liste de référence sans le form mixin ?](reference-mixin.md)
-- [Comment s'abonner à des store sans le form mixin ?](store-behavior.md)
+- [Comment s'abonner à des stores sans le form mixin ?](store-behavior.md)
 - [Comment surcharger un champ du formulaire par défaut ?](surcharger-form-input.md)
 - [Les cas tordus autour du FORM mixin](cas-tordus-form-mixin.md)
 
