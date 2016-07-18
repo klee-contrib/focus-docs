@@ -1,0 +1,33 @@
+{
+  "name": "focus-docs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node ./node_modules/gitbook-cli/bin/gitbook.js build",
+    "clean": "rimraf _book",
+    "serve": "node ./node_modules/gitbook-cli/bin/gitbook.js serve",
+    "publish": "npm run clean && npm run build && cd _book && git init &&  git checkout -b gh-pages && git add . &&  git commit -m 'update book' && git push git@github.com:KleeGroup/focus-docs.git gh-pages --force"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KleeGroup/focus-docs.git"
+  },
+  "keywords": [
+    "focusjs",
+    "focusjs-components"
+  ],
+  "author": "Focus <focus@kleegroup.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KleeGroup/focus-docs/issues"
+  },
+  "homepage": "https://github.com/KleeGroup/focus-docs#readme",
+  "dependencies": {
+    "gitbook-cli": "^0.3.4"
+  },
+  "devDependencies": {
+    "rimraf": "^2.5.2"
+  }
+}

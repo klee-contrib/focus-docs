@@ -1,0 +1,1029 @@
+<!DOCTYPE HTML>
+<html lang="fr" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Implémenter une page de détail FOCUS | Focus-Docs</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../tutorial/recherche-avancee.html" />
+    
+    
+    <link rel="prev" href="../tutorial/admin-list.html" />
+    
+
+        <link rel="stylesheet" type="text/css" href="../css/custom.css">
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="4.10"
+        data-chapter-title="Implémenter une page de détail FOCUS"
+        data-filepath="tutorial/detail.md"
+        data-basepath=".."
+        data-revision="Mon Jul 18 2016 18:27:31 GMT+0200 (Paris, Madrid (heure d’été))"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Introduction
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="preambule/index.html">
+            
+                
+                    <a href="../preambule/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        Préambule
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="prerequisite/index.html">
+            
+                
+                    <a href="../prerequisite/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        Prérequis
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="prerequisite/Languages.html">
+            
+                
+                    <a href="../prerequisite/Languages.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        Les languages
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="prerequisite/Framework.html">
+            
+                
+                    <a href="../prerequisite/Framework.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        Les librairies
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="prerequisite/Tools.html">
+            
+                
+                    <a href="../prerequisite/Tools.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        Les outils
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="prerequisite/Github.html">
+            
+                
+                    <a href="../prerequisite/Github.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        Focus sur Github
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="getting-started/index.html">
+            
+                
+                    <a href="../getting-started/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        Getting started
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="getting-started/environement-set-up.html">
+            
+                
+                    <a href="../getting-started/environement-set-up.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        Mettre en place son environnement
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="getting-started/starter-kit.html">
+            
+                
+                    <a href="../getting-started/starter-kit.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        Démarrer un projet à partit du kit de démarrage
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="tutorial/index.html">
+            
+                
+                    <a href="../tutorial/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        Tutoriels
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="tutorial/font-svg.html">
+            
+                
+                    <a href="../tutorial/font-svg.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        Comment intégrer mes icônes SVG dans mon application ?
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="tutorial/deployment-focus-vertigo.html">
+            
+                
+                    <a href="../tutorial/deployment-focus-vertigo.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        Comment déployer une application Focus/Vertigo sur un serveur Tomcat unique sans configuration externe
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="tutorial/gestion-popin-apres-redirection.html">
+            
+                
+                    <a href="../tutorial/gestion-popin-apres-redirection.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        Comment gérer proprement la popin avec un routage d&#39;URL
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="tutorial/surcharger-form-input.html">
+            
+                
+                    <a href="../tutorial/surcharger-form-input.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.</b>
+                        
+                        Comment surcharger un champ du formulaire par défaut ?
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="tutorial/form-mixin.html">
+            
+                
+                    <a href="../tutorial/form-mixin.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.</b>
+                        
+                        A quoi servent tous les mixins du formulaire ? Comment m&#39;en servir ?
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="tutorial/built-in-component-mixin.html">
+            
+                
+                    <a href="../tutorial/built-in-component-mixin.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.6.</b>
+                        
+                        Comment utiliser les helpers de field sans le form mixin ?
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7" data-path="tutorial/reference-mixin.html">
+            
+                
+                    <a href="../tutorial/reference-mixin.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.7.</b>
+                        
+                        Comment utiliser une liste de référence sans le form mixin ?
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8" data-path="tutorial/store-behavior.html">
+            
+                
+                    <a href="../tutorial/store-behavior.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.8.</b>
+                        
+                        Comment s&#39;abonner à des store sans le form mixin ?
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9" data-path="tutorial/admin-list.html">
+            
+                
+                    <a href="../tutorial/admin-list.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.9.</b>
+                        
+                        Implémenter une liste avec un détail au click
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="4.10" data-path="tutorial/detail.html">
+            
+                
+                    <a href="../tutorial/detail.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.10.</b>
+                        
+                        Implémenter une page de détail FOCUS
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.11" data-path="tutorial/recherche-avancee.html">
+            
+                
+                    <a href="../tutorial/recherche-avancee.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.11.</b>
+                        
+                        Implémenter la recherche FOCUS
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.12" data-path="tutorial/cas-tordus-form-mixin.html">
+            
+                
+                    <a href="../tutorial/cas-tordus-form-mixin.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.12.</b>
+                        
+                        Les cas tordus autour du FORM mixin
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.13" data-path="tutorial/traductions.html">
+            
+                
+                    <a href="../tutorial/traductions.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.13.</b>
+                        
+                        Utiliser des variables dans la traduction
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="extensions/index.html">
+            
+                
+                    <a href="../extensions/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        Extensions
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="troubleshooting/index.html">
+            
+                
+                    <a href="../troubleshooting/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        Problèmes récurents
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="maintenance/index.html">
+            
+                
+                    <a href="../maintenance/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        Maintenance
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="contribute/index.html">
+            
+                
+                    <a href="../contribute/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        Contribute
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1" data-path="contribute/CONTRIBUTE_TO_DEV.html">
+            
+                
+                    <a href="../contribute/CONTRIBUTE_TO_DEV.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.1.</b>
+                        
+                        Contribuer au dev
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" data-path="contribute/DECLARE_ISSUE.html">
+            
+                
+                    <a href="../contribute/DECLARE_ISSUE.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.2.</b>
+                        
+                        Déclarer une issue
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.3" data-path="contribute/PR_FIX_TEMPLATE.html">
+            
+                
+                    <a href="../contribute/PR_FIX_TEMPLATE.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.3.</b>
+                        
+                        Template pour une correction
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Publié avec GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+    <a href="../GLOSSARY.html" class="btn pull-left" aria-label="Glossaire"><i class="fa fa-sort-alpha-asc"></i></a>
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >Focus-Docs</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="impl&#xE9;menter-une-page-de-d&#xE9;tail">Impl&#xE9;menter une page de d&#xE9;tail</h1>
+<p>Dans ce tutoriel, nous allons cr&#xE9;er une page de d&#xE9;tail d&apos;une entit&#xE9;, avec &#xE9;dition de ses caract&#xE9;ristiques propres.
+Nous allons cr&#xE9;er la page de d&#xE9;tail d&apos;un film.</p>
+<h2 id="anatomie-dune-page-de-d&#xE9;tail">Anatomie d&apos;une page de d&#xE9;tail</h2>
+<p>Une page de d&#xE9;tail ressemble &#xE0; &#xE7;a :</p>
+<p><img src="images/detail.png" alt=""></p>
+<p>Elle est constitu&#xE9;e :</p>
+<ul>
+<li>d&apos;un cartridge</li>
+<li>d&apos;une zone de navigation rapide</li>
+<li>d&apos;un ou plusieurs panneaux (ou blocks) de formulaire</li>
+</ul>
+<h2 id="cr&#xE9;ation-de-la-page">Cr&#xE9;ation de la page</h2>
+<p>Commen&#xE7;ons par cr&#xE9;er un dossier pour l&apos;ensemble des composants de cette page de d&#xE9;tail, dans notre dossier de vues, <code>views</code>.</p>
+<p>La mani&#xE8;re dont vous organisez votre dossier de vues vous incombe, cependant une bonne pratique est de regrouper les vues par entit&#xE9;.</p>
+<p>Dans notre cas, nous cr&#xE9;ons le dossier <code>views/movie/detail</code>.</p>
+<p>Cr&#xE9;ons notre composant parent, <code>views/movie/detail/index.jsx</code>:</p>
+<pre><code class="lang-js"><span class="hljs-comment">/* views/movie/detail/index.jsx */</span>
+<span class="hljs-keyword">import</span> React, {PropTypes} <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
+
+<span class="hljs-keyword">const</span> MovieDetail = React.createClass({
+    displayName: <span class="hljs-string">&apos;MovieDetail&apos;</span>,
+    propTypes: {
+        id: PropTypes.number.isRequired
+    },
+    render() {
+        <span class="hljs-keyword">const</span> {id} = <span class="hljs-keyword">this</span>.props;
+        <span class="hljs-keyword">return</span> (
+            <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
+                {`Page de d&#xE9;tail du movie ${id}`}
+            <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+        )</span>;
+    }
+});
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> MovieDetail;
+</code></pre>
+<p>Notre page de d&#xE9;tail est pour l&apos;instant tr&#xE8;s simple, elle n&apos;a qu&apos;une <em>prop</em>, <code>id</code>, qui lui est fournie par le routeur lorsque l&apos;on navigue vers l&apos;URI <code>/#movies/{id}</code>.</p>
+<h2 id="ajout-du-premier-panneau-de-d&#xE9;tail">Ajout du premier panneau de d&#xE9;tail</h2>
+<h3 id="mise-en-place-du-composant">Mise en place du composant</h3>
+<p>Les attributs de notre entit&#xE9;s vont &#xEA;tre pr&#xE9;sent&#xE9;s &#xE0; travers des panneaux.</p>
+<p>Nous allons cr&#xE9;er un premier panneau, pour afficher et &#xE9;diter les caract&#xE9;ristiques principales de notre <em>movie</em>.</p>
+<pre><code class="lang-js"><span class="hljs-comment">/* views/movie/detail/characteristics.jsx */</span>
+<span class="hljs-keyword">import</span> React, {PropTypes} <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
+<span class="hljs-keyword">import</span> {Panel} <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;focus-components/components&apos;</span>
+
+const MovieCharacteristics = React.createClass({
+    render() {
+        const {id} = this.props;
+        <span class="hljs-keyword">return</span> (
+            <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">Panel</span> <span class="hljs-attribute">title</span>=<span class="hljs-value">&apos;view.movie.detail.characteristics&apos;</span>&gt;</span>
+                {`Panneau de caract&#xE9;ristiques du movie${id}`}
+            <span class="hljs-tag">&lt;/<span class="hljs-title">Panel</span>&gt;</span>
+        )</span>;
+    }
+});
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> MovieCharacteristics;
+</code></pre>
+<p>Ici, pas besoin de valider &#xE0; nouveau la <em>prop</em> <strong>id</strong>, elle est d&#xE9;j&#xE0; valid&#xE9;e dans le parent.</p>
+<pre><code class="lang-js"><span class="hljs-comment">/* views/movie/detail/index.jsx */</span>
+<span class="hljs-comment">// [...]</span>
+<span class="hljs-keyword">import</span> MovieCharacteristics <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./characteristics&apos;</span>;
+<span class="hljs-comment">// [...]</span>
+render() {
+    <span class="hljs-keyword">const</span> {id} = <span class="hljs-keyword">this</span>.props;
+    <span class="hljs-keyword">return</span> (
+        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">MovieCharacteristics</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">{id}</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    )</span>;
+}
+<span class="hljs-comment">// [...]</span>
+</code></pre>
+<p>Notre premier panneau est maintenant pr&#xEA;t &#xE0; recevoir les donn&#xE9;es depuis le store applicatif, et &#xE0; faire les appels serveurs permettant le chargement de l&apos;entit&#xE9; dans les store.</p>
+<h3 id="chargement-de-lentit&#xE9;-en-m&#xE9;moire">Chargement de l&apos;entit&#xE9; en m&#xE9;moire</h3>
+<p>Le chargement de l&apos;entit&#xE9; passe par les stores applicatif, en suivant l&apos;architecture <strong>flux</strong>.</p>
+<p>Il est donc n&#xE9;cessaire de lancer une action qui va effectuer le chargement serveur de l&apos;entit&#xE9;, et de s&apos;abonner aux changements du store de l&apos;entit&#xE9; afin de b&#xE9;n&#xE9;ficier des donn&#xE9;es retourn&#xE9;es par le serveur.</p>
+<p>Nous allons donc cr&#xE9;er les actions et les services associ&#xE9;s aux manipulations de cette entit&#xE9;.</p>
+<pre><code class="lang-js"><span class="hljs-comment">/* actions/movie.js */</span>
+<span class="hljs-keyword">import</span> movieServices <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../services/movie&apos;</span>;
+<span class="hljs-keyword">import</span> actionBuilder <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;focus-core/application/action-builder&apos;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> movieActions = {
+    load: actionBuilder({
+        node: <span class="hljs-string">&apos;movie&apos;</span>,
+        service: movieServices.loadMovie,
+        shouldDumpStoreOnActionCall: <span class="hljs-literal">true</span>,
+        status: <span class="hljs-string">&apos;loaded&apos;</span>
+    }),
+    save: actionBuilder({
+        node: <span class="hljs-string">&apos;movie&apos;</span>,
+        service: movieServices.updateMovie,
+        shouldDumpStoreOnActionCall: <span class="hljs-literal">false</span>,
+        status: <span class="hljs-string">&apos;saved&apos;</span>
+    })
+}
+</code></pre>
+<pre><code class="lang-js"><span class="hljs-comment">/* services/movie.js */</span>
+<span class="hljs-keyword">import</span> fetch <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;focus-core/network/fetch&apos;</span>;
+<span class="hljs-keyword">import</span> movieUrl <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../config/server/movies&apos;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
+    loadMovie(id) {
+        <span class="hljs-keyword">return</span> fetch(movieUrl.load({urlData: {id}}), {isCORS: <span class="hljs-literal">true</span>});
+    },
+    updateMovie(movie) {
+        <span class="hljs-keyword">const</span> movieId = movie.id;
+        <span class="hljs-keyword">return</span> fetch(movieUrl.update({urlData: {id: movieId}, data : movie}), {isCORS: <span class="hljs-literal">true</span>});
+    }
+}
+</code></pre>
+<p>Notre entit&#xE9; <em>movie</em> dispose maintenant de deux m&#xE9;thodes de manipulation, un <strong>load</strong> et et un <strong>save</strong>.</p>
+<p>Appelons le load au chargement de la page de d&#xE9;tail afin de disposer des donn&#xE9;es dans le store et donc dans les vues :</p>
+<pre><code class="lang-js"><span class="hljs-comment">/* views/movie/detail/index.jsx */</span>
+<span class="hljs-comment">// [...]</span>
+<span class="hljs-keyword">import</span> {movieActions} <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../../../action/movie&apos;</span>;
+<span class="hljs-comment">// [...]</span>
+<span class="hljs-keyword">const</span> MovieDetail = React.createClass({
+    [...]
+    componentWillMount() {
+        <span class="hljs-comment">// Chargement de l&apos;entit&#xE9; depuis le serveur</span>
+        movieActions.load(<span class="hljs-keyword">this</span>.props.id);
+    },
+    [...]
+});
+<span class="hljs-comment">// [...]</span>
+</code></pre>
+<h3 id="affichage-de-lentit&#xE9;">Affichage de l&apos;entit&#xE9;</h3>
+<p>Maintenant que l&apos;entit&#xE9; est charg&#xE9;e en m&#xE9;moire au montage de la page de d&#xE9;tail, il est possible de l&apos;afficher dans le panneau <em>movieCharacteristics</em>.</p>
+<p>Pour cela, nous allons utiliser le <strong>formPreset</strong> dans le panneau, qui va nous faire b&#xE9;n&#xE9;ficier de l&apos;ensemble des fonctionnalit&#xE9;s du form, &#xE0; savoir l&apos;abonnement aux stores, le chargement des d&#xE9;finitions avec domaines associ&#xE9;s, les helpers de field, et le branchement aux actions de l&apos;entit&#xE9;, le load et le save.</p>
+<pre><code class="lang-js"><span class="hljs-comment">/* views/movie/detail/characteristics.jsx */</span>
+[...]
+<span class="hljs-keyword">import</span> {mixin <span class="hljs-keyword">as</span> formPreset} <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;focus-components/common/form&apos;</span>;
+<span class="hljs-keyword">import</span> {movieActions} <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../../../action/movie&apos;</span>;
+<span class="hljs-keyword">import</span> movieStore <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../../../stores/movie&apos;</span>;
+[...]
+<span class="hljs-keyword">const</span> MovieCharacteristics = React.createClass({
+    displayName: <span class="hljs-string">&apos;MovieCharacteristics&apos;</span>,
+    mixins: [formPreset], <span class="hljs-comment">// Chargement du preset de form</span>
+    definitionPath: <span class="hljs-string">&apos;movie&apos;</span>, <span class="hljs-comment">// d&#xE9;finition de notre entit&#xE9;</span>
+    stores: [{store: movieStore, properties: [<span class="hljs-string">&apos;movie&apos;</span>]}], <span class="hljs-comment">// permet de s&apos;abonner au store</span>
+    action: movieActions, <span class="hljs-comment">// donne les actions au form</span>
+    renderContent() {
+        <span class="hljs-keyword">return</span> (
+            <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">Panel</span> <span class="hljs-attribute">actions</span>=<span class="hljs-value">{this._renderActions}</span> <span class="hljs-attribute">title</span>=<span class="hljs-value">&apos;view.movie.detail.characteristics&apos;</span>&gt;</span> // _renderActions permet d&apos;afficher les actions en t&#xEA;te du panneau, &#xE0; savoir Editer, Sauver, Annuler
+                {this.fieldFor(&apos;title&apos;)} // Les fieldFor sont des fonctions helper pour afficher et &#xE9;diter un champ, avec label
+                {this.fieldFor(&apos;originalTitle&apos;)}
+                {this.fieldFor(&apos;keywords&apos;)}
+                {this.fieldFor(&apos;runtime&apos;)}
+                {this.fieldFor(&apos;movieType&apos;)}
+                {this.fieldFor(&apos;productionYear&apos;)}
+            <span class="hljs-tag">&lt;/<span class="hljs-title">Panel</span>&gt;</span>
+        )</span>;
+    }
+});
+</code></pre>
+<p>Il est important d&apos;ajouter une <em>prop</em> depuis le parent vers <code>MovieCharacteristics</code> afin de lui signaler de ne pas effectuer le <strong>load</strong> &#xE0; son chargement, car le parent le fait d&#xE9;j&#xE0;. Par d&#xE9;faut, le <em>formPreset</em> se chargera de le faire en appelant le <code>load(this.props.id)</code>.</p>
+<p>Faire le chargement dans le parent permet de s&apos;assurer qu&apos;il n&apos;est fait qu&apos;une fois pour l&apos;ensemble des enfants.</p>
+<pre><code class="lang-js"><span class="hljs-comment">/* views/movie/detail/index.jsx */</span>
+<span class="hljs-comment">// [...]</span>
+&lt;div&gt;
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">MovieCharacteristics</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">{id}</span> <span class="hljs-attribute">hasLoad</span>=<span class="hljs-value">{false}</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+// [...]
+</span></code></pre>
+<h2 id="ajout-dun-second-panneau">Ajout d&apos;un second panneau</h2>
+<p>Nous allons ajouter un panneau propre au synopsis du movie, afin de s&#xE9;parer l&apos;information et de rendre plus limpide la lecture de la page de d&#xE9;tail.</p>
+<p>Le synopsis est un attribut de notre entit&#xE9;, on b&#xE9;n&#xE9;ficie donc d&#xE9;j&#xE0; de l&apos;information dans le store <code>movieStore</code> dans le noeud <code>movie</code>.</p>
+<pre><code class="lang-js"><span class="hljs-comment">/* views/movie/detail/synopsis.jsx */</span>
+<span class="hljs-keyword">import</span> Panel <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;focus-components/components/panel&apos;</span>;
+<span class="hljs-keyword">import</span> {mixin <span class="hljs-keyword">as</span> formPreset} <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;focus-components/common/form&apos;</span>;
+<span class="hljs-keyword">import</span> {movieActions} <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../../../action/movie&apos;</span>;
+<span class="hljs-keyword">import</span> movieStore <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../../../stores/movie&apos;</span>;
+
+<span class="hljs-keyword">const</span> MovieSynopsis = React.createClass({
+    displayName: <span class="hljs-string">&apos;MovieSynopsis&apos;</span>,
+    mixins: [formPreset],
+    definitionPath: <span class="hljs-string">&apos;movie&apos;</span>,
+    stores: [{store: movieStore, properties: [<span class="hljs-string">&apos;movie&apos;</span>]}],
+    action: movieActions,
+    renderContent() {
+        <span class="hljs-keyword">return</span> (
+            <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">Panel</span> <span class="hljs-attribute">actions</span>=<span class="hljs-value">{this._renderActions}</span> <span class="hljs-attribute">title</span>=<span class="hljs-value">&apos;view.movie.detail.synopsis&apos;</span>&gt;</span>
+                {this.fieldFor(&apos;synopsis&apos;)}
+            <span class="hljs-tag">&lt;/<span class="hljs-title">Panel</span>&gt;</span>
+        )</span>;
+    }
+});
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> MovieSynopsis;
+</code></pre>
+<pre><code class="lang-js"><span class="hljs-comment">/* views/movie/detail/index.jsx */</span>$
+<span class="hljs-comment">// [...]</span>
+<span class="hljs-keyword">import</span> MovieSynopsis <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./synopsis&apos;</span>;
+<span class="hljs-comment">// [...]</span>
+&lt;div&gt;
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">MovieCharacteristics</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">{id}</span> <span class="hljs-attribute">hasLoad</span>=<span class="hljs-value">{false}</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">MovieSynopsis</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">{id}</span> <span class="hljs-attribute">hasLoad</span>=<span class="hljs-value">{false}</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+// [...]
+</span></code></pre>
+<h2 id="ajout-de-la-navigation-rapide">Ajout de la navigation rapide</h2>
+<p>La navigation rapide est rapidemment mise en place. En effet, il s&apos;agit d&apos;un simple wrapper autour de nos panneaux, qui va de lui-m&#xEA;me lister les panneau et mettre en place la navigation.</p>
+<pre><code class="lang-js"><span class="hljs-comment">/* views/movie/detail/index.jsx */</span>$
+<span class="hljs-comment">// [...]</span>
+<span class="hljs-keyword">import</span> ScrollspyContainer <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;focus-components/components/scrollspy-container&apos;</span>;
+<span class="hljs-comment">// [...]</span>
+&lt;ScrollspyContainer gridContentSize={<span class="hljs-number">10</span>} gridMenuSize={<span class="hljs-number">2</span>}&gt; <span class="hljs-comment">// Colonne de 10 pour le contenu, colonne de 2 pour le menu de nav rapide</span>
+    &lt;MovieCharacteristics id={id} hasLoad={<span class="hljs-literal">false</span>}/&gt;
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">MovieSynopsis</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">{id}</span> <span class="hljs-attribute">hasLoad</span>=<span class="hljs-value">{false}</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">ScrollspyContainer</span>&gt;</span>
+// [...]
+</span></code></pre>
+<h2 id="ajout-dune-entit&#xE9;-d&#xE9;riv&#xE9;e">Ajout d&apos;une entit&#xE9; d&#xE9;riv&#xE9;e</h2>
+<p>Afin d&apos;&#xE9;toffer notre page de d&#xE9;tail, nous allons ajouter un panneau traitant un entit&#xE9; d&#xE9;riv&#xE9;e de <code>movie</code>, le casting, que nous appellerons <code>movieCasting</code>. Il s&apos;agit de l&apos;ensemble des personnes reli&#xE9;es &#xE0; un film, &#xE0; savoir les producteurs, r&#xE9;alisateurs, acteurs, etc...</p>
+<p>Le chargement des ces entit&#xE9;s se fait par un webservice s&#xE9;par&#xE9; dans la mesure o&#xF9; il ne s&apos;agit pas directement d&apos;un attribut propre au film.</p>
+<p>Cr&#xE9;ons donc les actions et services associ&#xE9;s &#xE0; cette entit&#xE9; d&#xE9;riv&#xE9;e.</p>
+<pre><code class="lang-js"><span class="hljs-comment">/* actions/movieCasting.js */</span>
+<span class="hljs-keyword">import</span> movieCastingServices <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../services/movieCasting&apos;</span>;
+<span class="hljs-keyword">import</span> actionBuilder <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;focus-core/application/action-builder&apos;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> movieActions = {
+    load: actionBuilder({
+        node: <span class="hljs-string">&apos;movieCasting&apos;</span>,
+        service: movieCastingServices.loadMovieCasting,
+        shouldDumpStoreOnActionCall: <span class="hljs-literal">true</span>,
+        status: <span class="hljs-string">&apos;loaded&apos;</span>
+    }),
+    save: actionBuilder({
+        node: <span class="hljs-string">&apos;movieCasting&apos;</span>,
+        service: movieCastingServices.updateMovieCasting,
+        shouldDumpStoreOnActionCall: <span class="hljs-literal">false</span>,
+        status: <span class="hljs-string">&apos;saved&apos;</span>
+    })
+}
+</code></pre>
+<pre><code class="lang-js"><span class="hljs-comment">/* services/movieCasting.js */</span>
+<span class="hljs-keyword">import</span> fetch <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;focus-core/network/fetch&apos;</span>;
+<span class="hljs-keyword">import</span> movieCastingUrl <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../config/server/movieCasting&apos;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
+    loadMovieCasting(id) {
+        <span class="hljs-keyword">return</span> fetch(movieCastingUrl.load({urlData: {id}}), {isCORS: <span class="hljs-literal">true</span>});
+    },
+    updateMovieCasting(movie) {
+        <span class="hljs-keyword">const</span> movieId = movie.id;
+        <span class="hljs-keyword">return</span> fetch(movieCastingUrl.update({urlData: {id: movieId}, movie}), {isCORS: <span class="hljs-literal">true</span>});
+    }
+}
+</code></pre>
+<p>Nous allons ajouter un panneau sp&#xE9;cifique &#xE0; cette entit&#xE9; dans la page de d&#xE9;tail.</p>
+<p>Nous sommes ici face &#xE0; un cas de correspondance directe entre un noeud du store (<code>movieCasting</code>), une paire d&apos;action (load/save) et un panneau d&apos;affichage. Il est donc possible de confier l&apos;appel du load au panneau directement, et ainsi ne pas avoir &#xE0; pr&#xE9;ciser le <code>hasLoad</code> dans le parent.</p>
+<pre><code class="lang-js"><span class="hljs-comment">/* views/movie/detail/casting.jsx */</span>
+<span class="hljs-keyword">import</span> Panel <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;focus-components/components/panel&apos;</span>;
+<span class="hljs-keyword">import</span> {mixin <span class="hljs-keyword">as</span> formPreset} <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;focus-components/common/form&apos;</span>;
+<span class="hljs-keyword">import</span> {castingActions} <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../../../actions/movie&apos;</span>;
+<span class="hljs-keyword">import</span> movieStore <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../../../stores/movie&apos;</span>;
+
+<span class="hljs-keyword">const</span> MovieCasting = React.createClass({
+    displayName: <span class="hljs-string">&apos;MovieCasting&apos;</span>,
+    mixins: [formPreset],
+    definitionPath: <span class="hljs-string">&apos;movieCasting&apos;</span>,
+    stores: [{store: movieStore, properties: [<span class="hljs-string">&apos;movieCasting&apos;</span>]}],
+    action: movieCastingActions,
+    renderContent() {
+        <span class="hljs-keyword">return</span> (
+            <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">Panel</span> <span class="hljs-attribute">actions</span>=<span class="hljs-value">{this._renderActions}</span> <span class="hljs-attribute">title</span>=<span class="hljs-value">&apos;view.movie.detail.casting&apos;</span>&gt;</span>
+                {...}
+            <span class="hljs-tag">&lt;/<span class="hljs-title">Panel</span>&gt;</span>
+        )</span>;
+    }
+});
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> MovieCasting;
+</code></pre>
+<p>Ne pas oublie de l&apos;ajouter au parent :</p>
+<pre><code class="lang-js"><span class="hljs-comment">/* views/movie/detail/index.jsx */</span>$
+<span class="hljs-comment">// [...]</span>
+<span class="hljs-keyword">import</span> MovieCasting <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./casting&apos;</span>;
+<span class="hljs-comment">// [...]</span>
+&lt;ScrollspyContainer gridContentSize={<span class="hljs-number">10</span>} gridMenuSize={<span class="hljs-number">2</span>}&gt; <span class="hljs-comment">// Colonne de 10 pour le contenu, colonne de 2 pour le menu de nav rapide</span>
+    &lt;MovieCharacteristics id={id} hasLoad={<span class="hljs-literal">false</span>}/&gt;
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">MovieSynopsis</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">{id}</span> <span class="hljs-attribute">hasLoad</span>=<span class="hljs-value">{false}</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">MovieCasting</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">{id}</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">ScrollspyContainer</span>&gt;</span>
+// [...]
+</span></code></pre>
+<h2 id="ajout-du-header">Ajout du header</h2>
+<p>Pour finaliser notre page de d&#xE9;tail, nous allons ajouter des &#xE9;l&#xE9;ments dans le header (ou cartridge).</p>
+<p>Le header a deux modes de fonctionnement : d&#xE9;pli&#xE9; et repli&#xE9;. Il faut donc lui fournir un composant pour chaque mode.</p>
+<p>Le store &#xE9;tant d&#xE9;j&#xE0; peupl&#xE9; par le composant parent de la page de d&#xE9;tail, on peut donc simplement utiliser le formPreset pour s&apos;abonner au store et afficher les champs qui nous int&#xE9;ressent.</p>
+<h3 id="cr&#xE9;ation-des-composants">Cr&#xE9;ation des composants</h3>
+<pre><code class="lang-js"><span class="hljs-comment">/* views/movie/detail/header-expanded.jsx */</span>
+<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
+
+<span class="hljs-keyword">import</span> {mixin <span class="hljs-keyword">as</span> formPreset} <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;focus-components/common/form&apos;</span>;
+
+<span class="hljs-keyword">import</span> movieStore <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../../../stores/movie&apos;</span>;
+
+<span class="hljs-comment">// Composant custom </span>
+<span class="hljs-keyword">import</span> Poster <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../components/poster&apos;</span>;
+
+<span class="hljs-keyword">const</span> MovieHeaderExpanded = React.createClass({
+    displayName: <span class="hljs-string">&apos;MovieHeaderExpanded&apos;</span>,
+    mixins: [formPreset],
+    definitionPath: <span class="hljs-string">&apos;movie&apos;</span>,
+    stores: [{store: movieStore, properties: [<span class="hljs-string">&apos;movie&apos;</span>, <span class="hljs-string">&apos;movieSynopsis&apos;</span>]}],
+    renderContent() {
+        <span class="hljs-keyword">const</span> {poster, title} = <span class="hljs-keyword">this</span>.state;
+        <span class="hljs-keyword">return</span> (
+            <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
+                {poster &amp;&amp;
+                    <span class="hljs-tag">&lt;<span class="hljs-title">Poster</span> <span class="hljs-attribute">poster</span>=<span class="hljs-value">{poster}</span> <span class="hljs-attribute">title</span>=<span class="hljs-value">{title}</span> /&gt;</span>
+                }
+                <span class="hljs-tag">&lt;<span class="hljs-title">h3</span>&gt;</span>{this.textFor(&apos;title&apos;)}<span class="hljs-tag">&lt;/<span class="hljs-title">h3</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">h5</span>&gt;</span>{this.textFor(&apos;movieType&apos;)}<span class="hljs-tag">&lt;/<span class="hljs-title">h5</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">h6</span>&gt;</span>{this.textFor(&apos;productionYear&apos;)}<span class="hljs-tag">&lt;/<span class="hljs-title">h6</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>{this.textFor(&apos;shortSynopsis&apos;)}<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+        )</span>;
+    }
+});
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> MovieHeaderExpanded;
+</code></pre>
+<p>Le composant de header repli&#xE9; est similaire, avec quelques informations en moins pour occuper moins de place.</p>
+<pre><code class="lang-js"><span class="hljs-comment">/* views/movie/detail/header-collapsed.jsx */</span>
+<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
+
+<span class="hljs-keyword">import</span> {mixin <span class="hljs-keyword">as</span> formPreset} <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;focus-components/common/form&apos;</span>;
+
+<span class="hljs-keyword">import</span> movieStore <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../../../stores/movie&apos;</span>;
+
+<span class="hljs-keyword">const</span> MovieHeaderCollapsed = React.createClass({
+    displayName: <span class="hljs-string">&apos;MovieHeaderCollapsed&apos;</span>,
+    mixins: [formPreset],
+    definitionPath: <span class="hljs-string">&apos;movie&apos;</span>,
+    stores: [{store: movieStore, properties: [<span class="hljs-string">&apos;movie&apos;</span>, <span class="hljs-string">&apos;movieSynopsis&apos;</span>]}],
+    renderContent() {
+        <span class="hljs-keyword">const</span> {poster, title} = <span class="hljs-keyword">this</span>.state;
+        <span class="hljs-keyword">return</span> (
+            <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">h3</span>&gt;</span>{this.textFor(&apos;title&apos;)}<span class="hljs-tag">&lt;/<span class="hljs-title">h3</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">h6</span>&gt;</span>{this.textFor(&apos;productionYear&apos;)}<span class="hljs-tag">&lt;/<span class="hljs-title">h6</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+        )</span>;
+    }
+});
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> MovieHeaderCollapsed;
+</code></pre>
+<h3 id="injection-des-composants-dans-le-header">Injection des composants dans le header</h3>
+<p>Nos composants de header sont d&#xE9;finis, mais ne sont pas inject&#xE9;s dans le header.</p>
+<p>Pour ce faire, on peut utiliser le <code>cartridgeBehaviour</code>, qui va permettre d&apos;indiquer &#xE0; la page quels composants afficher dans le header, ainsi que les actions globales disponibles en tant que boutons dans le header.</p>
+<p>Modifions la page parente afin de lui donner le cartridgeBehaviour et d&apos;envoyer les composants dans le header.</p>
+<pre><code class="lang-js"><span class="hljs-comment">/* views/movie/detail/index.jsx */</span>$
+<span class="hljs-comment">// [...]</span>
+<span class="hljs-keyword">import</span> MovieHeaderCollapsed <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./header-collapsed&apos;</span>;
+<span class="hljs-keyword">import</span> MovieHeaderExpanded <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./header-expanded&apos;</span>;
+<span class="hljs-keyword">import</span> {component <span class="hljs-keyword">as</span> BackButton} <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;focus-components/common/button/back&apos;</span>;
+<span class="hljs-keyword">import</span> {cartridgeBehaviour} <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;focus-components/page/mixin&apos;</span>;
+<span class="hljs-comment">// [...]</span>
+<span class="hljs-keyword">const</span> MovieDetail = React.createClass({
+    <span class="hljs-comment">// [...]</span>
+    mixins: [cartridgeBehaviour],
+    cartridgeConfiguration() {
+        <span class="hljs-keyword">const</span> props = { hasLoad: <span class="hljs-literal">false</span>, hasForm: <span class="hljs-literal">false</span> }; <span class="hljs-comment">// props qui seront donn&#xE9;es aux composants du header</span>
+        <span class="hljs-keyword">return</span> {
+            barLeft: { component: BackButton }, <span class="hljs-comment">// On ajoute le bouton Back en haut &#xE0; gauche de la page</span>
+            cartridge: { component: MovieHeaderExpanded, props },
+            summary: { component: MovieHeaderCollapsed, props },
+            actions: {
+                primary: [{ <span class="hljs-comment">// action d&apos;exemple</span>
+                    label: <span class="hljs-string">&apos;Imprimer&apos;</span>,
+                    icon: <span class="hljs-string">&apos;print&apos;</span>,
+                    action: () =&gt; { alert(<span class="hljs-string">&apos;todo print&apos;</span>)}
+                }],
+                secondary: []
+            }
+        };
+    },
+    <span class="hljs-comment">// [...]</span>
+});
+<span class="hljs-comment">// [...]</span>
+</code></pre>
+<h2 id="epilogue">Epilogue</h2>
+<p><img src="https://media.giphy.com/media/lgIyvBoSKEhuo/giphy.gif" alt=""></p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../tutorial/admin-list.html" class="navigation navigation-prev " aria-label="Previous page: Implémenter une liste avec un détail au click"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../tutorial/recherche-avancee.html" class="navigation navigation-next " aria-label="Next page: Implémenter la recherche FOCUS"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"addcssjs":{"css":["css/custom.css"]},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>

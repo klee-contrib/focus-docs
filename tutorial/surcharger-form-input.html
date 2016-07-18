@@ -1,0 +1,781 @@
+<!DOCTYPE HTML>
+<html lang="fr" >
+    
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Comment surcharger un champ du formulaire par défaut ? | Focus-Docs</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 2.6.7">
+        
+        
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+        <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+        
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-search/search.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+    
+
+        
+    
+    
+    <link rel="next" href="../tutorial/form-mixin.html" />
+    
+    
+    <link rel="prev" href="../tutorial/gestion-popin-apres-redirection.html" />
+    
+
+        <link rel="stylesheet" type="text/css" href="../css/custom.css">
+    </head>
+    <body>
+        
+        
+    <div class="book"
+        data-level="4.4"
+        data-chapter-title="Comment surcharger un champ du formulaire par défaut ?"
+        data-filepath="tutorial/surcharger-form-input.md"
+        data-basepath=".."
+        data-revision="Mon Jul 18 2016 18:27:31 GMT+0200 (Paris, Madrid (heure d’été))"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        Introduction
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="preambule/index.html">
+            
+                
+                    <a href="../preambule/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        Préambule
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2" data-path="prerequisite/index.html">
+            
+                
+                    <a href="../prerequisite/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.</b>
+                        
+                        Prérequis
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1" data-path="prerequisite/Languages.html">
+            
+                
+                    <a href="../prerequisite/Languages.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.1.</b>
+                        
+                        Les languages
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="prerequisite/Framework.html">
+            
+                
+                    <a href="../prerequisite/Framework.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.2.</b>
+                        
+                        Les librairies
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="prerequisite/Tools.html">
+            
+                
+                    <a href="../prerequisite/Tools.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.3.</b>
+                        
+                        Les outils
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="prerequisite/Github.html">
+            
+                
+                    <a href="../prerequisite/Github.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>2.4.</b>
+                        
+                        Focus sur Github
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="3" data-path="getting-started/index.html">
+            
+                
+                    <a href="../getting-started/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.</b>
+                        
+                        Getting started
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1" data-path="getting-started/environement-set-up.html">
+            
+                
+                    <a href="../getting-started/environement-set-up.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.1.</b>
+                        
+                        Mettre en place son environnement
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="getting-started/starter-kit.html">
+            
+                
+                    <a href="../getting-started/starter-kit.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>3.2.</b>
+                        
+                        Démarrer un projet à partit du kit de démarrage
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="4" data-path="tutorial/index.html">
+            
+                
+                    <a href="../tutorial/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.</b>
+                        
+                        Tutoriels
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1" data-path="tutorial/font-svg.html">
+            
+                
+                    <a href="../tutorial/font-svg.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.1.</b>
+                        
+                        Comment intégrer mes icônes SVG dans mon application ?
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="tutorial/deployment-focus-vertigo.html">
+            
+                
+                    <a href="../tutorial/deployment-focus-vertigo.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.2.</b>
+                        
+                        Comment déployer une application Focus/Vertigo sur un serveur Tomcat unique sans configuration externe
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="tutorial/gestion-popin-apres-redirection.html">
+            
+                
+                    <a href="../tutorial/gestion-popin-apres-redirection.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.3.</b>
+                        
+                        Comment gérer proprement la popin avec un routage d&#39;URL
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="4.4" data-path="tutorial/surcharger-form-input.html">
+            
+                
+                    <a href="../tutorial/surcharger-form-input.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.4.</b>
+                        
+                        Comment surcharger un champ du formulaire par défaut ?
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="tutorial/form-mixin.html">
+            
+                
+                    <a href="../tutorial/form-mixin.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.5.</b>
+                        
+                        A quoi servent tous les mixins du formulaire ? Comment m&#39;en servir ?
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="tutorial/built-in-component-mixin.html">
+            
+                
+                    <a href="../tutorial/built-in-component-mixin.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.6.</b>
+                        
+                        Comment utiliser les helpers de field sans le form mixin ?
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7" data-path="tutorial/reference-mixin.html">
+            
+                
+                    <a href="../tutorial/reference-mixin.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.7.</b>
+                        
+                        Comment utiliser une liste de référence sans le form mixin ?
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8" data-path="tutorial/store-behavior.html">
+            
+                
+                    <a href="../tutorial/store-behavior.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.8.</b>
+                        
+                        Comment s&#39;abonner à des store sans le form mixin ?
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9" data-path="tutorial/admin-list.html">
+            
+                
+                    <a href="../tutorial/admin-list.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.9.</b>
+                        
+                        Implémenter une liste avec un détail au click
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.10" data-path="tutorial/detail.html">
+            
+                
+                    <a href="../tutorial/detail.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.10.</b>
+                        
+                        Implémenter une page de détail FOCUS
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.11" data-path="tutorial/recherche-avancee.html">
+            
+                
+                    <a href="../tutorial/recherche-avancee.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.11.</b>
+                        
+                        Implémenter la recherche FOCUS
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.12" data-path="tutorial/cas-tordus-form-mixin.html">
+            
+                
+                    <a href="../tutorial/cas-tordus-form-mixin.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.12.</b>
+                        
+                        Les cas tordus autour du FORM mixin
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="4.13" data-path="tutorial/traductions.html">
+            
+                
+                    <a href="../tutorial/traductions.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>4.13.</b>
+                        
+                        Utiliser des variables dans la traduction
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="5" data-path="extensions/index.html">
+            
+                
+                    <a href="../extensions/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>5.</b>
+                        
+                        Extensions
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="6" data-path="troubleshooting/index.html">
+            
+                
+                    <a href="../troubleshooting/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>6.</b>
+                        
+                        Problèmes récurents
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="7" data-path="maintenance/index.html">
+            
+                
+                    <a href="../maintenance/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>7.</b>
+                        
+                        Maintenance
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8" data-path="contribute/index.html">
+            
+                
+                    <a href="../contribute/index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.</b>
+                        
+                        Contribute
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="8.1" data-path="contribute/CONTRIBUTE_TO_DEV.html">
+            
+                
+                    <a href="../contribute/CONTRIBUTE_TO_DEV.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.1.</b>
+                        
+                        Contribuer au dev
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" data-path="contribute/DECLARE_ISSUE.html">
+            
+                
+                    <a href="../contribute/DECLARE_ISSUE.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.2.</b>
+                        
+                        Déclarer une issue
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="8.3" data-path="contribute/PR_FIX_TEMPLATE.html">
+            
+                
+                    <a href="../contribute/PR_FIX_TEMPLATE.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>8.3.</b>
+                        
+                        Template pour une correction
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+            
+            <li class="divider"></li>
+            <li>
+                <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+                    Publié avec GitBook
+                </a>
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+    <a href="../GLOSSARY.html" class="btn pull-left" aria-label="Glossaire"><i class="fa fa-sort-alpha-asc"></i></a>
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >Focus-Docs</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="comment-surcharger-un-champ-par-d&#xE9;faut-du-formulaire-">Comment surcharger un champ par d&#xE9;faut du formulaire ?</h1>
+<p>Le formulaire propose un rendu par d&#xE9;faut des composants de saisie (input, select, radio, ...).
+Vous avez besoin de surchager un composant par d&#xE9;faut ? Comment faire ?</p>
+<p>Ce tuto vous explique tout.</p>
+<h2 id="qui-g&#xE8;re-le-rendu-par-d&#xE9;faut-">Qui g&#xE8;re le rendu par d&#xE9;faut ?</h2>
+<p>Le code composant <code>field</code> est ici : <a href="https://github.com/KleeGroup/focus-components/blob/develop/src/common/field/index.js" target="_blank">https://github.com/KleeGroup/focus-components/blob/develop/src/common/field/index.js</a></p>
+<p>Vous n&apos;avez cependant jamais besoin de l&apos;utiliser en temps que tel. A la place, vous utilisez les fonctions mises &#xE0; disposition par le <code>FormMixin</code>, et notamment la fonction <code>fieldFor</code>. Elle porte toute l&apos;intelligence de rendu dont la m&#xE9;canique est d&#xE9;taill&#xE9;e ici : <a href="https://github.com/KleeGroup/focus-components/blob/develop/src/common/field/mixin/built-in-components.js" target="_blank">https://github.com/KleeGroup/focus-components/blob/develop/src/common/field/mixin/built-in-components.js</a></p>
+<h2 id="prenons-un-exemple-concret">Prenons un exemple concret</h2>
+<p>Prenons par exemple ce formulaire:
+<img src="images/surcharge-form-1.png" alt="formulaire"></p>
+<p>Le code correspondant &#xE0; cette vue est le suivant :</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">//librairies</span>
+<span class="hljs-keyword">import</span> React, {PropTypes} <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;react&apos;</span>;
+
+<span class="hljs-comment">// web components</span>
+<span class="hljs-keyword">import</span> Panel <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;focus-components/components/panel&apos;</span>;
+<span class="hljs-keyword">import</span> {mixin <span class="hljs-keyword">as</span> formPreset} <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;focus-components/common/form&apos;</span>;
+
+<span class="hljs-comment">//stores &amp; actions</span>
+<span class="hljs-keyword">import</span> contactStore <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../../../stores/contact&apos;</span>;
+<span class="hljs-keyword">import</span> {action} <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../../../action/contact&apos;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> React.createClass({
+    displayName: <span class="hljs-string">&apos;ContactForm&apos;</span>,
+    propTypes: {
+        id: PropTypes.number.isRequired
+    },
+    mixins: [formPreset],
+    stores: [{store: contactStore, properties: [<span class="hljs-string">&apos;contact&apos;</span>]}],
+    definitionPath: <span class="hljs-string">&apos;contact&apos;</span>,
+    action: action
+
+    <span class="hljs-comment">/**
+    * Render content form.
+    * @return {ReactDOMNode} node REACT
+    */</span>
+    renderContent() {
+        <span class="hljs-keyword">return</span> (
+            <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-title">Panel</span> <span class="hljs-attribute">actions</span>=<span class="hljs-value">{this._renderActions}</span> <span class="hljs-attribute">title</span>=<span class="hljs-value">&quot;Fiche de l&apos;utilisateur&quot;</span>&gt;</span>
+                {this.fieldFor(&apos;firstName&apos;)}
+                {this.fieldFor(&apos;lastName&apos;)}
+                {this.fieldFor(&apos;isActif&apos;)}
+            <span class="hljs-tag">&lt;/<span class="hljs-title">Panel</span>&gt;</span>
+        )</span>;
+    }
+});
+</code></pre>
+<p>Je veux surcharger le composant <code>input</code> pour le remplacer pour remplacer par un <code>toggle</code> :
+<img src="images/surcharge-form-2.png" alt="formulaire"></p>
+<h2 id="et-alors--comment-je-fais-">Et alors ? Comment je fais ?</h2>
+<p>Pour afficher le <code>field</code>, et ainsi rendre son composant de saisie, les donn&#xE9;es suivantes sont combin&#xE9;es et pass&#xE9;es en props du <code>fieldFor</code> par le Form FOCUS :</p>
+<ul>
+<li>les domaines que vous avez d&#xE9;finis</li>
+<li>les entit&#xE9;s que vous avez d&#xE9;finies</li>
+</ul>
+<p>Dans notre exemple, pour les domaines :  </p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> domain = {
+    DO_TEXT: {
+        type: <span class="hljs-string">&apos;text&apos;</span>,
+        validator: [{
+            type: <span class="hljs-string">&apos;string&apos;</span>,
+            options: {
+                maxLength: <span class="hljs-number">50</span>
+            }
+        }]
+    },
+    DO_OUI_NON: {
+        type: <span class="hljs-string">&apos;text&apos;</span>
+    }
+};
+</code></pre>
+<p>Dans notre exemple, pour les entit&#xE9;s :</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">const</span> entities = {
+    contact: {
+        firstName: {
+            domain: <span class="hljs-string">&apos;DO_TEXT&apos;</span>,
+            required: <span class="hljs-literal">false</span>,
+            validator: [{options: {translationKey: <span class="hljs-string">&apos;entityContactValidation.test&apos;</span>}, type: <span class="hljs-string">&apos;function&apos;</span>, value: data =&gt; {
+                <span class="hljs-keyword">return</span> data.length &lt;= <span class="hljs-number">3</span> ? <span class="hljs-literal">false</span> : <span class="hljs-literal">true</span>;
+            }}]
+        },
+        lastName: {
+            domain: <span class="hljs-string">&apos;DO_TEXT&apos;</span>,
+            required: <span class="hljs-literal">true</span>
+        },
+        isActif: {
+            domain: <span class="hljs-string">&apos;DO_OUI_NON&apos;</span>
+        }
+    }
+</code></pre>
+<p>Pour modifier le composant qui sera rendu par le form pour le champ <code>isActif</code>, il y a donc 2 solutions :</p>
+<ul>
+<li>en modifiant la d&#xE9;finition du domaine <code>DO_OUI_NON</code>. Mais attention, cela modifiera le composant rendu pour tous les champs qui portent le domaine <code>DO_OUI_NON</code></li>
+<li>en modifiant la d&#xE9;finition de l&apos;entit&#xE9; et du champ <code>isActif</code>. Cela modifiera le rendu uniquement pour ce champ</li>
+</ul>
+<h3 id="par-exemple-">Par exemple :</h3>
+<p>Le domaine <code>DO_OUI_NON</code> :</p>
+<pre><code class="lang-javascript">    DO_OUI_NON: {
+        type: <span class="hljs-string">&apos;text&apos;</span>
+    }
+</code></pre>
+<p>devient</p>
+<pre><code class="lang-javascript">    <span class="hljs-keyword">import</span> Toggle <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;focus-components/components/input/toggle&apos;</span>;
+
+    DO_OUI_NON: {
+        InputComponent: Toggle
+    }
+</code></pre>
+<h2 id="un-peu-plus-loin-dans-la-surcharge">Un peu plus loin dans la surcharge...</h2>
+<p>Si vous souhaitez customiser les valeurs de votre domaine, comme ceci :</p>
+<p><img src="images/surcharge-form-3.png" alt="formulaire"></p>
+<p>Vous pouvez aussi &#xE9;crire ceci :</p>
+<pre><code class="lang-javascript">    <span class="hljs-keyword">import</span> SelectRadio <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;focus-components/components/input/select-radio&apos;</span>;
+
+    DO_OUI_NON_RIEN : {
+        SelectComponent: SelectRadio,
+        refContainer: {yesNoNothingList: [{code: <span class="hljs-literal">true</span>, label: <span class="hljs-string">&apos;select.yes&apos;</span>}, {code: <span class="hljs-literal">false</span>, label: <span class="hljs-string">&apos;select.no&apos;</span>}, {code: <span class="hljs-literal">null</span>, label: <span class="hljs-string">&apos;select.dontknow&apos;</span>}]},
+        listName: <span class="hljs-string">&apos;yesNoNothingList&apos;</span>,
+        formatter: i18n.t
+    }
+</code></pre>
+<h2 id="questil-possible-de-surcharger-">Qu&apos;est-il possible de surcharger ?</h2>
+<p>Les diff&#xE9;rentes propri&#xE9;t&#xE9;s r&#xE9;glables sont les suivantes:</p>
+<ul>
+<li><code>DisplayComponent</code> surcharge le composant de display.</li>
+<li><code>FieldComponent</code> surcharger le composant de field par d&#xE9;faut (utilisation rare)</li>
+<li><code>formatter</code> d&#xE9;finit une fonction de formatage qui sera appliqu&#xE9; au rendu de la valeur</li>
+<li><code>InputComponent</code> surcharge l&apos;input</li>
+<li><code>InputLabelComponent</code> surcharge le composant Field mais uniquement dans le cas d&apos;une checkbox ou d&apos;un composant input embarqu&#xE9; dans le label</li>
+<li><code>isRequired</code> d&#xE9;finit si une propri&#xE9;t&#xE9; est requise ou non</li>
+<li><code>SelectComponent</code> surcharge le select</li>
+<li><code>TextComponent</code> surcharge du composant de rendu textuel</li>
+<li><code>unformatter</code> d&#xE9;finit la fonction pour reconstruire la donn&#xE9;e &#xE0; partir de la valeur saisie dans l&apos;input</li>
+<li><code>validator</code> d&#xE9;finit la fonction de validation de la donn&#xE9;es saisie. Cette fonction doit renvoyer <code>true</code> si valide et le message d&apos;erreur si non valide.</li>
+</ul>
+<h2 id="depuis-le-fieldfor-luim&#xEA;me">Depuis le <code>fieldFor</code> lui-m&#xEA;me</h2>
+<p>Sachez qu&apos;il est &#xE9;galement possible de surcharger toutes ces props en les d&#xE9;clarant directement sur le <code>fieldFor</code>.</p>
+<p>Par exemple :</p>
+<pre><code class="lang-javascript">    {<span class="hljs-keyword">this</span>.fieldFor(<span class="hljs-string">&apos;isActif&apos;</span>, {InputComponent: Toggle})
+</code></pre>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../tutorial/gestion-popin-apres-redirection.html" class="navigation navigation-prev " aria-label="Previous page: Comment gérer proprement la popin avec un routage d&#39;URL"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../tutorial/form-mixin.html" class="navigation navigation-next " aria-label="Next page: A quoi servent tous les mixins du formulaire ? Comment m&#39;en servir ?"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+
+        
+<script src="../gitbook/app.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/lunr.min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-search/search.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-sharing/buttons.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/buttons.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"addcssjs":{"css":["css/custom.css"]},"highlight":{},"search":{"maxIndexSize":1000000},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2}};
+    gitbook.start(config);
+});
+</script>
+
+        
+    </body>
+    
+</html>
