@@ -4,7 +4,7 @@ Focus vous propose par défaut plusieurs mixins, qui vous permettent d'enrichir 
 
 ## Un mixin c'est quoi ?
 
-Un mixin est __fonction amie__ : elle ajoute des fonctionnalités à votre fonction, votre classe, votre composant ...
+Un mixin est __"fonction amie / classe amie"__ : elle ajoute des fonctionnalités et enrichit votre composant...
 
 ## Pourquoi ?
 
@@ -24,7 +24,7 @@ Dans cet article, nous parlons uniquement des mixins liés à la gestion des for
 
 ### `form-mixin`
 
-Il embarque tous les comportements pour charger et sauvegarder les données du formulaire, s'abonner aux stores de données, valider les données en surface les données à la soumission, afficher les champs, utiliser les données du référentiel, ... C'est le super-mixin, qui embarque tous les autres. Ce form-mixin est d'ailleurs à utiliser lorsque vous devez implémentez un formulaire classique qui inclut des modes consultation / édition.
+Il embarque **tous les comportements** pour charger et sauvegarder les données du formulaire, s'abonner aux stores de données, valider les données en surface les données à la soumission, afficher les champs, utiliser les données du référentiel, ... **C'est le super-mixin, qui embarque tous les autres**. Ce form-mixin est d'ailleurs à utiliser lorsque vous devez implémentez un formulaire classique qui inclut des modes consultation / édition.
 
 Pour en savoir plus sur son utilisation, vous pouvez consulter ce tutoriel "[Comment implémenter une page de détail ?](detail.md)"
 

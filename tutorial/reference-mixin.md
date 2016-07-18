@@ -2,10 +2,9 @@
 
 Ce tutoriel explique comment utiliser les listes de référence déclarées dans votre application, sans utiliser le `form-mixin` (Il est parfois luxieux et inutile d'utiliser le `form-mixin` pour faire cela)...
 
-
 # Comment procéder ?
 
-1. déclarez le `referenceBehaviour` dans vos imports
+1. Déclarez le `referenceBehaviour` dans vos imports
 2. Etendez le comportement de votre composant à travers la directive `mixins: [referenceBehaviour],`
 3. Définissez la liste à récupérer à l'aide de la syntaxe `referenceNames: ['genders']`
 4. Utiliser la liste de référence dans votre composant :
