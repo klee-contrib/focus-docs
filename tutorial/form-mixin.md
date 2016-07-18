@@ -18,8 +18,8 @@ Grâce à ces mixins, vous pouvez facilement ajouter à votre composant tous les
 En utilisant ces mixins, vous **augmentez très rapidement les capacités de votre composant** à adopter un de ces comportements, nécessaire à vos développements.
 De plus, vous ne vous souciez plus de réécrire toutes les étapes à un peu lourdes liées : au chargement de données, à la connexion à une source de données, à la validation des données de votre formulaire, ... Ces mixins fournissent l'ensemble de la mécanique pour mettre en place des comportements.
 
-> Les mixins sont un concepts à part dont l'utilisation dans `React` a été poussé avant l'utilisation d'ES6.
-> Aujourd'hui afin de mutualiser des composants on va préférer utiliser le concept de `High Order Component`
+> Les mixins sont un concepts à part dont l'utilisation dans `React` a été poussé avant l'adoption des classesES6.
+> Aujourd'hui afin de mutualiser des composants on va préférer utiliser le concept de [High Order Component](https://medium.com/@dan_abramov/mixins-are-dead-long-live-higher-order-components-94a0d2f9e750#.dvq7zxnqo)
 > Cependant, dans la plupart des librairies existantes ainsi que dans Focus, l'utilisation de certaines fonctionnalités dépendent de plusieurs mixins.
 > Nous vous recommandons cet article afin de bien comprendre les enjeux: [ici](https://facebook.github.io/react/blog/2016/07/13/mixins-considered-harmful.html)
 
