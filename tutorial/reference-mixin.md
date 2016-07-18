@@ -47,7 +47,7 @@ Ici, la liste de référence est déclarée sur le `fieldFor`.
 Vous pouvez également la récupérer directement dans le state pour itérer dessus. Par exemple :
 
 ```javascript
-const referenceList = this.state.reference.[nom-de-la-liste-de-reference];
+const referenceList = this.state.reference[nom-de-la-liste-de-reference];
 ```
 
 That's all !
