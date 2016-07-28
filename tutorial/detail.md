@@ -143,6 +143,22 @@ export default {
 
 Notre entité *movie* dispose maintenant de deux méthodes de manipulation, un **load** et et un **save**.
 
+Il est ensuite necessaire de créer le fichier config/movies de la façon suivante : 
+
+```js
+import builder from 'focus-core/util/url/builder';
+import {apiRoot} from './index';
+
+const movieRoot = `${apiRoot}movies/`;
+
+export default {
+    create: builder(movieRoot, 'POST'),
+    load: builder(movieRoot + '${id}', 'GET'),
+    search: builder(movieRoot + 'search?listState.skip=${skip}&listState.sortDesc=${sortDesc}&listState.top=${top}', 'POST'),
+    update: builder(movieRoot + '${id}', 'PUT')
+};
+```
+
 Appelons le load au chargement de la page de détail afin de disposer des données dans le store et donc dans les vues :
 
 ```js
