@@ -39,6 +39,12 @@ export default React.createClass({
         const {id} = this.props;
         caracteristicsActions.load(id);
     },
+    
+    getInitialState(){
+        return (
+            ...this._getStateFromStores()
+        )
+    },
 
 
     /** @inheritDoc */
