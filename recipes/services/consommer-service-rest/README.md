@@ -1,2 +1,0 @@
-Consommer un service REST
-=========================
