@@ -49,3 +49,4 @@ nav:
     - Tutoriels:
           - Index: tutorials/index.md
           - Ecran de détail: tutorials/detail-page.md
+          - Ecran de liste: tutorials/liste-page.md
