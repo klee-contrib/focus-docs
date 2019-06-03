@@ -1,19 +1,72 @@
 # Implémenter une page de détail
 
-Dans ce tutoriel, nous allons créer une page de détail, avec édition.
-Nous allons créer la page de détail d'un film.
+## Objectifs
 
-## Anatomie d'une page de détail
-
-Une page de détail ressemble à ça :
-
-![page de détail focus](images/detail.png)
+L'objectif de cet exercise et de pouvoir afficher une page de détail d'un film.
 
 Elle est constituée :
 
 -   d'un header ([Cartridge](https://github.com/KleeGroup/focus-components/blob/master/src/page/mixin/cartridge-behaviour.js))
 -   d'une zone de navigation rapide ([Scrollspy](https://github.com/KleeGroup/focus-components/tree/master/src/components/scrollspy-container))
 -   d'un ou plusieurs blocks de détail ([Panel](https://github.com/KleeGroup/focus-components/tree/master/src/components/panel))
+
+Une page de détail ressemble à ça :
+
+![page de détail focus](images/detail.png)
+
+## Concepts focus manipulés
+
+### Le CoreStore
+
+Focus propose un store simple [CoreStore](https://github.com/KleeGroup/focus-core/blob/master/src/store/CoreStore.js) qui permet de stocker n-noeuds par store.
+L'idée est que chaque store couvre un thème fonctionnel de l'application.
+Par exemple, un store `movieStore` qui aura les noeuds : `resume`, `characteristics`, `actors`.
+
+Chaque noeud aura plusieurs propriétés associés : `value`, `status`, `error`.
+
+<!-- prettier-ignore-start -->
+!!! warning
+    Le CoreStore pour savoir s'il accepte la payload d'une action se base uniquement sur le nom du noeud. Si plusieurs stores ont un noeud avec
+    un nom identique, alors il n'y a pas moyen de les différencier.
+<!-- prettier-ignore-end -->
+
+### Le ActionBuilder
+
+Le [ActionBuilder](https://github.com/KleeGroup/focus-core/blob/master/src/application/action-builder.js) va permettre de créer simplement une
+action qui va échanger avec le server pour charger ou sauvegarder des données.
+
+Lors de l'exécution d'une action, les opérations suivantes sont effectuées :
+
+1. Modifie le statut du noeud avec la valeur de `preLoading` (par défaut: `loading`) et passe `isLoading` à vrai
+2. Si `shouldDumpStoreOnActionCall` est à vrai, alors vide la valeur du noeud
+3. Appel le `service` configuré et lui donne la `payload`
+4. Si on a configuré un `postService`, on lui donne le retour du `service` pour transformation
+5. Dispatch le resultat du serveur dans le store, met le statut du noeud à `status` et `isLoading` à faux
+
+En cas de retour HTTP avec un code d'erreur, on dispatch dans le champ `error` du noeud
+
+Exemple de configuration d'un builder :
+
+```js
+const action: payload => Promise<void> = actionBuilder({
+    // Noeud ciblé
+    node: "movieCharacteristics",
+    // Statut pendant le chargement/sauvegarde
+    preLoading: "loading",
+    // Service à appeler
+    service: movieServices.loadMovieCharacteristics,
+    // Si on vide le noeud pendant le chargement
+    shouldDumpStoreOnActionCall: true,
+    // Transformation du retour server
+    postService: identity,
+    // Le statut du noeud à la fin de l'appel
+    status: "loaded"
+});
+```
+
+### Le FormMixin
+
+// TODO - décrire le formMixin
 
 ## Création de la page
 
@@ -42,11 +95,6 @@ MovieDetailPage.propTypes = {
     id: PropTypes.number.isRequired
 };
 ```
-
-<!-- prettier-ignore-start -->
-!!! note
-    Ici on utilise `React.createClass` car nous allons ajouter un mixin plus tard dans l'exercise
-<!-- prettier-ignore-end -->
 
 Notre page de détail est pour l'instant très simple, elle n'a qu'une _prop_, `id`, qui lui sera fournie par le routeur lorsque l'on navigue vers l'URI `/#movies/{id}`.
 
@@ -90,71 +138,96 @@ export default {
 };
 ```
 
-## Ajout du premier pannel de détail
+## Les pré-requis pour l'écran
 
-### Mise en place du composant
+### Création du store
 
-Les attributs de notre entités vont être présentés à travers des [pannels](https://github.com/KleeGroup/focus-components/blob/master/src/components/panel/index.js).
-
-Nous allons créer un premier pannel, pour afficher et éditer les caractéristiques principales de notre **movie**.
+Dans le dossier `app/stores` de votre application créer un fichier `movie-detail.js`.
 
 ```js
-// app/views/movies/movie-detail/movie-characteristics.jsx
+// app/stores/movie-detail.js
 
 // Libs
-import React, { PropTypes } from "react";
+import { CoreStore } from "focus-core/store";
 
-// Components
-import { Panel } from "focus-components/components";
-
-export const MovieCharacteristics = React.createClass({
-    render() {
-        const { id } = this.props;
-        return (
-            <Panel title="view.movie.detail.characteristics">
-                <div>{`Panneau de caractéristiques du film ${id}`}</div>
-            </Panel>
-        );
-    }
+// On créer une instance de ce store
+export const movieDetailStore = new CoreStore({
+    movieCharacteristics: "movieCharacteristics"
 });
-MovieCharacteristics.propTypes = {
-    id: PropTypes.number.isRequired
+movieDetailStore.name = "movieDetailStore";
+```
+
+<!-- prettier-ignore-start -->
+!!! note
+    Nous lui donnons un nom afin d'aider pour les messages de debug.
+    Ce n'est pas obligatoire mais c'est mieux.
+<!-- prettier-ignore-end -->
+
+### Création des APIs
+
+Notre entité **movie** dispose de deux APIs de manipulation, un **load** et et un **save**.
+
+Il est necessaire de créer le fichier `config/server/movies.js` qui contient les URIs exposées par l'API.
+Le mieux pour cela est d'utiliser le paquet [focus-service-generator](https://github.com/KleeGroup/focus-service-generator) (il est configuré avec le starter kit)
+
+Exécutez :
+
+```bash
+npm run generate
+```
+
+Cela va générer un fichier de la forme suivante :
+
+```js
+// app/config/server/generated/movies.js
+
+import apiDriverBuilder from "../../../utilities/api-driver";
+
+// Movies
+export default apiDriverBuilder({
+    getMovie: {
+        url: __API_ROOT__ + "/api/movie/${id}",
+        method: "GET"
+    },
+    updateMovie: {
+        url: __API_ROOT__ + "/api/movie/${id}",
+        method: "PUT"
+    }
+    // [...]
+});
+```
+
+Appelons le load au chargement de la page de détail afin de disposer des données dans le store et donc dans les vues :
+
+<!-- prettier-ignore-start -->
+!!! note
+    La signature des méthodes API sont de la forme : `(uriParam, bodyParam, misc)`
+<!-- prettier-ignore-end -->
+
+### Création des services
+
+Dans le fichier `app/services/movies.js` on va ajouter une méthode pour charger et sauvegarder un film :
+
+```js
+// app/services/movies.js
+
+// Apis
+import moviesApi from "../config/server/generated/movies";
+
+export const movieServices = {
+    loadMovieCharacteristics(id) {
+        return moviesApi.getMovie({ id });
+    },
+    updateMovieCharacteristics(movie) {
+        const { id } = movie;
+        return moviesApi.updateMovie({ id }, movie);
+    }
 };
 ```
 
-On instancie le bloc dans la page :
+### Création des actions
 
-```diff
-// app/views/movies/movie-detail/index.jsx
-
-// Libs
-import React, { PropTypes } from "react";
-
-+++ // Components
-+++ import { MovieCharacteristics } from "./movie-characteristics";
-
-export const MovieDetailPage = React.createClass({
-    render() {
-        const { id } = this.props;
-
----        return <div>{`Page de détail du movie ${id}`}</div>;
-+++        return <MovieCharacteristics id={id} />;
-    }
-});
-MovieDetailPage.propTypes = {
-    id: PropTypes.number.isRequired
-};
-```
-
-Notre premier panneau est maintenant prêt à recevoir les données depuis le store applicatif, et à faire les appels serveurs permettant le chargement de l'entité dans les store.
-
-### Chargement de l'entité en mémoire
-
-Le chargement de l'entité passe par les stores applicatif, en suivant l'architecture **flux**.
-
-Il est donc nécessaire de lancer une action qui va effectuer le chargement serveur de l'entité, et de s'abonner aux changements du store de l'entité afin de bénéficier des données retournées par le serveur.
-
-Nous allons donc créer les actions et les services associés aux manipulations de cette entité.
+Créer un fichier pour les actions liées à votre entité
 
 ```js
 // app/actions/movies.js
@@ -183,53 +256,67 @@ export const movieActions = {
 };
 ```
 
+## Les composants de l'écran
+
+### Premier panel de détail
+
+Nous allons créer un premier panel, pour afficher et éditer les caractéristiques principales de notre **movie**.
+
 ```js
-// app/services/movies.js
+// app/views/movies/movie-detail/movie-characteristics.jsx
 
-// Apis
-import moviesApi from "../config/server/generated/movies";
+// Libs
+import React, { PropTypes } from "react";
 
-export const movieServices = {
-    loadMovieCharacteristics(id) {
-        return moviesApi.getMovie({ id });
-    },
-    updateMovieCharacteristics(movie) {
-        const movieId = movie.id;
-        return moviesApi.updateMovie({ id: movieId }, movie);
+// Components
+import { Panel } from "focus-components/components";
+
+export const MovieCharacteristics = React.createClass({
+    render() {
+        const { id } = this.props;
+        return (
+            <Panel title="view.movie.detail.characteristics">
+                <div>{`panel de caractéristiques du film ${id}`}</div>
+            </Panel>
+        );
     }
+});
+MovieCharacteristics.propTypes = {
+    id: PropTypes.number.isRequired
 };
 ```
 
-Notre entité **movie** dispose maintenant de deux méthodes de manipulation, un **load** et et un **save**.
+On instancie le composant dans la page principale :
 
-Il est ensuite necessaire de créer le fichier `config/server/movies.js`.
-Le mieux est d'utiliser le paquet [focus-service-generator](https://github.com/KleeGroup/focus-service-generator) (il est configuré avec ce starter kit)
+```diff
+// app/views/movies/movie-detail/index.jsx
 
-Exécutez :
+// Libs
+import React, { PropTypes } from "react";
 
-```bash
-npm run generate
-```
++++ // Components
++++ import { MovieCharacteristics } from "./movie-characteristics";
 
-Cela va générer un fichier de la forme suivante :
+export const MovieDetailPage = React.createClass({
+    render() {
+        const { id } = this.props;
 
-```js
-// app/config/server/generated/movies.js
-
-import apiDriverBuilder from "../../../utilities/api-driver";
-
-// Movies
-export default apiDriverBuilder({
-    getMovie: {
-        url: __API_ROOT__ + "/api/movie/${id}",
-        method: "GET"
-    },
-    updateMovie: {
-        url: __API_ROOT__ + "/api/movie/${id}",
-        method: "PUT"
+---        return <div>{`Page de détail du movie ${id}`}</div>;
++++        return <MovieCharacteristics id={id} />;
     }
 });
+MovieDetailPage.propTypes = {
+    id: PropTypes.number.isRequired
+};
 ```
+
+Notre premier panel est maintenant prêt à recevoir les données depuis le store applicatif, et à faire les appels serveurs permettant le chargement de l'entité dans les store.
+
+### Chargement de l'entité
+
+Le chargement de l'entité passe par les stores applicatif, en suivant l'architecture **flux**.
+
+Il est donc nécessaire de lancer l'action qui va effectuer le chargement serveur de l'entité, et de s'abonner aux changements du store de l'entité afin de bénéficier des données retournées par le serveur.
 
 Appelons le load au chargement de la page de détail afin de disposer des données dans le store et donc dans les vues :
 
@@ -260,9 +347,9 @@ MovieDetailPage.propTypes = {
 
 ### Affichage de l'entité
 
-Maintenant que l'entité est chargée en mémoire au montage de la page de détail, il est possible de l'afficher dans le pannel **movieCharacteristics**.
+Maintenant que l'entité est chargée en mémoire au montage de la page de détail, il est possible de l'afficher dans le panel `MovieCharacteristics`.
 
-Pour cela, nous allons utiliser le **formMixin** dans le pannel. Il va nous faire bénéficier de l'ensemble des fonctionnalités du form focus, à savoir :
+Pour cela, nous allons utiliser le **formMixin** dans le panel. Il va nous faire bénéficier de l'ensemble des fonctionnalités du form focus, à savoir :
 
 -   l'abonnement aux stores,
 -   le chargement des définitions avec domaines associés,
@@ -284,34 +371,43 @@ import { movieActions } from '../../../actions/movies';
 import { Panel } from 'focus-components/components';
 
 export const MovieCharacteristics = React.createClass({
-+++    mixins: [formMixin], // Ajout du form mixin
-+++    definitionPath: 'movie', // Définition de notre entité
-+++    stores: [{ store: movieDetailStore, properties: ['movieCharacteristics'] }], // Abonnement au store
-+++    action: movieActions.movieCharacteristics, // Donne les actions au form
----    render() {
----        const { id } = this.props;
-+++    renderContent() {
-            return (
----            <Panel title='view.movie.detail.characteristics'>
-+++            <Panel actions={this._renderActions} title='views.movie.detail.characteristics'>
----            <div>{`Panneau de caractéristiques du film ${id}`}</div>
-+++                {/* Les fieldFor sont des fonctions helper pour afficher et éditer un champ avec label} */}
-+++                {this.fieldFor('title')}
-+++                {this.fieldFor('originalTitle')}
-+++                {this.fieldFor('keywords')}
-+++                {this.fieldFor('runtime')}
-+++                {this.fieldFor('movieType')}
-+++                {this.fieldFor('productionYear')}
-                </Panel>
-            );
-        }
++++ // Ajout du form mixin
++++ mixins: [formMixin],
++++ // Définition de notre entité
++++ definitionPath: 'movie',
++++ // Abonnement au store
++++ stores: [{ store: movieDetailStore, properties: ['movieCharacteristics'] }],
++++ // Donne les actions au form
++++ action: movieActions.movieCharacteristics,
+--- render() {
+---     const { id } = this.props;
++++ // render() est déjà défini par le formMixin
++++ renderContent() {
+        return (
+---         <Panel title='view.movie.detail.characteristics'>
++++         <Panel
++++             actions={this._renderActions}
++++             title='views.movie.detail.characteristics'
++++         >
+---         <div>{`panel de caractéristiques du film ${id}`}</div>
++++             {/* Les fieldFor sont des fonctions helper */}
++++             {/* pour afficher et éditer un champ avec label} */}
++++             {this.fieldFor('title')}
++++             {this.fieldFor('originalTitle')}
++++             {this.fieldFor('keywords')}
++++             {this.fieldFor('runtime')}
++++             {this.fieldFor('movieType')}
++++             {this.fieldFor('productionYear')}
+            </Panel>
+        );
+    }
 });
 MovieCharacteristics.propTypes = {
     id: PropTypes.number.isRequired
 };
 ```
 
-Il est important d'ajouter une **prop** depuis le parent vers `MovieCharacteristics` afin de lui signaler de ne pas effectuer le **load** à son chargement, le composant parent le fait déjà dans son `componentDidMount`. Par défaut, le **formMixin** se chargerait de le faire en appelant le `load(this.props.id)`.
+Il est important d'ajouter une **prop** depuis le parent vers `MovieCharacteristics` afin de lui signaler de ne pas effectuer le **load** à son chargement, le composant parent le fait déjà dans son `componentDidMount`. Par défaut, le **formMixin** se chargerait de le faire en appelant : `this.action.load(this.props.id)`.
 
 Faire le chargement dans le parent permet de s'assurer qu'il n'est fait qu'une fois pour l'ensemble des enfants.
 
@@ -344,9 +440,9 @@ MovieDetailPage.propTypes = {
 };
 ```
 
-## Ajout d'un second pannel
+### Ajout second panel
 
-Nous allons ajouter un pannel propre au synopsis du movie, afin de séparer l'information et de rendre plus limpide la lecture de la page de détail.
+Nous allons ajouter un panel propre au synopsis du movie, afin de séparer l'information et de rendre plus limpide la lecture de la page de détail.
 
 Le synopsis est un attribut de notre entité, on bénéficie donc déjà de l'information dans le noeud `movieCharacteristics` du `movieDetailStore`.
 
@@ -417,9 +513,9 @@ MovieDetailPage.propTypes = {
 };
 ```
 
-## Ajout de la navigation rapide
+### Ajout navigation rapide
 
-La navigation rapide est rapidemment mise en place. En effet, il s'agit d'un simple wrapper [ScrollspyContainer](https://github.com/KleeGroup/focus-components/blob/master/src/components/scrollspy-container/index.js) autour de nos pannels, qui va de lui-même lister les pannels et mettre en place la navigation.
+La navigation rapide est rapidemment mise en place. En effet, il s'agit d'un simple wrapper [ScrollspyContainer](https://github.com/KleeGroup/focus-components/blob/master/src/components/scrollspy-container/index.js) autour de nos panels, qui va de lui-même lister les panels et mettre en place la navigation.
 
 ```diff
 // app/views/movies/movie-detail/index.jsx
@@ -458,15 +554,13 @@ MovieDetailPage.propTypes = {
 };
 ```
 
-## Ajout du header
+### Ajout du header
 
 Pour finaliser notre page de détail, nous allons ajouter des éléments dans le header (ou Cartridge).
 
 Le header a deux modes de fonctionnement : déplié et replié. Il faut donc lui fournir un composant pour chaque mode.
 
 Le store étant déjà peuplé par le composant de la page de détail, on peut donc simplement utiliser le **formMixin** pour s'abonner au store et afficher les champs qui nous intéressent.
-
-### Création des composants
 
 ```js
 // app/views/movies/movie-detail/header-expanded.jsx
@@ -529,8 +623,6 @@ export const MovieHeaderCollapsed = React.createClass({
     }
 });
 ```
-
-### Injection des composants dans le header
 
 Nos composants de header sont définis, mais ne sont pas injectés dans le header.
 

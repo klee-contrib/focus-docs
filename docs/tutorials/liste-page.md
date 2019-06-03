@@ -23,7 +23,7 @@ Normalement vous devriez avoir une page qui ressemble à ça à la fin:
 
 ## Concepts focus manipulés
 
-### Le Store
+### Le ListStore
 
 Focus propose un store de liste accessible dans [focus-core/store/list](https://github.com/KleeGroup/focus-core/blob/master/src/store/list/index.js).
 Le store de liste aura les noeuds suivants :
@@ -54,9 +54,79 @@ Le builder permet de créer deux choses :
 
 Il est important de comprendre à ce niveau que parmi tous les composants que vous allez créer, seul le composant principal de liste effectuera des requêtes à l'API afin de récupérer les données. Les autres composants auront juste pour tâche de mettre à jour le store de liste en fonction des cas d'usages.
 
-## Les pré-requis pour la liste
+## Création de la page
 
-Dans notre exemple nous allons créer une page d'administration de film.
+Commençons par créer un dossier pour l'ensemble des composants de cette page de liste, dans notre dossier de vues: `views`.
+
+La manière dont vous organisez votre dossier de vues vous incombe, cependant une bonne pratique est de regrouper les vues par module puis par écran.
+
+Dans notre cas, nous créons le dossier : `views/movies/movie-list`.
+
+Créons notre composant parent :
+
+```js
+// app/views/movies/movie-list/index.jsx
+
+// Libs
+import React from "react";
+
+export const MovieListPage = React.createClass({
+    render() {
+        return (
+            <>
+                <div>Barre de recherche de films</div>
+                <div>Liste de films</div>
+                <div>Popin de preview d'un film</div>
+            </>
+        );
+    }
+});
+```
+
+Notre page de détail est pour l'instant très simple, elle est affichée lorsque l'on navigue vers l'URI `/#movies`.
+
+Il faut donc créer un nouveau fichier pour les routes de movies :
+
+```diff
+// app/routes/movie-routes.jsx
+
+// Libs
+import React from "react";
+
+// Components
++++ import { MovieListPage } from "../views/movies/movie-list";
+
+export const movieRoutes = [
++++ {
++++     path: "movies",
++++     component: ({ params }) => <MovieListPage />
++++ },
+    // [...]
+];
+```
+
+Puis l'enregistrer auprès du router :
+
+```diff
+// app/routes/index.js
+
+// Components
+import AppLayout from "../components/app-layout";
+
+// Routes
+import { homeRoutes } from "./home-routes";
++++ import { movieRoutes } from "./movie-routes";
+
+export default {
+    path: `${__BASE_URL__}`,
+    component: AppLayout,
+    indexRoute: { onEnter: ({ params }, replace) => replace(`${__BASE_URL__}home`) },
+---    childRoutes: [...homeRoutes]
++++    childRoutes: [...homeRoutes, ...movieRoutes]
+};
+```
+
+## Les pré-requis pour la liste
 
 ### Création du store
 
@@ -166,27 +236,6 @@ On a maintentant tout ce qu'il nous faut afin de créer le composant.
 
 ## Les composants de l'écran
 
-### Création du composant d'index de page
-
-Cette page aura la structure suivante :
-
-```js
-// app/views/movies/movie-list/index.jsx
-
-// Libs
-import React from "react";
-
-export const MovieListPage = React.createClass({
-    render() {
-        return (
-            <div>Barre de recherche de films</div>
-            <div>Liste de films</div>
-            <div>Popin de preview d'un film</div>
-        );
-    }
-});
-```
-
 ### Création du composant de liste
 
 Commençons par créer le composant de liste.
@@ -198,10 +247,10 @@ Commençons par créer le composant de liste.
 import React, { PropTypes } from "react";
 
 // Stores
-import { movieListStore } from "../stores/movie-list";
+import { movieListStore } from "../../../stores/movie-list";
 
 // Actions
-import { movieActions } from "../actions/movies";
+import { movieActions } from "../../../actions/movies";
 
 // Components
 import { component as List } from "focus-components/page/list";
@@ -215,12 +264,18 @@ const columns = {
 export const MovieList = ({ onLineClick }) => {
     return (
         <List
-            action={movieActions.searchMovies} // L'action qui charge la liste
-            columns={columns} // Les colonnes à afficher
-            isSelection={false} // Dire à la liste qu'elle n'est pas sélectionnable
-            LineComponent={MovieLine} // La ligne à utliser dans la liste
-            onLineClick={onLineClick} // Le handler de click sur la ligne
-            store={movieListStore} // Le store sur lequel le composant doit s'abonner.
+            // L'action qui charge la liste
+            action={movieActions.searchMovies}
+            // Les colonnes à afficher
+            columns={columns}
+            // Dire à la liste qu'elle n'est pas sélectionnable
+            isSelection={false}
+            // La ligne à utliser dans la liste
+            LineComponent={MovieLine}
+            // Le handler de click sur la ligne
+            onLineClick={onLineClick}
+            // Le store sur lequel le composant doit s'abonner.
+            store={movieListStore}
         />
     );
 };
@@ -296,26 +351,24 @@ import { translate } from "focus-core/translation";
 export const MovieCriteria = React.CreateClass({
     displayName: "MovieCriteria",
     mixins: [formMixin],
-
     definitionPath: "movie",
     getInitalState() {
         return { title: "" };
     },
     render() {
+        const { filter, onFilterChange } = this.props;
         return (
             <div data-demo="movie-criteria">
                 {this.fieldfor("title", {
-                    onChange: title => {
-                        this.setState({ title }, () => {
-                            this.props.onFilterChange(title);
-                        });
-                    }
+                    value: filter,
+                    onChange: title => onFilterChange(title)
                 })}
             </div>
         );
     }
 });
 MovieCriteria.propTypes = {
+    filter: PropType.string,
     onFilterChange: PropTypes.func.isRequired
 };
 ```
@@ -331,8 +384,11 @@ Ajout dans le render :
 // Libs
 import React from "react";
 
++++ // Store
++++ import { movieListStore } from "../../../stores/movie-list";
+
 +++ // Actions
-+++ import { movieActions } from "../actions/movies";
++++ import { movieActions } from "../../../actions/movies";
 
 // Components
 import { MovieList } from "./movie-list";
@@ -340,17 +396,19 @@ import { MovieCriteria } from "./movie-criteria";
 
 +++ function onFilterChange(title) {
 +++     moviesActions.searchMovies.updateProperties({
-+++         criteria: {
-+++             title
-+++         }
++++         criteria: { title }
 +++     });
 +++ }
 
 export const MovieListPage = React.createClass({
     render() {
++++     const properties = movieListStore.getValue();
         return (
 ---         <div>Barre de recherche de films</div>
-+++         <MovieCriteria onFilterChange={onFilterChange} />>
++++         <MovieCriteria
++++             filter={properties.criteria.title}
++++             onFilterChange={onFilterChange}
++++         />
             <MovieList onLineClick={() => { /* RAF */ }} />
             <div>Popin de preview d'un film</div>
         );
@@ -378,146 +436,81 @@ import { translate } from "focus-core/translation";
 import Panel from "focus-components/components/panel";
 import { component as Popin } from "focus-components/components/popin";
 
-export function MoviePopin({ isOpen, onPopinClose }) {
+export function MoviePopin({ id, isOpen, onPopinClose }) {
     return (
         <Popin open={isOpen} onPopinClose={onPopinClose}>
             <h4>{translate("movie.popin.title")}</h4>
+            <div>{`Popin d'édition pour le film ${id}`}</div>
 
             {/* Affichage du formulaire de détail */}
         </Popin>
     );
 }
 MoviePopin.propTypes = {
+    id: PropTypes.number,
     isOpen: PropTypes.boolean.isRequired,
     onPopinClose: PropTypes.func.isRequired
 };
 ```
 
-Cette page doit maintenant être ajoutée dans la page principale de la liste .
+Cette poin doit maintenant être ajoutée dans le composant principal de la liste .
 
-Nous avons donc besoin d'ajouter dans la page principale:
+```diff
+// app/views/movies/movie-list/index.jsx
 
--   Une Modale
--   Une gestion de l'ouverture et de la fermeture de la modale.
+// Libs
+import React from "react";
 
-Nous allons donc dans le composant parent, ajouter dans le state l'identifiant de la ligne sélectionné lorsqu'on clique sur une des lignes.
-Si cet id est présent dans le state alors on affiche une modale sinon non. Ainsi la modale sera abscente du DOM Javascript lorsqu'aucune ligne n'est selectionnée.
+// Actions
+import { movieActions } from "../../../actions/movies";
 
-```js
-constructor(props){
-  super(props);
+// Components
+import { MovieList } from "./movie-list";
+import { MovieCriteria } from "./movie-criteria";
++++ import { MoviePopin } from "./movie-popin";
 
-  //initialisation du state
-  // Initial state
-  this.state = {
-      detailId: null
-  };
-}
-// Methode qui sera appellée à la fermeture de la modale.
-_onDetailPopinClose = () => {
-    //Remove the detailId and call the list load action.
-    this.setState({detailId: null}, () => loadCountryList());
-};
-```
-
-Nous allons maintenant gérer l'affichage de la modale en fonction de la présence de l'id.
-
-```js
-render() {
-        // Get the id from the state
-        const {detailId} = this.state;
-        return (
-            <div data-demo='masterdata-countries'>
-                <CountryList
-                    action={loadCountryList}
-                    onLineClick={d => this.setState({detailId: d.id})}
-                    store={countryListStore} />
-
-                {
-                    /*
-                      Affichage de la popin uniquement si l'id est présent
-                    */
-                    detailId !== null &&
-                    <Modal
-                        onPopinClose={this._onDetailPopinClose}
-                        open={true} /* Elle est ouverte par défaut*/
-                        type='from-right'>
-                        /* On insère le composant de détail et on le démarre en mode edit.*/
-                        <CountryDetail id={detailId} isEdit={true}/>
-                    </Modal>
-                }
-            </div>
-        );
-    }
-```
-
-## Enregistrer auprès du router
-
-```js
-import React, { Component } from "react";
-import { component as Modal } from "focus-components/application/popin";
-// import {setHeader} from 'focus-core/application'
-import { translate } from "focus-core/translation";
-import CountryList from "./country-list";
-import CountryDetail from "./country-detail";
-import CountryCriteria from "./country-criteria";
-//import CountryActionBar from './country-action-bar';
-import { loadCountryList, updateCountyListProperties } from "../../../action/country";
-import countryListStore from "../../../stores/country-list";
-
-//Allow us to dispatch informations in the store using the built in action
-function _dispatchSearchCriteria(query) {
-    updateCountyListProperties({ criteria: query });
+function onFilterChange(title) {
+    moviesActions.searchMovies.updateProperties({
+        criteria: {
+            title
+        }
+    });
 }
 
-// Page which stands for the administration
-class MasterdataCountry extends Component {
-    constructor(props) {
-        super(props);
-
-        // Initial state
-        this.state = {
-            detailId: null
-        };
-    }
-    _onDetailPopinClose = () => {
-        //Remove the detailId and call the list load action.
-        this.setState({ detailId: null }, () => loadCountryList());
-    };
-
+export const MovieListPage = React.createClass({
++++ getInitialState() {
++++     return { id: undefined };
++++ },
++++ onPopinClose() {
++++     this.setState({ id: undefined });
++++ },
++++ openPopin(id) {
++++     this.setState({ id });
++++ },
     render() {
-        const { detailId } = this.state;
         return (
-            <div data-demo="masterdata-countries">
-                <CountryCriteria onFilterChange={_dispatchSearchCriteria} />
-                {/*LIST : This is the list which trigger the search and is connected to the list store */}
-                <CountryList
-                    action={loadCountryList}
-                    onLineClick={d => this.setState({ detailId: d.id })}
-                    store={countryListStore}
-                />
-
-                {/*
-                    When it is in the state, the popin is automatically displayed
-                    The detail popin is handled by this id
-                    */
-                detailId !== null && (
-                    <Modal onPopinClose={this._onDetailPopinClose} open={true} type="from-right">
-                        <CountryDetail id={detailId} isEdit={true} />
-                    </Modal>
-                )}
-            </div>
+            <MovieCriteria onFilterChange={onFilterChange} />
+---         <MovieList onLineClick={() => { /* RAF */ }} />
++++         <MovieList onLineClick={id => this.openPopin(id)} />
+---         <div>Popin de preview d'un film</div>
++++         <MoviePopin
++++             id={this.state.id}
++++             isOpen={this.state.id !== undefined}
++++             onPopinClose={() => this.onPopinClose()}
++++         />
         );
     }
-}
-
-MasterdataCountry.displayName = "MasterdataCountry";
-export default MasterdataCountry;
+});
 ```
 
-Il ne reste plus qu'à le mapper correctement à une route de votre application. Mais ça ne fait pas partie de votre tuto.
+Nous avons fait les modifications suivante :
 
-## Mutualisation à l'échelle d'un projet
+-   Ajout d'un state pour savoir l'identifiant du movie sur lequel on a cliqué
+-   Donné la méthode `openPopin` au composant `MovieList` pour ouvrir la popin
+-   Donné la méthode `onPopinClose` au composant `MoviePopin` pour fermer la popin
 
-Si vous avez dans votre projet plus de 10 listes administrables, il peut devenir intéressant de créer un composant au dessus de ces listes qui ne prendrait que le store et l'action et la ligne en paramètre. Ainsi ce composant sera industriialisé pour votre projet.
-Nous n'avons pas fait ce choix dans focus afin de conserver de la souplesse dans l'affichage des listes en fonction des projets et de la présence ou non de certains éléments (filtre de recherche / barre d'actio de tri, ...), forme de listes et des lignes.
+Ici, le **trick** est d'utiliser la propriété `id` pour savoir si la popin est ouverte ou fermée.
+
+## Epilogue
+
+![](https://media.giphy.com/media/lgIyvBoSKEhuo/giphy.gif)
