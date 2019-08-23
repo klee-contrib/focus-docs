@@ -1,0 +1,52 @@
+# Project information
+site_name: Focus 2 documentation
+site_description: A documentation for Focus 2
+site_author: KleeGroup
+site_url: http://kleegroup.github.io/focus-docs
+
+# Repository
+repo_url: https://github.com/KleeGroup/focus-components
+repo_name: KleeGroup/focus-components
+edit_uri: ""
+
+# Copyright
+copyright: KleeGroup &copy; 2019
+
+# Configuration
+theme:
+    name: material
+    include_search_page: false
+    palette:
+        primary: blue
+        accent: "light blue"
+    favicon: img/favicon.png
+    logo: img/favicon.png
+
+# Customization
+extra:
+    social:
+        - type: globe
+          link: http://www.kleegroup.com/
+        - type: github-alt
+          link: https://github.com/KleeGroup
+        - type: twitter
+          link: https://twitter.com/Klee_Group
+        - type: linkedin
+          link: https://www.linkedin.com/company/klee-group
+
+# Extensions
+markdown_extensions:
+    - toc:
+          permalink: true
+    - fenced_code
+    - codehilite
+    - admonition
+
+# Page tree
+nav:
+    - Index: index.md
+    - Préambule: preambule.md
+    - Tutoriels:
+          - Index: tutorials/index.md
+          - Ecran de détail: tutorials/detail-page.md
+          - Ecran de liste: tutorials/liste-page.md
