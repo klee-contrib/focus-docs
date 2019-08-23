@@ -1,0 +1,1414 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="A documentation for Focus 2">
+      
+      
+        <link rel="canonical" href="http://kleegroup.github.io/focus-docs/tutorials/detail-page/">
+      
+      
+        <meta name="author" content="KleeGroup">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../img/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.0">
+    
+    
+      
+        <title>Ecran de détail - Focus 2 documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.0284f74d.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.01803549.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#2196f3">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.74668098.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="blue" data-md-color-accent="light-blue">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#implementer-une-page-de-detail" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="http://kleegroup.github.io/focus-docs" title="Focus 2 documentation" class="md-header-nav__button md-logo">
+          
+            <img src="../../img/favicon.png" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Focus 2 documentation
+            </span>
+            <span class="md-header-nav__topic">
+              
+                Ecran de détail
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/KleeGroup/focus-components" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    KleeGroup/focus-components
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="http://kleegroup.github.io/focus-docs" title="Focus 2 documentation" class="md-nav__button md-logo">
+      
+        <img src="../../img/favicon.png" width="48" height="48">
+      
+    </a>
+    Focus 2 documentation
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/KleeGroup/focus-components" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    KleeGroup/focus-components
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Index" class="md-nav__link">
+      Index
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../preambule/" title="Préambule" class="md-nav__link">
+      Préambule
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      Tutoriels
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Tutoriels
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../" title="Index" class="md-nav__link">
+      Index
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Ecran de détail
+      </label>
+    
+    <a href="./" title="Ecran de détail" class="md-nav__link md-nav__link--active">
+      Ecran de détail
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objectifs" title="Objectifs" class="md-nav__link">
+    Objectifs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-focus-manipules" title="Concepts focus manipulés" class="md-nav__link">
+    Concepts focus manipulés
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-corestore" title="Le CoreStore" class="md-nav__link">
+    Le CoreStore
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#le-actionbuilder" title="Le ActionBuilder" class="md-nav__link">
+    Le ActionBuilder
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#le-formmixin" title="Le FormMixin" class="md-nav__link">
+    Le FormMixin
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creation-de-la-page" title="Création de la page" class="md-nav__link">
+    Création de la page
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#les-pre-requis-pour-lecran" title="Les pré-requis pour l'écran" class="md-nav__link">
+    Les pré-requis pour l'écran
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creation-du-store" title="Création du store" class="md-nav__link">
+    Création du store
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creation-des-apis" title="Création des APIs" class="md-nav__link">
+    Création des APIs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creation-des-services" title="Création des services" class="md-nav__link">
+    Création des services
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creation-des-actions" title="Création des actions" class="md-nav__link">
+    Création des actions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#les-composants-de-lecran" title="Les composants de l'écran" class="md-nav__link">
+    Les composants de l'écran
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#premier-panel-de-detail" title="Premier panel de détail" class="md-nav__link">
+    Premier panel de détail
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chargement-de-lentite" title="Chargement de l'entité" class="md-nav__link">
+    Chargement de l'entité
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#affichage-de-lentite" title="Affichage de l'entité" class="md-nav__link">
+    Affichage de l'entité
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ajout-second-panel" title="Ajout second panel" class="md-nav__link">
+    Ajout second panel
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ajout-navigation-rapide" title="Ajout navigation rapide" class="md-nav__link">
+    Ajout navigation rapide
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ajout-du-header" title="Ajout du header" class="md-nav__link">
+    Ajout du header
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epilogue" title="Epilogue" class="md-nav__link">
+    Epilogue
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../liste-page/" title="Ecran de liste" class="md-nav__link">
+      Ecran de liste
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objectifs" title="Objectifs" class="md-nav__link">
+    Objectifs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-focus-manipules" title="Concepts focus manipulés" class="md-nav__link">
+    Concepts focus manipulés
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-corestore" title="Le CoreStore" class="md-nav__link">
+    Le CoreStore
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#le-actionbuilder" title="Le ActionBuilder" class="md-nav__link">
+    Le ActionBuilder
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#le-formmixin" title="Le FormMixin" class="md-nav__link">
+    Le FormMixin
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creation-de-la-page" title="Création de la page" class="md-nav__link">
+    Création de la page
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#les-pre-requis-pour-lecran" title="Les pré-requis pour l'écran" class="md-nav__link">
+    Les pré-requis pour l'écran
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creation-du-store" title="Création du store" class="md-nav__link">
+    Création du store
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creation-des-apis" title="Création des APIs" class="md-nav__link">
+    Création des APIs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creation-des-services" title="Création des services" class="md-nav__link">
+    Création des services
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creation-des-actions" title="Création des actions" class="md-nav__link">
+    Création des actions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#les-composants-de-lecran" title="Les composants de l'écran" class="md-nav__link">
+    Les composants de l'écran
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#premier-panel-de-detail" title="Premier panel de détail" class="md-nav__link">
+    Premier panel de détail
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chargement-de-lentite" title="Chargement de l'entité" class="md-nav__link">
+    Chargement de l'entité
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#affichage-de-lentite" title="Affichage de l'entité" class="md-nav__link">
+    Affichage de l'entité
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ajout-second-panel" title="Ajout second panel" class="md-nav__link">
+    Ajout second panel
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ajout-navigation-rapide" title="Ajout navigation rapide" class="md-nav__link">
+    Ajout navigation rapide
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ajout-du-header" title="Ajout du header" class="md-nav__link">
+    Ajout du header
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epilogue" title="Epilogue" class="md-nav__link">
+    Epilogue
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="implementer-une-page-de-detail">Implémenter une page de détail<a class="headerlink" href="#implementer-une-page-de-detail" title="Permanent link">&para;</a></h1>
+<h2 id="objectifs">Objectifs<a class="headerlink" href="#objectifs" title="Permanent link">&para;</a></h2>
+<p>L'objectif de cet exercise et de pouvoir afficher une page de détail d'un film.</p>
+<p>Elle est constituée :</p>
+<ul>
+<li>d'un header (<a href="https://github.com/KleeGroup/focus-components/blob/master/src/page/mixin/cartridge-behaviour.js">Cartridge</a>)</li>
+<li>d'une zone de navigation rapide (<a href="https://github.com/KleeGroup/focus-components/tree/master/src/components/scrollspy-container">Scrollspy</a>)</li>
+<li>d'un ou plusieurs blocks de détail (<a href="https://github.com/KleeGroup/focus-components/tree/master/src/components/panel">Panel</a>)</li>
+</ul>
+<p>Une page de détail ressemble à ça :</p>
+<p><img alt="page de détail focus" src="../images/detail.png" /></p>
+<h2 id="concepts-focus-manipules">Concepts focus manipulés<a class="headerlink" href="#concepts-focus-manipules" title="Permanent link">&para;</a></h2>
+<h3 id="le-corestore">Le CoreStore<a class="headerlink" href="#le-corestore" title="Permanent link">&para;</a></h3>
+<p>Focus propose un store simple <a href="https://github.com/KleeGroup/focus-core/blob/master/src/store/CoreStore.js">CoreStore</a> qui permet de stocker n-noeuds par store.
+L'idée est que chaque store couvre un thème fonctionnel de l'application.
+Par exemple, un store <code>movieStore</code> qui aura les noeuds : <code>resume</code>, <code>characteristics</code>, <code>actors</code>.</p>
+<p>Chaque noeud aura plusieurs propriétés associés : <code>value</code>, <code>status</code>, <code>error</code>.</p>
+<!-- prettier-ignore-start -->
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Le CoreStore pour savoir s'il accepte la payload d'une action se base uniquement sur le nom du noeud. Si plusieurs stores ont un noeud avec
+un nom identique, alors il n'y a pas moyen de les différencier.</p>
+</div>
+<!-- prettier-ignore-end -->
+
+<h3 id="le-actionbuilder">Le ActionBuilder<a class="headerlink" href="#le-actionbuilder" title="Permanent link">&para;</a></h3>
+<p>Le <a href="https://github.com/KleeGroup/focus-core/blob/master/src/application/action-builder.js">ActionBuilder</a> va permettre de créer simplement une
+action qui va échanger avec le server pour charger ou sauvegarder des données.</p>
+<p>Lors de l'exécution d'une action, les opérations suivantes sont effectuées :</p>
+<ol>
+<li>Modifie le statut du noeud avec la valeur de <code>preLoading</code> (par défaut: <code>loading</code>) et passe <code>isLoading</code> à vrai</li>
+<li>Si <code>shouldDumpStoreOnActionCall</code> est à vrai, alors vide la valeur du noeud</li>
+<li>Appel le <code>service</code> configuré et lui donne la <code>payload</code></li>
+<li>Si on a configuré un <code>postService</code>, on lui donne le retour du <code>service</code> pour transformation</li>
+<li>Dispatch le resultat du serveur dans le store, met le statut du noeud à <code>status</code> et <code>isLoading</code> à faux</li>
+</ol>
+<p>En cas de retour HTTP avec un code d'erreur, on dispatch dans le champ <code>error</code> du noeud</p>
+<p>Exemple de configuration d'un builder :</p>
+<div class="codehilite"><pre><span></span><span class="kr">const</span> <span class="nx">action</span><span class="o">:</span> <span class="nx">payload</span> <span class="p">=&gt;</span> <span class="nb">Promise</span><span class="o">&lt;</span><span class="k">void</span><span class="o">&gt;</span> <span class="o">=</span> <span class="nx">actionBuilder</span><span class="p">({</span>
+    <span class="c1">// Noeud ciblé</span>
+    <span class="nx">node</span><span class="o">:</span> <span class="s2">&quot;movieCharacteristics&quot;</span><span class="p">,</span>
+    <span class="c1">// Statut pendant le chargement/sauvegarde</span>
+    <span class="nx">preLoading</span><span class="o">:</span> <span class="s2">&quot;loading&quot;</span><span class="p">,</span>
+    <span class="c1">// Service à appeler</span>
+    <span class="nx">service</span><span class="o">:</span> <span class="nx">movieServices</span><span class="p">.</span><span class="nx">loadMovieCharacteristics</span><span class="p">,</span>
+    <span class="c1">// Si on vide le noeud pendant le chargement</span>
+    <span class="nx">shouldDumpStoreOnActionCall</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="c1">// Transformation du retour server</span>
+    <span class="nx">postService</span><span class="o">:</span> <span class="nx">identity</span><span class="p">,</span>
+    <span class="c1">// Le statut du noeud à la fin de l&#39;appel</span>
+    <span class="nx">status</span><span class="o">:</span> <span class="s2">&quot;loaded&quot;</span>
+<span class="p">});</span>
+</pre></div>
+
+
+<h3 id="le-formmixin">Le FormMixin<a class="headerlink" href="#le-formmixin" title="Permanent link">&para;</a></h3>
+<p>// TODO - décrire le formMixin</p>
+<h2 id="creation-de-la-page">Création de la page<a class="headerlink" href="#creation-de-la-page" title="Permanent link">&para;</a></h2>
+<p>Commençons par créer un dossier pour l'ensemble des composants de cette page de détail, dans notre dossier de vues: <code>views</code>.</p>
+<p>La manière dont vous organisez votre dossier de vues vous incombe, cependant une bonne pratique est de regrouper les vues par module puis par écran.</p>
+<p>Dans notre cas, nous créons le dossier : <code>views/movies/movie-detail</code>.</p>
+<p>Créons notre composant parent :</p>
+<div class="codehilite"><pre><span></span><span class="c1">// app/views/movies/movie-detail/index.jsx</span>
+
+<span class="c1">// Libs</span>
+<span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">PropTypes</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;react&quot;</span><span class="p">;</span>
+
+<span class="kr">export</span> <span class="kr">const</span> <span class="nx">MovieDetailPage</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
+    <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kr">const</span> <span class="p">{</span> <span class="nx">id</span> <span class="p">}</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">;</span>
+
+        <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="p">{</span><span class="sb">`Page de détail du movie </span><span class="si">${</span><span class="nx">id</span><span class="si">}</span><span class="sb">`</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/div&gt;;</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+<span class="nx">MovieDetailPage</span><span class="p">.</span><span class="nx">propTypes</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">id</span><span class="o">:</span> <span class="nx">PropTypes</span><span class="p">.</span><span class="nx">number</span><span class="p">.</span><span class="nx">isRequired</span>
+<span class="p">};</span>
+</pre></div>
+
+
+<p>Notre page de détail est pour l'instant très simple, elle n'a qu'une <em>prop</em>, <code>id</code>, qui lui sera fournie par le routeur lorsque l'on navigue vers l'URI <code>/#movies/{id}</code>.</p>
+<p>Il faut donc créer un nouveau fichier pour les routes de movies :</p>
+<div class="codehilite"><pre><span></span><span class="c1">// app/routes/movie-routes.jsx</span>
+
+<span class="c1">// Libs</span>
+<span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s2">&quot;react&quot;</span><span class="p">;</span>
+
+<span class="c1">// Components</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">MovieDetailPage</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;../views/movies/movie-detail&quot;</span><span class="p">;</span>
+
+<span class="kr">export</span> <span class="kr">const</span> <span class="nx">movieRoutes</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="nx">path</span><span class="o">:</span> <span class="s2">&quot;movies/:id&quot;</span><span class="p">,</span>
+        <span class="nx">component</span><span class="o">:</span> <span class="p">({</span> <span class="nx">params</span> <span class="p">})</span> <span class="p">=&gt;</span> <span class="o">&lt;</span><span class="nx">MovieDetailPage</span> <span class="nx">id</span><span class="o">=</span><span class="p">{</span><span class="nx">params</span><span class="p">.</span><span class="nx">id</span><span class="p">}</span> <span class="o">/&gt;</span>
+    <span class="p">}</span>
+<span class="p">];</span>
+</pre></div>
+
+
+<p>Puis l'enregistrer auprès du router :</p>
+<div class="codehilite"><pre><span></span>// app/routes/index.js
+
+// Components
+import AppLayout from &quot;../components/app-layout&quot;;
+
+// Routes
+import { homeRoutes } from &quot;./home-routes&quot;;
+<span class="gi">+++ import { movieRoutes } from &quot;./movie-routes&quot;;</span>
+
+export default {
+    path: `${__BASE_URL__}`,
+    component: AppLayout,
+    indexRoute: { onEnter: ({ params }, replace) =&gt; replace(`${__BASE_URL__}home`) },
+<span class="gd">---    childRoutes: [...homeRoutes]</span>
+<span class="gi">+++    childRoutes: [...homeRoutes, ...movieRoutes]</span>
+};
+</pre></div>
+
+
+<h2 id="les-pre-requis-pour-lecran">Les pré-requis pour l'écran<a class="headerlink" href="#les-pre-requis-pour-lecran" title="Permanent link">&para;</a></h2>
+<h3 id="creation-du-store">Création du store<a class="headerlink" href="#creation-du-store" title="Permanent link">&para;</a></h3>
+<p>Dans le dossier <code>app/stores</code> de votre application créer un fichier <code>movie-detail.js</code>.</p>
+<div class="codehilite"><pre><span></span><span class="c1">// app/stores/movie-detail.js</span>
+
+<span class="c1">// Libs</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">CoreStore</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;focus-core/store&quot;</span><span class="p">;</span>
+
+<span class="c1">// On créer une instance de ce store</span>
+<span class="kr">export</span> <span class="kr">const</span> <span class="nx">movieDetailStore</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">CoreStore</span><span class="p">({</span>
+    <span class="nx">movieCharacteristics</span><span class="o">:</span> <span class="s2">&quot;movieCharacteristics&quot;</span>
+<span class="p">});</span>
+<span class="nx">movieDetailStore</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s2">&quot;movieDetailStore&quot;</span><span class="p">;</span>
+</pre></div>
+
+
+<!-- prettier-ignore-start -->
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Nous lui donnons un nom afin d'aider pour les messages de debug.
+Ce n'est pas obligatoire mais c'est mieux.</p>
+</div>
+<!-- prettier-ignore-end -->
+
+<h3 id="creation-des-apis">Création des APIs<a class="headerlink" href="#creation-des-apis" title="Permanent link">&para;</a></h3>
+<p>Notre entité <strong>movie</strong> dispose de deux APIs de manipulation, un <strong>load</strong> et et un <strong>save</strong>.</p>
+<p>Il est necessaire de créer le fichier <code>config/server/movies.js</code> qui contient les URIs exposées par l'API.
+Le mieux pour cela est d'utiliser le paquet <a href="https://github.com/KleeGroup/focus-service-generator">focus-service-generator</a> (il est configuré avec le starter kit)</p>
+<p>Exécutez :</p>
+<div class="codehilite"><pre><span></span>npm run generate
+</pre></div>
+
+
+<p>Cela va générer un fichier de la forme suivante :</p>
+<div class="codehilite"><pre><span></span><span class="c1">// app/config/server/generated/movies.js</span>
+
+<span class="kr">import</span> <span class="nx">apiDriverBuilder</span> <span class="nx">from</span> <span class="s2">&quot;../../../utilities/api-driver&quot;</span><span class="p">;</span>
+
+<span class="c1">// Movies</span>
+<span class="kr">export</span> <span class="k">default</span> <span class="nx">apiDriverBuilder</span><span class="p">({</span>
+    <span class="nx">getMovie</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">url</span><span class="o">:</span> <span class="nx">__API_ROOT__</span> <span class="o">+</span> <span class="s2">&quot;/api/movie/${id}&quot;</span><span class="p">,</span>
+        <span class="nx">method</span><span class="o">:</span> <span class="s2">&quot;GET&quot;</span>
+    <span class="p">},</span>
+    <span class="nx">updateMovie</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">url</span><span class="o">:</span> <span class="nx">__API_ROOT__</span> <span class="o">+</span> <span class="s2">&quot;/api/movie/${id}&quot;</span><span class="p">,</span>
+        <span class="nx">method</span><span class="o">:</span> <span class="s2">&quot;PUT&quot;</span>
+    <span class="p">}</span>
+    <span class="c1">// [...]</span>
+<span class="p">});</span>
+</pre></div>
+
+
+<p>Appelons le load au chargement de la page de détail afin de disposer des données dans le store et donc dans les vues :</p>
+<!-- prettier-ignore-start -->
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>La signature des méthodes API sont de la forme : <code>(uriParam, bodyParam, misc)</code></p>
+</div>
+<!-- prettier-ignore-end -->
+
+<h3 id="creation-des-services">Création des services<a class="headerlink" href="#creation-des-services" title="Permanent link">&para;</a></h3>
+<p>Dans le fichier <code>app/services/movies.js</code> on va ajouter une méthode pour charger et sauvegarder un film :</p>
+<div class="codehilite"><pre><span></span><span class="c1">// app/services/movies.js</span>
+
+<span class="c1">// Apis</span>
+<span class="kr">import</span> <span class="nx">moviesApi</span> <span class="nx">from</span> <span class="s2">&quot;../config/server/generated/movies&quot;</span><span class="p">;</span>
+
+<span class="kr">export</span> <span class="kr">const</span> <span class="nx">movieServices</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">loadMovieCharacteristics</span><span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">moviesApi</span><span class="p">.</span><span class="nx">getMovie</span><span class="p">({</span> <span class="nx">id</span> <span class="p">});</span>
+    <span class="p">},</span>
+    <span class="nx">updateMovieCharacteristics</span><span class="p">(</span><span class="nx">movie</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kr">const</span> <span class="p">{</span> <span class="nx">id</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">movie</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nx">moviesApi</span><span class="p">.</span><span class="nx">updateMovie</span><span class="p">({</span> <span class="nx">id</span> <span class="p">},</span> <span class="nx">movie</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+
+
+<h3 id="creation-des-actions">Création des actions<a class="headerlink" href="#creation-des-actions" title="Permanent link">&para;</a></h3>
+<p>Créer un fichier pour les actions liées à votre entité</p>
+<div class="codehilite"><pre><span></span><span class="c1">// app/actions/movies.js</span>
+
+<span class="c1">// Libs</span>
+<span class="kr">import</span> <span class="nx">actionBuilder</span> <span class="nx">from</span> <span class="s2">&quot;focus-core/application/action-builder&quot;</span><span class="p">;</span>
+
+<span class="c1">// Services</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">movieServices</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;../services/movies&quot;</span><span class="p">;</span>
+
+<span class="kr">export</span> <span class="kr">const</span> <span class="nx">movieActions</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">movieCharacteristics</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">load</span><span class="o">:</span> <span class="nx">actionBuilder</span><span class="p">({</span>
+            <span class="nx">node</span><span class="o">:</span> <span class="s2">&quot;movieCharacteristics&quot;</span><span class="p">,</span>
+            <span class="nx">service</span><span class="o">:</span> <span class="nx">movieServices</span><span class="p">.</span><span class="nx">loadMovieCharacteristics</span><span class="p">,</span>
+            <span class="nx">shouldDumpStoreOnActionCall</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nx">status</span><span class="o">:</span> <span class="s2">&quot;loaded&quot;</span>
+        <span class="p">}),</span>
+        <span class="nx">save</span><span class="o">:</span> <span class="nx">actionBuilder</span><span class="p">({</span>
+            <span class="nx">node</span><span class="o">:</span> <span class="s2">&quot;movieCharacteristics&quot;</span><span class="p">,</span>
+            <span class="nx">service</span><span class="o">:</span> <span class="nx">movieServices</span><span class="p">.</span><span class="nx">updateMovieCharacteristics</span><span class="p">,</span>
+            <span class="nx">shouldDumpStoreOnActionCall</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nx">status</span><span class="o">:</span> <span class="s2">&quot;saved&quot;</span>
+        <span class="p">})</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+
+
+<h2 id="les-composants-de-lecran">Les composants de l'écran<a class="headerlink" href="#les-composants-de-lecran" title="Permanent link">&para;</a></h2>
+<h3 id="premier-panel-de-detail">Premier panel de détail<a class="headerlink" href="#premier-panel-de-detail" title="Permanent link">&para;</a></h3>
+<p>Nous allons créer un premier panel, pour afficher et éditer les caractéristiques principales de notre <strong>movie</strong>.</p>
+<div class="codehilite"><pre><span></span><span class="c1">// app/views/movies/movie-detail/movie-characteristics.jsx</span>
+
+<span class="c1">// Libs</span>
+<span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">PropTypes</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;react&quot;</span><span class="p">;</span>
+
+<span class="c1">// Components</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Panel</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;focus-components/components&quot;</span><span class="p">;</span>
+
+<span class="kr">export</span> <span class="kr">const</span> <span class="nx">MovieCharacteristics</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
+    <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kr">const</span> <span class="p">{</span> <span class="nx">id</span> <span class="p">}</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">;</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="o">&lt;</span><span class="nx">Panel</span> <span class="nx">title</span><span class="o">=</span><span class="s2">&quot;view.movie.detail.characteristics&quot;</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="p">{</span><span class="sb">`panel de caractéristiques du film </span><span class="si">${</span><span class="nx">id</span><span class="si">}</span><span class="sb">`</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+            <span class="o">&lt;</span><span class="err">/Panel&gt;</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+<span class="nx">MovieCharacteristics</span><span class="p">.</span><span class="nx">propTypes</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">id</span><span class="o">:</span> <span class="nx">PropTypes</span><span class="p">.</span><span class="nx">number</span><span class="p">.</span><span class="nx">isRequired</span>
+<span class="p">};</span>
+</pre></div>
+
+
+<p>On instancie le composant dans la page principale :</p>
+<div class="codehilite"><pre><span></span>// app/views/movies/movie-detail/index.jsx
+
+// Libs
+import React, { PropTypes } from &quot;react&quot;;
+
+<span class="gi">+++ // Components</span>
+<span class="gi">+++ import { MovieCharacteristics } from &quot;./movie-characteristics&quot;;</span>
+
+export const MovieDetailPage = React.createClass({
+    render() {
+        const { id } = this.props;
+
+<span class="gd">---        return &lt;div&gt;{`Page de détail du movie ${id}`}&lt;/div&gt;;</span>
+<span class="gi">+++        return &lt;MovieCharacteristics id={id} /&gt;;</span>
+    }
+});
+MovieDetailPage.propTypes = {
+    id: PropTypes.number.isRequired
+};
+</pre></div>
+
+
+<p>Notre premier panel est maintenant prêt à recevoir les données depuis le store applicatif, et à faire les appels serveurs permettant le chargement de l'entité dans les store.</p>
+<h3 id="chargement-de-lentite">Chargement de l'entité<a class="headerlink" href="#chargement-de-lentite" title="Permanent link">&para;</a></h3>
+<p>Le chargement de l'entité passe par les stores applicatif, en suivant l'architecture <strong>flux</strong>.</p>
+<p>Il est donc nécessaire de lancer l'action qui va effectuer le chargement serveur de l'entité, et de s'abonner aux changements du store de l'entité afin de bénéficier des données retournées par le serveur.</p>
+<p>Appelons le load au chargement de la page de détail afin de disposer des données dans le store et donc dans les vues :</p>
+<div class="codehilite"><pre><span></span>// app/views/movies/movie-detail/index.jsx
+
+// Libs
+import React, { PropTypes } from &#39;react&#39;;
+
+<span class="gi">+++ // Actions</span>
+<span class="gi">+++ import { movieActions } from &#39;../../../actions/movies&#39;;</span>
+
+export const MovieDetailPage = React.createClass({
+<span class="gi">+++     componentDidMount() {</span>
+<span class="gi">+++         movieActions.movieCharacteristics.load();</span>
+<span class="gi">+++     },</span>
+
+    render() {
+        const { id } = this.props;
+
+        return &lt;MovieCharacteristics id={id} /&gt;;
+    }
+});
+MovieDetailPage.propTypes = {
+    id: PropTypes.number.isRequired
+};
+</pre></div>
+
+
+<h3 id="affichage-de-lentite">Affichage de l'entité<a class="headerlink" href="#affichage-de-lentite" title="Permanent link">&para;</a></h3>
+<p>Maintenant que l'entité est chargée en mémoire au montage de la page de détail, il est possible de l'afficher dans le panel <code>MovieCharacteristics</code>.</p>
+<p>Pour cela, nous allons utiliser le <strong>formMixin</strong> dans le panel. Il va nous faire bénéficier de l'ensemble des fonctionnalités du form focus, à savoir :</p>
+<ul>
+<li>l'abonnement aux stores,</li>
+<li>le chargement des définitions avec domaines associés,</li>
+<li>les helpers de field,</li>
+<li>et le branchement aux actions de l'entité <code>load</code> et <code>save</code>.</li>
+</ul>
+<div class="codehilite"><pre><span></span>// app/views/movies/movie-detail/movie-characteristics.jsx
+
+// Libs
+import React, { PropTypes } from &#39;react&#39;;
+<span class="gi">+++ import { mixin as formMixin } from &#39;focus-components/mixin/form&#39;;</span>
+
+// Actions &amp; Stores
+import { movieActions } from &#39;../../../actions/movies&#39;;
+<span class="gi">+++ import { movieDetailStore } from &#39;../../../stores/movies&#39;;</span>
+
+// Components
+import { Panel } from &#39;focus-components/components&#39;;
+
+export const MovieCharacteristics = React.createClass({
+<span class="gi">+++ // Ajout du form mixin</span>
+<span class="gi">+++ mixins: [formMixin],</span>
+<span class="gi">+++ // Définition de notre entité</span>
+<span class="gi">+++ definitionPath: &#39;movie&#39;,</span>
+<span class="gi">+++ // Abonnement au store</span>
+<span class="gi">+++ stores: [{ store: movieDetailStore, properties: [&#39;movieCharacteristics&#39;] }],</span>
+<span class="gi">+++ // Donne les actions au form</span>
+<span class="gi">+++ action: movieActions.movieCharacteristics,</span>
+<span class="gd">--- render() {</span>
+<span class="gd">---     const { id } = this.props;</span>
+<span class="gi">+++ // render() est déjà défini par le formMixin</span>
+<span class="gi">+++ renderContent() {</span>
+        return (
+<span class="gd">---         &lt;Panel title=&#39;view.movie.detail.characteristics&#39;&gt;</span>
+<span class="gi">+++         &lt;Panel</span>
+<span class="gi">+++             actions={this._renderActions}</span>
+<span class="gi">+++             title=&#39;views.movie.detail.characteristics&#39;</span>
+<span class="gi">+++         &gt;</span>
+<span class="gd">---         &lt;div&gt;{`panel de caractéristiques du film ${id}`}&lt;/div&gt;</span>
+<span class="gi">+++             {/* Les fieldFor sont des fonctions helper */}</span>
+<span class="gi">+++             {/* pour afficher et éditer un champ avec label} */}</span>
+<span class="gi">+++             {this.fieldFor(&#39;title&#39;)}</span>
+<span class="gi">+++             {this.fieldFor(&#39;originalTitle&#39;)}</span>
+<span class="gi">+++             {this.fieldFor(&#39;keywords&#39;)}</span>
+<span class="gi">+++             {this.fieldFor(&#39;runtime&#39;)}</span>
+<span class="gi">+++             {this.fieldFor(&#39;movieType&#39;)}</span>
+<span class="gi">+++             {this.fieldFor(&#39;productionYear&#39;)}</span>
+            &lt;/Panel&gt;
+        );
+    }
+});
+MovieCharacteristics.propTypes = {
+    id: PropTypes.number.isRequired
+};
+</pre></div>
+
+
+<p>Il est important d'ajouter une <strong>prop</strong> depuis le parent vers <code>MovieCharacteristics</code> afin de lui signaler de ne pas effectuer le <strong>load</strong> à son chargement, le composant parent le fait déjà dans son <code>componentDidMount</code>. Par défaut, le <strong>formMixin</strong> se chargerait de le faire en appelant : <code>this.action.load(this.props.id)</code>.</p>
+<p>Faire le chargement dans le parent permet de s'assurer qu'il n'est fait qu'une fois pour l'ensemble des enfants.</p>
+<div class="codehilite"><pre><span></span>// app/views/movies/movie-detail/index.jsx
+
+// Libs
+import React, { PropTypes } from &#39;react&#39;;
+
+// Actions
+import { movieActions } from &#39;../../../actions/movies&#39;;
+
+// Components
+import { MovieCharacteristics } from &quot;./movie-characterics&quot;;
+
+export const MovieDetailPage = React.createClass({
+    componentDidMount() {
+        movieActions.movieCharacteristics.load();
+    },
+
+    render() {
+        const { id } = this.props;
+
+<span class="gd">---        return &lt;MovieCharacteristics id={id} /&gt;;</span>
+<span class="gi">+++        return &lt;MovieCharacteristics id={id} hasLoad={false} /&gt;;</span>
+    }
+});
+MovieDetailPage.propTypes = {
+    id: PropTypes.number.isRequired
+};
+</pre></div>
+
+
+<h3 id="ajout-second-panel">Ajout second panel<a class="headerlink" href="#ajout-second-panel" title="Permanent link">&para;</a></h3>
+<p>Nous allons ajouter un panel propre au synopsis du movie, afin de séparer l'information et de rendre plus limpide la lecture de la page de détail.</p>
+<p>Le synopsis est un attribut de notre entité, on bénéficie donc déjà de l'information dans le noeud <code>movieCharacteristics</code> du <code>movieDetailStore</code>.</p>
+<div class="codehilite"><pre><span></span><span class="c1">// app/views/movies/movie-detail/movie-synopsis.jsx</span>
+
+<span class="c1">// Libs</span>
+<span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">PropTypes</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;react&quot;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">mixin</span> <span class="nx">as</span> <span class="nx">formMixin</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;focus-components/mixin/form&quot;</span><span class="p">;</span>
+
+<span class="c1">// Actions &amp; Stores</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">movieActions</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;../../../actions/movies&quot;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">movieDetailStore</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;../../../stores/movies&quot;</span><span class="p">;</span>
+
+<span class="c1">// Components</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Panel</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;focus-components/components&quot;</span><span class="p">;</span>
+
+<span class="kr">export</span> <span class="kr">const</span> <span class="nx">MovieSynopsis</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
+    <span class="nx">mixins</span><span class="o">:</span> <span class="p">[</span><span class="nx">formMixin</span><span class="p">],</span>
+    <span class="nx">definitionPath</span><span class="o">:</span> <span class="s2">&quot;movie&quot;</span><span class="p">,</span>
+    <span class="nx">stores</span><span class="o">:</span> <span class="p">[{</span> <span class="nx">store</span><span class="o">:</span> <span class="nx">movieDetailStore</span><span class="p">,</span> <span class="nx">properties</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;movieCharacteristics&quot;</span><span class="p">]</span> <span class="p">}],</span>
+    <span class="nx">action</span><span class="o">:</span> <span class="nx">movieActions</span><span class="p">.</span><span class="nx">movieCharacteristics</span><span class="p">,</span>
+
+    <span class="nx">renderContent</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="o">&lt;</span><span class="nx">Panel</span> <span class="nx">actions</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">_renderActions</span><span class="p">}</span> <span class="nx">title</span><span class="o">=</span><span class="s2">&quot;views.movie.detail.synopsis&quot;</span><span class="o">&gt;</span>
+                <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">fieldFor</span><span class="p">(</span><span class="s2">&quot;synopsis&quot;</span><span class="p">)}</span>
+            <span class="o">&lt;</span><span class="err">/Panel&gt;</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+<span class="nx">MovieSynopsis</span><span class="p">.</span><span class="nx">propTypes</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">id</span><span class="o">:</span> <span class="nx">PropTypes</span><span class="p">.</span><span class="nx">number</span><span class="p">.</span><span class="nx">isRequired</span>
+<span class="p">};</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span>// app/views/movies/movie-detail/index.jsx
+
+// Libs
+import React, { PropTypes } from &quot;react&quot;;
+
+// Actions
+import { movieActions } from &quot;../../../actions/movies&quot;;
+
+// Components
+import { MovieCharacteristics } from &quot;./movie-characterics&quot;;
+<span class="gi">+++ import { MovieSynopsis } from &quot;./movie-synopsis&quot;;</span>
+
+export const MovieDetailPage = React.createClass({
+    componentDidMount() {
+        movieActions.movieCharacteristics.load();
+    },
+
+    render() {
+        const { id } = this.props;
+
+        return (
+            &lt;&gt;
+                &lt;MovieCharacteristics id={id} hasLoad={false} /&gt;;
+<span class="gi">+++             &lt;MovieSynopsis id={id} hasLoad={false} /&gt;;</span>
+            &lt;/&gt;
+        );
+    }
+});
+MovieDetailPage.propTypes = {
+    id: PropTypes.number.isRequired
+};
+</pre></div>
+
+
+<h3 id="ajout-navigation-rapide">Ajout navigation rapide<a class="headerlink" href="#ajout-navigation-rapide" title="Permanent link">&para;</a></h3>
+<p>La navigation rapide est rapidemment mise en place. En effet, il s'agit d'un simple wrapper <a href="https://github.com/KleeGroup/focus-components/blob/master/src/components/scrollspy-container/index.js">ScrollspyContainer</a> autour de nos panels, qui va de lui-même lister les panels et mettre en place la navigation.</p>
+<div class="codehilite"><pre><span></span>// app/views/movies/movie-detail/index.jsx
+
+// Libs
+import React, { PropTypes } from &quot;react&quot;;
+
+// Actions
+import { movieActions } from &quot;../../../actions/movies&quot;;
+
+// Components
+<span class="gi">+++ import ScrollspyContainer from &quot;focus-components/components/scrollspy-container&quot;;</span>
+import { MovieCharacteristics } from &quot;./movie-characterics&quot;;
+import { MovieSynopsis } from &quot;./movie-synopsis&quot;;
+
+export const MovieDetailPage = React.createClass({
+    componentDidMount() {
+        movieActions.movieCharacteristics.load();
+    },
+
+    render() {
+        const { id } = this.props;
+
+        return (
+<span class="gd">---         &lt;&gt;</span>
+<span class="gi">+++         &lt;ScrollspyContainer&gt;</span>
+                &lt;MovieCharacteristics id={id} hasLoad={false} /&gt;;
+                &lt;MovieSynopsis id={id} hasLoad={false} /&gt;;
+<span class="gd">---         &lt;/&gt;</span>
+<span class="gi">+++         &lt;/ScrollspyContainer&gt;</span>
+        );
+    }
+});
+MovieDetailPage.propTypes = {
+    id: PropTypes.number.isRequired
+};
+</pre></div>
+
+
+<h3 id="ajout-du-header">Ajout du header<a class="headerlink" href="#ajout-du-header" title="Permanent link">&para;</a></h3>
+<p>Pour finaliser notre page de détail, nous allons ajouter des éléments dans le header (ou Cartridge).</p>
+<p>Le header a deux modes de fonctionnement : déplié et replié. Il faut donc lui fournir un composant pour chaque mode.</p>
+<p>Le store étant déjà peuplé par le composant de la page de détail, on peut donc simplement utiliser le <strong>formMixin</strong> pour s'abonner au store et afficher les champs qui nous intéressent.</p>
+<div class="codehilite"><pre><span></span><span class="c1">// app/views/movies/movie-detail/header-expanded.jsx</span>
+
+<span class="c1">// Libs</span>
+<span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s2">&quot;react&quot;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">mixin</span> <span class="nx">as</span> <span class="nx">formMixin</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;focus-components/mixin/form&quot;</span><span class="p">;</span>
+
+<span class="c1">// Actions &amp; Stores</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">movieDetailStore</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;../../../stores/movies&quot;</span><span class="p">;</span>
+
+<span class="c1">// Components</span>
+<span class="kr">import</span> <span class="nx">Poster</span> <span class="nx">from</span> <span class="s2">&quot;../components/poster&quot;</span><span class="p">;</span>
+
+<span class="kr">export</span> <span class="kr">const</span> <span class="nx">MovieHeaderExpanded</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
+    <span class="nx">displayName</span><span class="o">:</span> <span class="s2">&quot;MovieHeaderExpanded&quot;</span><span class="p">,</span>
+    <span class="nx">mixins</span><span class="o">:</span> <span class="p">[</span><span class="nx">formMixin</span><span class="p">],</span>
+    <span class="nx">definitionPath</span><span class="o">:</span> <span class="s2">&quot;movie&quot;</span><span class="p">,</span>
+    <span class="nx">stores</span><span class="o">:</span> <span class="p">[{</span> <span class="nx">store</span><span class="o">:</span> <span class="nx">movieDetailStore</span><span class="p">,</span> <span class="nx">properties</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;movieCharacteristics&quot;</span><span class="p">]</span> <span class="p">}],</span>
+    <span class="nx">renderContent</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kr">const</span> <span class="p">{</span> <span class="nx">poster</span><span class="p">,</span> <span class="nx">title</span> <span class="p">}</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">;</span>
+
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+                <span class="p">{</span><span class="nx">poster</span> <span class="o">&amp;&amp;</span> <span class="o">&lt;</span><span class="nx">Poster</span> <span class="nx">poster</span><span class="o">=</span><span class="p">{</span><span class="nx">poster</span><span class="p">}</span> <span class="nx">title</span><span class="o">=</span><span class="p">{</span><span class="nx">title</span><span class="p">}</span> <span class="o">/&gt;</span><span class="p">}</span>
+                <span class="o">&lt;</span><span class="nx">h3</span><span class="o">&gt;</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">textFor</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">)}</span><span class="o">&lt;</span><span class="err">/h3&gt;</span>
+                <span class="o">&lt;</span><span class="nx">h5</span><span class="o">&gt;</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">textFor</span><span class="p">(</span><span class="s2">&quot;movieType&quot;</span><span class="p">)}</span><span class="o">&lt;</span><span class="err">/h5&gt;</span>
+                <span class="o">&lt;</span><span class="nx">h6</span><span class="o">&gt;</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">textFor</span><span class="p">(</span><span class="s2">&quot;productionYear&quot;</span><span class="p">)}</span><span class="o">&lt;</span><span class="err">/h6&gt;</span>
+                <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">textFor</span><span class="p">(</span><span class="s2">&quot;shortSynopsis&quot;</span><span class="p">)}</span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+            <span class="o">&lt;</span><span class="err">/div&gt;</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+
+
+<p>Le composant de header replié est similaire, avec quelques informations en moins pour occuper moins de place.</p>
+<div class="codehilite"><pre><span></span><span class="c1">// app/views/movies/movie-detail/header-collapsed.jsx</span>
+
+<span class="c1">// Libs</span>
+<span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s2">&quot;react&quot;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">mixin</span> <span class="nx">as</span> <span class="nx">formMixin</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;focus-components/mixin/form&quot;</span><span class="p">;</span>
+
+<span class="c1">// Actions &amp; Stores</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">movieDetailStore</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;../../../stores/movies&quot;</span><span class="p">;</span>
+
+<span class="kr">export</span> <span class="kr">const</span> <span class="nx">MovieHeaderCollapsed</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
+    <span class="nx">displayName</span><span class="o">:</span> <span class="s2">&quot;MovieHeaderCollapsed&quot;</span><span class="p">,</span>
+    <span class="nx">mixins</span><span class="o">:</span> <span class="p">[</span><span class="nx">formMixin</span><span class="p">],</span>
+    <span class="nx">definitionPath</span><span class="o">:</span> <span class="s2">&quot;movie&quot;</span><span class="p">,</span>
+    <span class="nx">stores</span><span class="o">:</span> <span class="p">[{</span> <span class="nx">store</span><span class="o">:</span> <span class="nx">movieDetailStore</span><span class="p">,</span> <span class="nx">properties</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;movieCharacteristics&quot;</span><span class="p">]</span> <span class="p">}],</span>
+    <span class="nx">renderContent</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="nx">h3</span><span class="o">&gt;</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">textFor</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">)}</span><span class="o">&lt;</span><span class="err">/h3&gt;</span>
+                <span class="o">&lt;</span><span class="nx">h6</span><span class="o">&gt;</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">textFor</span><span class="p">(</span><span class="s2">&quot;productionYear&quot;</span><span class="p">)}</span><span class="o">&lt;</span><span class="err">/h6&gt;</span>
+            <span class="o">&lt;</span><span class="err">/div&gt;</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+
+
+<p>Nos composants de header sont définis, mais ne sont pas injectés dans le header.</p>
+<p>Pour ce faire, on peut utiliser le <a href="https://github.com/KleeGroup/focus-components/blob/master/src/page/mixin/cartridge-behaviour.js">cartridgeBehaviour</a>, qui va permettre d'indiquer à la page quels composants afficher dans le header, ainsi que les actions globales disponibles en tant que boutons dans le header.</p>
+<p>Modifions la page parente afin de lui donner le cartridgeBehaviour et d'envoyer les composants dans le header.</p>
+<div class="codehilite"><pre><span></span>// app/views/movies/movie-detail/index.jsx
+
+// Libs
+import React, { PropTypes } from &quot;react&quot;;
+<span class="gi">+++ import { cartridgeBehaviour } from &quot;focus-components/page/mixin&quot;;</span>
+
+// Actions
+import { movieActions } from &quot;../../../actions/movies&quot;;
+
+// Components
+import ScrollspyContainer from &quot;focus-components/components/scrollspy-container&quot;;
+<span class="gi">+++ import BackButton from &quot;focus-components/components/button-back/&quot;;</span>
+import { MovieCharacteristics } from &quot;./movie-characterics&quot;;
+import { MovieSynopsis } from &quot;./movie-synopsis&quot;;
+<span class="gi">+++ import { MovieHeaderCollapsed } from &quot;./header-collapsed&quot;;</span>
+<span class="gi">+++ import { MovieHeaderExpanded } from &quot;./header-expanded&quot;;</span>
+
+export const MovieDetailPage = React.createClass({
+    componentDidMount() {
+        movieActions.movieCharacteristics.load();
+    },
+<span class="gi">+++ mixins: [cartridgeBehaviour],</span>
+<span class="gi">+++ cartridgeConfiguration() {</span>
+<span class="gi">+++     const props = { hasLoad: false, hasForm: false }; // props qui seront données aux composants du header</span>
+<span class="gi">+++     return {</span>
+<span class="gi">+++         barLeft: { component: BackButton }, // On ajoute le bouton Back en haut à gauche de la page</span>
+<span class="gi">+++         cartridge: { component: MovieHeaderExpanded, props },</span>
+<span class="gi">+++         summary: { component: MovieHeaderCollapsed, props },</span>
+<span class="gi">+++         actions: {</span>
+<span class="gi">+++             primary: [</span>
+<span class="gi">+++                 {</span>
+<span class="gi">+++                     // action d&#39;exemple</span>
+<span class="gi">+++                     label: &quot;Imprimer&quot;,</span>
+<span class="gi">+++                     icon: &quot;print&quot;,</span>
+<span class="gi">+++                     action: () =&gt; {</span>
+<span class="gi">+++                         alert(&quot;todo print&quot;);</span>
+<span class="gi">+++                     }</span>
+<span class="gi">+++                 }</span>
+<span class="gi">+++             ],</span>
+<span class="gi">+++             secondary: []</span>
+<span class="gi">+++         }</span>
+<span class="gi">+++     };</span>
+<span class="gi">+++ }</span>
+    render() {
+        const { id } = this.props;
+
+        return (
+            &lt;ScrollspyContainer&gt;
+                &lt;MovieCharacteristics id={id} hasLoad={false} /&gt;;
+                &lt;MovieSynopsis id={id} hasLoad={false} /&gt;;
+            &lt;/ScrollspyContainer&gt;
+        );
+    }
+});
+MovieDetailPage.propTypes = {
+    id: PropTypes.number.isRequired
+};
+</pre></div>
+
+
+<h2 id="epilogue">Epilogue<a class="headerlink" href="#epilogue" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="https://media.giphy.com/media/lgIyvBoSKEhuo/giphy.gif" /></p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../" title="Index" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Index
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../liste-page/" title="Ecran de liste" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Ecran de liste
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            KleeGroup &copy; 2019
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+    
+      <a href="http://www.kleegroup.com/" class="md-footer-social__link fa fa-globe"></a>
+    
+      <a href="https://github.com/KleeGroup" class="md-footer-social__link fa fa-github-alt"></a>
+    
+      <a href="https://twitter.com/Klee_Group" class="md-footer-social__link fa fa-twitter"></a>
+    
+      <a href="https://www.linkedin.com/company/klee-group" class="md-footer-social__link fa fa-linkedin"></a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.245445c6.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+    
+  </body>
+</html>

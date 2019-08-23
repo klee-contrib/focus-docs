@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+     <loc>http://kleegroup.github.io/focus-docs/</loc>
+     <lastmod>2019-08-23</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>http://kleegroup.github.io/focus-docs/preambule/</loc>
+     <lastmod>2019-08-23</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>http://kleegroup.github.io/focus-docs/tutorials/</loc>
+     <lastmod>2019-08-23</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>http://kleegroup.github.io/focus-docs/tutorials/detail-page/</loc>
+     <lastmod>2019-08-23</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>http://kleegroup.github.io/focus-docs/tutorials/liste-page/</loc>
+     <lastmod>2019-08-23</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+</urlset>

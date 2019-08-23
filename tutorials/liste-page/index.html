@@ -1,0 +1,1204 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="A documentation for Focus 2">
+      
+      
+        <link rel="canonical" href="http://kleegroup.github.io/focus-docs/tutorials/liste-page/">
+      
+      
+        <meta name="author" content="KleeGroup">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../img/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.0">
+    
+    
+      
+        <title>Ecran de liste - Focus 2 documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.0284f74d.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.01803549.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#2196f3">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.74668098.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="blue" data-md-color-accent="light-blue">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#implementer-une-liste-administrable" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="http://kleegroup.github.io/focus-docs" title="Focus 2 documentation" class="md-header-nav__button md-logo">
+          
+            <img src="../../img/favicon.png" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Focus 2 documentation
+            </span>
+            <span class="md-header-nav__topic">
+              
+                Ecran de liste
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/KleeGroup/focus-components" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    KleeGroup/focus-components
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="http://kleegroup.github.io/focus-docs" title="Focus 2 documentation" class="md-nav__button md-logo">
+      
+        <img src="../../img/favicon.png" width="48" height="48">
+      
+    </a>
+    Focus 2 documentation
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/KleeGroup/focus-components" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    KleeGroup/focus-components
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="Index" class="md-nav__link">
+      Index
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../preambule/" title="Préambule" class="md-nav__link">
+      Préambule
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      Tutoriels
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Tutoriels
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../" title="Index" class="md-nav__link">
+      Index
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../detail-page/" title="Ecran de détail" class="md-nav__link">
+      Ecran de détail
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Ecran de liste
+      </label>
+    
+    <a href="./" title="Ecran de liste" class="md-nav__link md-nav__link--active">
+      Ecran de liste
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objectifs" title="Objectifs" class="md-nav__link">
+    Objectifs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-focus-manipules" title="Concepts focus manipulés" class="md-nav__link">
+    Concepts focus manipulés
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-liststore" title="Le ListStore" class="md-nav__link">
+    Le ListStore
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#le-listactionbuilder" title="Le ListActionBuilder" class="md-nav__link">
+    Le ListActionBuilder
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#les-composants-graphiques" title="Les Composants graphiques" class="md-nav__link">
+    Les Composants graphiques
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creation-de-la-page" title="Création de la page" class="md-nav__link">
+    Création de la page
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#les-pre-requis-pour-la-liste" title="Les pré-requis pour la liste" class="md-nav__link">
+    Les pré-requis pour la liste
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creation-du-store" title="Création du store" class="md-nav__link">
+    Création du store
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creation-du-service" title="Création du service" class="md-nav__link">
+    Création du service
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creation-de-laction" title="Création de l'action" class="md-nav__link">
+    Création de l'action
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#les-composants-de-lecran" title="Les composants de l'écran" class="md-nav__link">
+    Les composants de l'écran
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creation-du-composant-de-liste" title="Création du composant de liste" class="md-nav__link">
+    Création du composant de liste
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creation-du-composant-de-ligne" title="Création du composant de ligne" class="md-nav__link">
+    Création du composant de ligne
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creation-du-filtre-de-recherche" title="Création du filtre de recherche" class="md-nav__link">
+    Création du filtre de recherche
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creation-de-la-popin-dedition" title="Création de la popin d'édition" class="md-nav__link">
+    Création de la popin d'édition
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epilogue" title="Epilogue" class="md-nav__link">
+    Epilogue
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objectifs" title="Objectifs" class="md-nav__link">
+    Objectifs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#concepts-focus-manipules" title="Concepts focus manipulés" class="md-nav__link">
+    Concepts focus manipulés
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-liststore" title="Le ListStore" class="md-nav__link">
+    Le ListStore
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#le-listactionbuilder" title="Le ListActionBuilder" class="md-nav__link">
+    Le ListActionBuilder
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#les-composants-graphiques" title="Les Composants graphiques" class="md-nav__link">
+    Les Composants graphiques
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creation-de-la-page" title="Création de la page" class="md-nav__link">
+    Création de la page
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#les-pre-requis-pour-la-liste" title="Les pré-requis pour la liste" class="md-nav__link">
+    Les pré-requis pour la liste
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creation-du-store" title="Création du store" class="md-nav__link">
+    Création du store
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creation-du-service" title="Création du service" class="md-nav__link">
+    Création du service
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creation-de-laction" title="Création de l'action" class="md-nav__link">
+    Création de l'action
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#les-composants-de-lecran" title="Les composants de l'écran" class="md-nav__link">
+    Les composants de l'écran
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creation-du-composant-de-liste" title="Création du composant de liste" class="md-nav__link">
+    Création du composant de liste
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creation-du-composant-de-ligne" title="Création du composant de ligne" class="md-nav__link">
+    Création du composant de ligne
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creation-du-filtre-de-recherche" title="Création du filtre de recherche" class="md-nav__link">
+    Création du filtre de recherche
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creation-de-la-popin-dedition" title="Création de la popin d'édition" class="md-nav__link">
+    Création de la popin d'édition
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#epilogue" title="Epilogue" class="md-nav__link">
+    Epilogue
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="implementer-une-liste-administrable">Implémenter une liste administrable<a class="headerlink" href="#implementer-une-liste-administrable" title="Permanent link">&para;</a></h1>
+<h2 id="objectifs">Objectifs<a class="headerlink" href="#objectifs" title="Permanent link">&para;</a></h2>
+<p>L'objectif de cet exercice est de pouvoir afficher une liste potentiellement très longue.
+Il sera possible de :</p>
+<ul>
+<li>Editer ligne par ligne dans une popin qui apparaîtra depuis la droite de l'écran,</li>
+<li>Rafraichir les éléments de la liste en sortie d'édition d'un élément,</li>
+<li>Mettre en place un filtre afin d'affiner les éléments affichés dans la liste.</li>
+</ul>
+<p>L'API utilisée afin de communiquer avec le serveur est calée sur celle du moteur de recherche.</p>
+<p>Normalement vous devriez avoir une page qui ressemble à ça à la fin:</p>
+<ul>
+<li>Le mode liste :</li>
+</ul>
+<p><img alt="" src="../images/admin-country.png" /></p>
+<ul>
+<li>Le mode édition d'une ligne :</li>
+</ul>
+<p><img alt="" src="../images/admin-country-edit.png" /></p>
+<h2 id="concepts-focus-manipules">Concepts focus manipulés<a class="headerlink" href="#concepts-focus-manipules" title="Permanent link">&para;</a></h2>
+<h3 id="le-liststore">Le ListStore<a class="headerlink" href="#le-liststore" title="Permanent link">&para;</a></h3>
+<p>Focus propose un store de liste accessible dans <a href="https://github.com/KleeGroup/focus-core/blob/master/src/store/list/index.js">focus-core/store/list</a>.
+Le store de liste aura les noeuds suivants :</p>
+<ul>
+<li><code>criteria</code> : Le critère éventuel de recherche qui doit être un objet structuré,</li>
+<li><code>sortBy</code> : Par quel élement la liste est triée,</li>
+<li><code>sortAsc</code> : Le caractère ascendant ou non pour le tri,</li>
+<li><code>dataList</code> : Les élements de la liste (une partie au moins s'il y a pagination),</li>
+<li><code>totalCount</code> : Le nombre total d'éléments de la liste (utile pour réaliser la pagination).</li>
+</ul>
+<!-- prettier-ignore-start -->
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Attention il est nécessaire de fournir au moment de l'instanciation de ce store une clé unique qui permettra de distinguer un store de liste d'un autre, 
+tous les stores ayant les même noeuds</p>
+</div>
+<!-- prettier-ignore-end -->
+
+<h3 id="le-listactionbuilder">Le ListActionBuilder<a class="headerlink" href="#le-listactionbuilder" title="Permanent link">&para;</a></h3>
+<p>Le builder permet de créer deux choses :</p>
+<ul>
+<li>Une <code>action</code> qui sera appellée par le composant de liste a chaque fois qu'un changement est opéré dans le store de liste</li>
+<li>Une fonction qui permet de dispatcher de nouveaux élements dans le store</li>
+</ul>
+<h3 id="les-composants-graphiques">Les Composants graphiques<a class="headerlink" href="#les-composants-graphiques" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Le composant qui est responsable de gérer l'affichage de la liste <a href="https://github.com/KleeGroup/focus-components/tree/master/src/page/list">focus-components/page/list</a></li>
+<li>le composant d'affichage d'une liste dans focus qui est <a href="https://github.com/KleeGroup/focus-components/tree/master/src/list/selection">focus-components/list/selection</a></li>
+</ul>
+<p>Il est important de comprendre à ce niveau que parmi tous les composants que vous allez créer, seul le composant principal de liste effectuera des requêtes à l'API afin de récupérer les données. Les autres composants auront juste pour tâche de mettre à jour le store de liste en fonction des cas d'usages.</p>
+<h2 id="creation-de-la-page">Création de la page<a class="headerlink" href="#creation-de-la-page" title="Permanent link">&para;</a></h2>
+<p>Commençons par créer un dossier pour l'ensemble des composants de cette page de liste, dans notre dossier de vues: <code>views</code>.</p>
+<p>La manière dont vous organisez votre dossier de vues vous incombe, cependant une bonne pratique est de regrouper les vues par module puis par écran.</p>
+<p>Dans notre cas, nous créons le dossier : <code>views/movies/movie-list</code>.</p>
+<p>Créons notre composant parent :</p>
+<div class="codehilite"><pre><span></span><span class="c1">// app/views/movies/movie-list/index.jsx</span>
+
+<span class="c1">// Libs</span>
+<span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s2">&quot;react&quot;</span><span class="p">;</span>
+
+<span class="kr">export</span> <span class="kr">const</span> <span class="nx">MovieListPage</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
+    <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="o">&lt;&gt;</span>
+                <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="nx">Barre</span> <span class="nx">de</span> <span class="nx">recherche</span> <span class="nx">de</span> <span class="nx">films</span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+                <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="nx">Liste</span> <span class="nx">de</span> <span class="nx">films</span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+                <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="nx">Popin</span> <span class="nx">de</span> <span class="nx">preview</span> <span class="nx">d</span><span class="err">&#39;</span><span class="nx">un</span> <span class="nx">film</span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+            <span class="o">&lt;</span><span class="err">/&gt;</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+
+
+<p>Notre page de détail est pour l'instant très simple, elle est affichée lorsque l'on navigue vers l'URI <code>/#movies</code>.</p>
+<p>Il faut donc créer un nouveau fichier pour les routes de movies :</p>
+<div class="codehilite"><pre><span></span>// app/routes/movie-routes.jsx
+
+// Libs
+import React from &quot;react&quot;;
+
+// Components
+<span class="gi">+++ import { MovieListPage } from &quot;../views/movies/movie-list&quot;;</span>
+
+export const movieRoutes = [
+<span class="gi">+++ {</span>
+<span class="gi">+++     path: &quot;movies&quot;,</span>
+<span class="gi">+++     component: ({ params }) =&gt; &lt;MovieListPage /&gt;</span>
+<span class="gi">+++ },</span>
+    // [...]
+];
+</pre></div>
+
+
+<p>Puis l'enregistrer auprès du router :</p>
+<div class="codehilite"><pre><span></span>// app/routes/index.js
+
+// Components
+import AppLayout from &quot;../components/app-layout&quot;;
+
+// Routes
+import { homeRoutes } from &quot;./home-routes&quot;;
+<span class="gi">+++ import { movieRoutes } from &quot;./movie-routes&quot;;</span>
+
+export default {
+    path: `${__BASE_URL__}`,
+    component: AppLayout,
+    indexRoute: { onEnter: ({ params }, replace) =&gt; replace(`${__BASE_URL__}home`) },
+<span class="gd">---    childRoutes: [...homeRoutes]</span>
+<span class="gi">+++    childRoutes: [...homeRoutes, ...movieRoutes]</span>
+};
+</pre></div>
+
+
+<h2 id="les-pre-requis-pour-la-liste">Les pré-requis pour la liste<a class="headerlink" href="#les-pre-requis-pour-la-liste" title="Permanent link">&para;</a></h2>
+<h3 id="creation-du-store">Création du store<a class="headerlink" href="#creation-du-store" title="Permanent link">&para;</a></h3>
+<p>Dans le dossier <code>app/stores</code> de votre application créer un fichier <code>movie-list.js</code>.</p>
+<div class="codehilite"><pre><span></span><span class="c1">// app/stores/movie-list.js</span>
+
+<span class="c1">// Libs</span>
+<span class="kr">import</span> <span class="nx">ListStore</span> <span class="nx">from</span> <span class="s2">&quot;focus-core/store/list&quot;</span><span class="p">;</span>
+
+<span class="c1">// On créer une instance de ce store avec un identifiant unique</span>
+<span class="kr">export</span> <span class="kr">const</span> <span class="nx">movieListStore</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ListStore</span><span class="p">({</span> <span class="nx">identifier</span><span class="o">:</span> <span class="s2">&quot;movieList&quot;</span> <span class="p">});</span>
+<span class="nx">movieListStore</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s2">&quot;MovieListStore&quot;</span><span class="p">;</span>
+</pre></div>
+
+
+<!-- prettier-ignore-start -->
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Nous lui donnons un nom afin d'aider pour les messages de debug.
+Ce n'est pas obligatoire mais c'est mieux.</p>
+</div>
+<!-- prettier-ignore-end -->
+
+<h3 id="creation-du-service">Création du service<a class="headerlink" href="#creation-du-service" title="Permanent link">&para;</a></h3>
+<p>Dans le fichier <code>app/services/movies.js</code> on va ajouter une méthode pour rechercher des films :</p>
+<div class="codehilite"><pre><span></span><span class="c1">// app/services/movies.js</span>
+
+<span class="c1">// Apis</span>
+<span class="kr">import</span> <span class="nx">moviesApi</span> <span class="nx">from</span> <span class="s2">&quot;../config/server/generated/movies&quot;</span><span class="p">;</span>
+
+<span class="kr">export</span> <span class="kr">const</span> <span class="nx">movieServices</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1">// [...]</span>
+    <span class="nx">searchMovies</span><span class="p">({</span> <span class="nx">urlData</span><span class="p">,</span> <span class="nx">data</span> <span class="p">})</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">movieApiDriver</span><span class="p">.</span><span class="nx">searchMovies</span><span class="p">(</span><span class="nx">urlData</span><span class="p">,</span> <span class="nx">data</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+</pre></div>
+
+
+<p>Un contrat à respecter est obligatoire pour cette API.</p>
+<ul>
+<li>Les paramètres d'entée de l'API sont de la forme suivante :</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="kr">const</span> <span class="p">{</span> <span class="nx">criteria</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">data</span><span class="p">;</span>
+<span class="kr">const</span> <span class="p">{</span> <span class="nx">skip</span><span class="p">,</span> <span class="nx">top</span><span class="p">,</span> <span class="nx">sortBy</span><span class="p">,</span> <span class="nx">sortAsc</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">urlData</span><span class="p">;</span>
+</pre></div>
+
+
+<ul>
+<li>Les paramètres de sortie de l'API sont de la forme suivante :</li>
+</ul>
+<div class="codehilite"><pre><span></span><span class="p">{</span>
+  <span class="nx">dataList</span><span class="o">:</span> <span class="p">[{</span><span class="nx">id</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> <span class="p">...},</span> <span class="p">...],</span>
+  <span class="nx">totalCount</span><span class="o">:</span> <span class="nx">XXX</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>Si ce n'est pas le cas et que vous avez directement les data, n'oubliez pas que le type de retour de fetch est une promesse, et qui est donc par définition : <strong>chainable</strong>.
+Vous pouvez faire la chose suivante dans votre service pour normaliser les données au format attendu par focus :</p>
+<!-- prettier-ignore-start -->
+
+<div class="codehilite"><pre><span></span><span class="k">return</span> <span class="nx">movieApiDriver</span>
+    <span class="p">.</span><span class="nx">searchMovie</span><span class="p">(</span><span class="nx">urlData</span><span class="p">,</span> <span class="nx">data</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="p">=&gt;</span> <span class="p">({</span> 
+        <span class="nx">dataList</span><span class="o">:</span> <span class="nx">data</span><span class="p">,</span> 
+        <span class="nx">totalCount</span><span class="o">:</span> <span class="nx">data</span><span class="p">.</span><span class="nx">length</span> 
+    <span class="p">}));</span>
+</pre></div>
+
+
+<!-- prettier-ignore-end -->
+
+<p>Mais il est préférable que votre serveur vous retourne un objet déjà bien construit.</p>
+<h3 id="creation-de-laction">Création de l'action<a class="headerlink" href="#creation-de-laction" title="Permanent link">&para;</a></h3>
+<p>Créer un fichier pour les actions liées à votre entité</p>
+<div class="codehilite"><pre><span></span><span class="c1">// app/actions/movies.js</span>
+
+<span class="c1">// Libs</span>
+<span class="kr">import</span> <span class="nx">listActionBuilder</span> <span class="nx">from</span> <span class="s2">&quot;focus-core/list/action-builder&quot;</span><span class="p">;</span>
+
+<span class="c1">// Stores</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">movieListStore</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;../stores/movie-list&quot;</span><span class="p">;</span>
+
+<span class="c1">// Services</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">movieServices</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;../services/movies&quot;</span><span class="p">;</span>
+
+<span class="kr">export</span> <span class="kr">const</span> <span class="nx">movieActions</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1">// [...]</span>
+    <span class="nx">searchMovies</span> <span class="o">=</span> <span class="nx">listActionBuilder</span><span class="p">({</span>
+        <span class="nx">service</span><span class="o">:</span> <span class="nx">movieServices</span><span class="p">.</span><span class="nx">searchMovies</span><span class="p">,</span>
+        <span class="nx">identifier</span><span class="o">:</span> <span class="s2">&quot;movieList&quot;</span><span class="p">,</span>
+        <span class="nx">getListOptions</span><span class="o">:</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="nx">movieListStore</span><span class="p">.</span><span class="nx">getValue</span><span class="p">()</span>
+    <span class="p">});</span>
+<span class="p">};</span>
+</pre></div>
+
+
+<p>Le builder <code>listActionBuilder</code> va retourner un objet avec deux fonction :</p>
+<ul>
+<li><code>load</code> : La fonction de load de la liste,</li>
+<li><code>updateProperties</code> : La fonction pour mettre à jour les élements du store.</li>
+</ul>
+<p>On a maintentant tout ce qu'il nous faut afin de créer le composant.</p>
+<h2 id="les-composants-de-lecran">Les composants de l'écran<a class="headerlink" href="#les-composants-de-lecran" title="Permanent link">&para;</a></h2>
+<h3 id="creation-du-composant-de-liste">Création du composant de liste<a class="headerlink" href="#creation-du-composant-de-liste" title="Permanent link">&para;</a></h3>
+<p>Commençons par créer le composant de liste.</p>
+<div class="codehilite"><pre><span></span><span class="c1">// app/views/movies/movie-list/movie-list.jsx</span>
+
+<span class="c1">// Libs</span>
+<span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">PropTypes</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;react&quot;</span><span class="p">;</span>
+
+<span class="c1">// Stores</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">movieListStore</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;../../../stores/movie-list&quot;</span><span class="p">;</span>
+
+<span class="c1">// Actions</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">movieActions</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;../../../actions/movies&quot;</span><span class="p">;</span>
+
+<span class="c1">// Components</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">component</span> <span class="nx">as</span> <span class="nx">List</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;focus-components/page/list&quot;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">MovieLine</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;./movie-line&quot;</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">columns</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">title</span><span class="o">:</span> <span class="p">{</span> <span class="nx">label</span><span class="o">:</span> <span class="s2">&quot;movie.title&quot;</span> <span class="p">},</span>
+    <span class="nx">productionYear</span><span class="o">:</span> <span class="p">{</span> <span class="nx">label</span><span class="o">:</span> <span class="s2">&quot;movie.productionYear&quot;</span> <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kr">export</span> <span class="kr">const</span> <span class="nx">MovieList</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">onLineClick</span> <span class="p">})</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="o">&lt;</span><span class="nx">List</span>
+            <span class="c1">// L&#39;action qui charge la liste</span>
+            <span class="nx">action</span><span class="o">=</span><span class="p">{</span><span class="nx">movieActions</span><span class="p">.</span><span class="nx">searchMovies</span><span class="p">}</span>
+            <span class="c1">// Les colonnes à afficher</span>
+            <span class="nx">columns</span><span class="o">=</span><span class="p">{</span><span class="nx">columns</span><span class="p">}</span>
+            <span class="c1">// Dire à la liste qu&#39;elle n&#39;est pas sélectionnable</span>
+            <span class="nx">isSelection</span><span class="o">=</span><span class="p">{</span><span class="kc">false</span><span class="p">}</span>
+            <span class="c1">// La ligne à utliser dans la liste</span>
+            <span class="nx">LineComponent</span><span class="o">=</span><span class="p">{</span><span class="nx">MovieLine</span><span class="p">}</span>
+            <span class="c1">// Le handler de click sur la ligne</span>
+            <span class="nx">onLineClick</span><span class="o">=</span><span class="p">{</span><span class="nx">onLineClick</span><span class="p">}</span>
+            <span class="c1">// Le store sur lequel le composant doit s&#39;abonner.</span>
+            <span class="nx">store</span><span class="o">=</span><span class="p">{</span><span class="nx">movieListStore</span><span class="p">}</span>
+        <span class="o">/&gt;</span>
+    <span class="p">);</span>
+<span class="p">};</span>
+<span class="nx">MovieList</span><span class="p">.</span><span class="nx">propTypes</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">onLineClick</span><span class="o">:</span> <span class="nx">PropTypes</span><span class="p">.</span><span class="nx">func</span><span class="p">.</span><span class="nx">isRequired</span>
+<span class="p">};</span>
+</pre></div>
+
+
+<h3 id="creation-du-composant-de-ligne">Création du composant de ligne<a class="headerlink" href="#creation-du-composant-de-ligne" title="Permanent link">&para;</a></h3>
+<p>Nous allons maintenant créer le contenu de la ligne.
+Nous avons besoin d'aller chercher la définition de l'entité qui contient l'ensemble des métadonnées associées à chacun de champ de la ligne.</p>
+<div class="codehilite"><pre><span></span><span class="c1">// Libs</span>
+<span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s2">&quot;react&quot;</span><span class="p">;</span>
+
+<span class="c1">// Components</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">mixin</span> <span class="nx">as</span> <span class="nx">LineMixin</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;focus-components/list/selection/line&quot;</span><span class="p">;</span>
+
+<span class="kr">export</span> <span class="kr">const</span> <span class="nx">MovieLine</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
+    <span class="nx">displayName</span><span class="o">:</span> <span class="s2">&quot;MovieLine&quot;</span><span class="p">,</span>
+    <span class="nx">mixins</span><span class="o">:</span> <span class="p">[</span><span class="nx">LineMixin</span><span class="p">],</span>
+    <span class="nx">definitionPath</span><span class="o">:</span> <span class="s2">&quot;movie&quot;</span><span class="p">,</span> <span class="c1">// Définition de l&#39;entité</span>
+    <span class="nx">renderLineContent</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="o">&lt;</span><span class="nx">tr</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="p">=&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">onLineClick</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">id</span><span class="p">)}</span><span class="o">&gt;</span>
+                <span class="o">&lt;</span><span class="nx">td</span><span class="o">&gt;</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">textFor</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">)}</span><span class="o">&lt;</span><span class="err">/td&gt;</span>
+                <span class="o">&lt;</span><span class="nx">td</span><span class="o">&gt;</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">textFor</span><span class="p">(</span><span class="s2">&quot;productionYear&quot;</span><span class="p">)}</span><span class="o">&lt;</span><span class="err">/td&gt;</span>
+            <span class="o">&lt;</span><span class="err">/tr&gt;</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+
+
+<p>La ligne est maintenant créée, la liste est fonctionnelle.
+On peut ajouter la liste nouvellement créée à la page :</p>
+<div class="codehilite"><pre><span></span>// app/views/movies/movie-list/index.jsx
+
+// Libs
+import React from &quot;react&quot;;
+
+<span class="gi">+++ // Components</span>
+<span class="gi">+++ import { MovieList } from &quot;./movie-list&quot;;</span>
+
+export const MovieListPage = React.createClass({
+    render() {
+        return (
+            &lt;div&gt;Barre de recherche de films&lt;/div&gt;
+<span class="gd">---         &lt;div&gt;Liste de films&lt;/div&gt;</span>
+<span class="gi">+++         &lt;MovieList onLineClick={() =&gt; { /* RAF */ }} /&gt;</span>
+            &lt;div&gt;Popin de preview d&#39;un film&lt;/div&gt;
+        );
+    }
+});
+</pre></div>
+
+
+<h3 id="creation-du-filtre-de-recherche">Création du filtre de recherche<a class="headerlink" href="#creation-du-filtre-de-recherche" title="Permanent link">&para;</a></h3>
+<p>On va créer un filtre de recherche. La logique de ce composant est d'avoir un texte à saisir et une action à appeller lorsque ce texte est modifié.
+Le composant va donc prendre en entrée une props : <code>onFilterChange</code>.</p>
+<div class="codehilite"><pre><span></span><span class="c1">// app/views/movies/movie-list/movie-criteria.jsx</span>
+
+<span class="c1">// Libs</span>
+<span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">PropTypes</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;react&quot;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">debounce</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;lodash&quot;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">translate</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;focus-core/translation&quot;</span><span class="p">;</span>
+
+<span class="kr">export</span> <span class="kr">const</span> <span class="nx">MovieCriteria</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">CreateClass</span><span class="p">({</span>
+    <span class="nx">displayName</span><span class="o">:</span> <span class="s2">&quot;MovieCriteria&quot;</span><span class="p">,</span>
+    <span class="nx">mixins</span><span class="o">:</span> <span class="p">[</span><span class="nx">formMixin</span><span class="p">],</span>
+    <span class="nx">definitionPath</span><span class="o">:</span> <span class="s2">&quot;movie&quot;</span><span class="p">,</span>
+    <span class="nx">getInitalState</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">{</span> <span class="nx">title</span><span class="o">:</span> <span class="s2">&quot;&quot;</span> <span class="p">};</span>
+    <span class="p">},</span>
+    <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kr">const</span> <span class="p">{</span> <span class="nx">filter</span><span class="p">,</span> <span class="nx">onFilterChange</span> <span class="p">}</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">;</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">data</span><span class="o">-</span><span class="nx">demo</span><span class="o">=</span><span class="s2">&quot;movie-criteria&quot;</span><span class="o">&gt;</span>
+                <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">fieldfor</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">,</span> <span class="p">{</span>
+                    <span class="nx">value</span><span class="o">:</span> <span class="nx">filter</span><span class="p">,</span>
+                    <span class="nx">onChange</span><span class="o">:</span> <span class="nx">title</span> <span class="p">=&gt;</span> <span class="nx">onFilterChange</span><span class="p">(</span><span class="nx">title</span><span class="p">)</span>
+                <span class="p">})}</span>
+            <span class="o">&lt;</span><span class="err">/div&gt;</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+<span class="nx">MovieCriteria</span><span class="p">.</span><span class="nx">propTypes</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">filter</span><span class="o">:</span> <span class="nx">PropType</span><span class="p">.</span><span class="nx">string</span><span class="p">,</span>
+    <span class="nx">onFilterChange</span><span class="o">:</span> <span class="nx">PropTypes</span><span class="p">.</span><span class="nx">func</span><span class="p">.</span><span class="nx">isRequired</span>
+<span class="p">};</span>
+</pre></div>
+
+
+<p>Nous devons maintenant ajouter ce composant dans le composant principal.
+Et ajouter une fonction qui permettra de dispatcher le query de recherche.</p>
+<p>Ajout dans le render :</p>
+<div class="codehilite"><pre><span></span>// app/views/movies/movie-list/index.jsx
+
+// Libs
+import React from &quot;react&quot;;
+
+<span class="gi">+++ // Store</span>
+<span class="gi">+++ import { movieListStore } from &quot;../../../stores/movie-list&quot;;</span>
+
+<span class="gi">+++ // Actions</span>
+<span class="gi">+++ import { movieActions } from &quot;../../../actions/movies&quot;;</span>
+
+// Components
+import { MovieList } from &quot;./movie-list&quot;;
+import { MovieCriteria } from &quot;./movie-criteria&quot;;
+
+<span class="gi">+++ function onFilterChange(title) {</span>
+<span class="gi">+++     moviesActions.searchMovies.updateProperties({</span>
+<span class="gi">+++         criteria: { title }</span>
+<span class="gi">+++     });</span>
+<span class="gi">+++ }</span>
+
+export const MovieListPage = React.createClass({
+    render() {
+<span class="gi">+++     const properties = movieListStore.getValue();</span>
+        return (
+<span class="gd">---         &lt;div&gt;Barre de recherche de films&lt;/div&gt;</span>
+<span class="gi">+++         &lt;MovieCriteria</span>
+<span class="gi">+++             filter={properties.criteria.title}</span>
+<span class="gi">+++             onFilterChange={onFilterChange}</span>
+<span class="gi">+++         /&gt;</span>
+            &lt;MovieList onLineClick={() =&gt; { /* RAF */ }} /&gt;
+            &lt;div&gt;Popin de preview d&#39;un film&lt;/div&gt;
+        );
+    }
+});
+</pre></div>
+
+
+<!-- prettier-ignore-start -->
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Utiliser la fonction <code>updateProperties</code> déclanche automatiquement une recherche</p>
+</div>
+<!-- prettier-ignore-end -->
+
+<h3 id="creation-de-la-popin-dedition">Création de la popin d'édition<a class="headerlink" href="#creation-de-la-popin-dedition" title="Permanent link">&para;</a></h3>
+<p>Ici pour simplifier nous ne mettrons pas le formulaire car la logique est strictement identique à celle de création de l'écran de détail. Voir <a href="../detail-page/">page de détail</a></p>
+<div class="codehilite"><pre><span></span><span class="c1">// app/views/movies/movie-list/popin.jsx</span>
+
+<span class="c1">// Libs</span>
+<span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">PropTypes</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;react&quot;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">translate</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;focus-core/translation&quot;</span><span class="p">;</span>
+
+<span class="c1">// Components</span>
+<span class="kr">import</span> <span class="nx">Panel</span> <span class="nx">from</span> <span class="s2">&quot;focus-components/components/panel&quot;</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">component</span> <span class="nx">as</span> <span class="nx">Popin</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">&quot;focus-components/components/popin&quot;</span><span class="p">;</span>
+
+<span class="kr">export</span> <span class="kd">function</span> <span class="nx">MoviePopin</span><span class="p">({</span> <span class="nx">id</span><span class="p">,</span> <span class="nx">isOpen</span><span class="p">,</span> <span class="nx">onPopinClose</span> <span class="p">})</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="o">&lt;</span><span class="nx">Popin</span> <span class="nx">open</span><span class="o">=</span><span class="p">{</span><span class="nx">isOpen</span><span class="p">}</span> <span class="nx">onPopinClose</span><span class="o">=</span><span class="p">{</span><span class="nx">onPopinClose</span><span class="p">}</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">h4</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">translate</span><span class="p">(</span><span class="s2">&quot;movie.popin.title&quot;</span><span class="p">)}</span><span class="o">&lt;</span><span class="err">/h4&gt;</span>
+            <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="p">{</span><span class="sb">`Popin d&#39;édition pour le film </span><span class="si">${</span><span class="nx">id</span><span class="si">}</span><span class="sb">`</span><span class="p">}</span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+
+            <span class="p">{</span><span class="cm">/* Affichage du formulaire de détail */</span><span class="p">}</span>
+        <span class="o">&lt;</span><span class="err">/Popin&gt;</span>
+    <span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">MoviePopin</span><span class="p">.</span><span class="nx">propTypes</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">id</span><span class="o">:</span> <span class="nx">PropTypes</span><span class="p">.</span><span class="nx">number</span><span class="p">,</span>
+    <span class="nx">isOpen</span><span class="o">:</span> <span class="nx">PropTypes</span><span class="p">.</span><span class="kr">boolean</span><span class="p">.</span><span class="nx">isRequired</span><span class="p">,</span>
+    <span class="nx">onPopinClose</span><span class="o">:</span> <span class="nx">PropTypes</span><span class="p">.</span><span class="nx">func</span><span class="p">.</span><span class="nx">isRequired</span>
+<span class="p">};</span>
+</pre></div>
+
+
+<p>Cette poin doit maintenant être ajoutée dans le composant principal de la liste .</p>
+<div class="codehilite"><pre><span></span>// app/views/movies/movie-list/index.jsx
+
+// Libs
+import React from &quot;react&quot;;
+
+// Actions
+import { movieActions } from &quot;../../../actions/movies&quot;;
+
+// Components
+import { MovieList } from &quot;./movie-list&quot;;
+import { MovieCriteria } from &quot;./movie-criteria&quot;;
+<span class="gi">+++ import { MoviePopin } from &quot;./movie-popin&quot;;</span>
+
+function onFilterChange(title) {
+    moviesActions.searchMovies.updateProperties({
+        criteria: {
+            title
+        }
+    });
+}
+
+export const MovieListPage = React.createClass({
+<span class="gi">+++ getInitialState() {</span>
+<span class="gi">+++     return { id: undefined };</span>
+<span class="gi">+++ },</span>
+<span class="gi">+++ onPopinClose() {</span>
+<span class="gi">+++     this.setState({ id: undefined });</span>
+<span class="gi">+++ },</span>
+<span class="gi">+++ openPopin(id) {</span>
+<span class="gi">+++     this.setState({ id });</span>
+<span class="gi">+++ },</span>
+    render() {
+        return (
+            &lt;MovieCriteria onFilterChange={onFilterChange} /&gt;
+<span class="gd">---         &lt;MovieList onLineClick={() =&gt; { /* RAF */ }} /&gt;</span>
+<span class="gi">+++         &lt;MovieList onLineClick={id =&gt; this.openPopin(id)} /&gt;</span>
+<span class="gd">---         &lt;div&gt;Popin de preview d&#39;un film&lt;/div&gt;</span>
+<span class="gi">+++         &lt;MoviePopin</span>
+<span class="gi">+++             id={this.state.id}</span>
+<span class="gi">+++             isOpen={this.state.id !== undefined}</span>
+<span class="gi">+++             onPopinClose={() =&gt; this.onPopinClose()}</span>
+<span class="gi">+++         /&gt;</span>
+        );
+    }
+});
+</pre></div>
+
+
+<p>Nous avons fait les modifications suivante :</p>
+<ul>
+<li>Ajout d'un state pour savoir l'identifiant du movie sur lequel on a cliqué</li>
+<li>Donné la méthode <code>openPopin</code> au composant <code>MovieList</code> pour ouvrir la popin</li>
+<li>Donné la méthode <code>onPopinClose</code> au composant <code>MoviePopin</code> pour fermer la popin</li>
+</ul>
+<p>Ici, le <strong>trick</strong> est d'utiliser la propriété <code>id</code> pour savoir si la popin est ouverte ou fermée.</p>
+<h2 id="epilogue">Epilogue<a class="headerlink" href="#epilogue" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="https://media.giphy.com/media/lgIyvBoSKEhuo/giphy.gif" /></p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../detail-page/" title="Ecran de détail" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Ecran de détail
+              </span>
+            </div>
+          </a>
+        
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            KleeGroup &copy; 2019
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+    
+      <a href="http://www.kleegroup.com/" class="md-footer-social__link fa fa-globe"></a>
+    
+      <a href="https://github.com/KleeGroup" class="md-footer-social__link fa fa-github-alt"></a>
+    
+      <a href="https://twitter.com/Klee_Group" class="md-footer-social__link fa fa-twitter"></a>
+    
+      <a href="https://www.linkedin.com/company/klee-group" class="md-footer-social__link fa fa-linkedin"></a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.245445c6.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+    
+  </body>
+</html>

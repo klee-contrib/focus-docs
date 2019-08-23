@@ -1,0 +1,23 @@
+{
+    "name": "focus-docs-refresh",
+    "version": "1.0.0",
+    "description": "Documentation for Focus v2 framework",
+    "main": "index.html",
+    "directories": {
+        "doc": "docs"
+    },
+    "scripts": {
+        "start": "mkdocs serve",
+        "build": "mkdocs build"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/KleeGroup/focus-docs.git"
+    },
+    "author": "Kleegroup",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/KleeGroup/focus-docs/issues"
+    },
+    "homepage": "https://github.com/KleeGroup/focus-docs#readme"
+}
